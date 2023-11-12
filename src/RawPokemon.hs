@@ -13,7 +13,7 @@ import qualified EggGroup
 import GenderRatio (GenderRatio (..))
 import Text.HTML.Scalpel
 import qualified Type
-import Utils (readMaybeInt, toIdCsv)
+import Utils (readMaybeInt, toCsv)
 
 -- | A @PokemonPartial@ represents the data that we can scrape from the page
 -- containing all Pokemon: https://pokemondb.net/pokedex/all
@@ -53,7 +53,7 @@ data Pokemon = Pokemon
     eggCycles :: Int,
     url :: Text
   }
-  deriving (Show)
+  deriving (Eq, Ord, Show)
 
 -- | Fetch all PokemonPartial from https://pokemondb.net/pokedex/all. Note that
 -- pformNum is not populated at this point (it is set to 0 here and then filled
@@ -450,4 +450,4 @@ setupRawPokemon = do
   getAllPokemonPartial
     >>= patchPokemonPartial
     >>= mapM getPokemon
-    >>= toIdCsv "csv/pokemon-raw.csv"
+    >>= toCsv "csv/pokemon-raw.csv"

@@ -4,6 +4,7 @@ import Control.Applicative (empty)
 import Control.Exception (throwIO)
 import Control.Monad (guard)
 import qualified Data.Csv as Csv
+import Data.List (sort)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
@@ -50,7 +51,7 @@ data Ability = Ability
   { abilityName :: Text,
     abilityFlavorText :: Text
   }
-  deriving (Show)
+  deriving (Eq, Ord, Show)
 
 instance Csv.ToNamedRecord Ability where
   toNamedRecord (Ability name flavorText) =
@@ -72,9 +73,21 @@ instance Csv.DefaultOrdered Ability where
         "flavor_text"
       ]
 
+patch :: [Ability] -> [Ability]
+patch abs = sort $ abs <> tmAbilities
+  where
+    tmAbilities =
+      [ Ability "Mind's Eye" "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal- and Fighting-type moves.",
+        Ability "Embody Aspect" "The Pokémon's heart fills with memories, causing the Mask to shine and the Pokémon's Speed stat to be boosted.",
+        Ability "Hospitality" "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP.",
+        Ability "Supersweet Syrup" "A sickly sweet scent spreads across the field the first time the Pokémon enters a battle, lowering the evasiveness of opposing Pokémon.",
+        Ability "Toxic Chain" "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move."
+      ]
+
 setupAbilities :: IO ()
 setupAbilities = do
   abilityNames <- getAllAbilities
   flavorTexts <- mapM getAbilityFlavorText abilityNames
   let abilitiesAndTexts = zipWith Ability abilityNames flavorTexts
-  toIdCsv "csv/abilities.csv" abilitiesAndTexts
+  let abilitiesAndTexts' = patch abilitiesAndTexts
+  toIdCsv "csv/abilities.csv" abilitiesAndTexts'

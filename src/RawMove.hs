@@ -1,27 +1,30 @@
-module RawMove (setupRawMoves) where
+module RawMove (Move (..), setupRawMoves) where
 
 import Control.Applicative (empty)
 import Control.Monad (guard)
 import Control.Monad.IO.Class (liftIO)
 import qualified Data.Csv as Csv
+import Data.List (sort)
 import Data.Maybe (fromJust)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import MoveCategory (MoveCategory (..))
 import Text.HTML.Scalpel
-import Utils (readMaybeInt, toIdCsv)
+import Type (Type (..))
+import qualified Type
+import Utils (readMaybeInt, toCsv)
 
 data Move = Move
   { moveName :: Text,
-    moveType :: Text,
+    moveType :: Type,
     moveCategory :: MoveCategory,
     moveFlavorText :: Text,
     moveBasePower :: Maybe Int,
     moveAccuracy :: Maybe Int,
     movePP :: Maybe Int -- Only Dynamax moves don't have PP
   }
-  deriving (Show)
+  deriving (Eq, Ord, Show)
 
 instance Csv.ToNamedRecord Move where
   toNamedRecord (Move name type_ category flavorText bp acc pp) =
@@ -69,7 +72,10 @@ getAllMoves = do
         pure $
           Move
             name
-            type_
+            ( case Type.fromString (T.unpack type_) of
+                Just t -> t
+                Nothing -> error "Invalid move type"
+            )
             ( case category of
                 "Physical" -> Physical
                 "Special" -> Special
@@ -105,7 +111,7 @@ patch moves = do
   let tealMaskMoves =
         [ Move
             "Syrup Bomb"
-            "Grass"
+            Grass
             Special
             "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns."
             (Just 60)
@@ -113,7 +119,7 @@ patch moves = do
             (Just 10),
           Move
             "Ivy Cudgel"
-            "Grass"
+            Grass
             Physical
             "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit."
             (Just 100)
@@ -121,7 +127,7 @@ patch moves = do
             (Just 10),
           Move
             "Matcha Gotcha"
-            "Grass"
+            Grass
             Special
             "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn."
             (Just 80)
@@ -129,14 +135,14 @@ patch moves = do
             (Just 15),
           Move
             "Blood Moon"
-            "Normal"
+            Normal
             Special
             "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row."
             (Just 140)
             (Just 100)
             (Just 5)
         ]
-  pure $ moves <> tealMaskMoves
+  pure $ sort $ moves <> tealMaskMoves
 
 setupRawMoves :: IO ()
-setupRawMoves = getAllMoves >>= patch >>= toIdCsv "csv/moves-raw.csv"
+setupRawMoves = getAllMoves >>= patch >>= toCsv "csv/moves-raw.csv"

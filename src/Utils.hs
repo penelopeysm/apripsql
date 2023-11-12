@@ -5,9 +5,11 @@ module Utils
     toIdCsv,
     fromIdCsvWithId,
     fromIdCsvWithoutId,
+    makeMapFromWithIds,
     readInt,
     readMaybeInt,
     bsToString,
+    (?!),
   )
 where
 
@@ -15,6 +17,8 @@ import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.Csv as Csv
 import Data.HashMap.Strict (union)
+import Data.Map (Map)
+import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -70,6 +74,9 @@ fromIdCsvWithoutId fname = do
   withIds <- fromIdCsvWithId fname
   pure $ map value withIds
 
+makeMapFromWithIds :: (Ord a) => [WithId a] -> Map a Int
+makeMapFromWithIds = M.fromList . map (\(WithId i a) -> (a, i))
+
 -- | Converts a Text to an Int, throwing an error if it fails.
 readInt :: Text -> Int
 readInt s = fst . fromRightPartial . decimal $ s
@@ -84,3 +91,9 @@ readMaybeInt s = case decimal s of
 
 bsToString :: B.ByteString -> String
 bsToString = T.unpack . TE.decodeUtf8
+
+-- | More useful version of Map.(!)
+(?!) :: (Show k, Ord k) => Map k v -> k -> v
+(?!) m k = case M.lookup k m of
+  Nothing -> error $ "Key " <> show k <> " not found in map"
+  Just v -> v
