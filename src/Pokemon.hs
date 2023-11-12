@@ -46,7 +46,7 @@ data PokemonFinal = PokemonFinal
     hiddenAbilityId :: Maybe Int,
     eggCycles :: Int
   }
-  deriving (Show)
+  deriving (Eq, Ord, Show)
 
 makePokemonFinal ::
   Map Type.Type Int ->
