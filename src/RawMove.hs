@@ -99,5 +99,6 @@ patch moves = do
 
 setupRawMoves :: IO ()
 setupRawMoves = do
-  moves <- getAllMoves >>= patch
-  toCsv "csv/moves.csv" moves
+  T.putStrLn "Not implemented"
+  -- moves <- getAllMoves >>= patch
+  -- toCsv "csv/moves.csv" moves

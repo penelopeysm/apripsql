@@ -23,19 +23,19 @@ csv/learn-methods.csv: src/LearnMethod.hs
 csv/abilities.csv: src/Ability.hs
 	cabal run apripsql -- --command abilities
 
-csv/pokemon-raw.csv: src/PokemonRaw.hs
+csv/pokemon-raw.csv: src/RawPokemon.hs
 	cabal run apripsql -- --command pokemon-raw
 
 csv/pokemon.csv: src/Pokemon.hs csv/pokemon-raw.csv csv/egg-groups.csv csv/types.csv csv/gender-ratios.csv csv/abilities.csv
 	cabal run apripsql -- --command pokemon
 
-csv/moves-raw.csv: src/MoveRaw.hs
+csv/moves-raw.csv: src/RawMove.hs
 	cabal run apripsql -- --command moves-raw
 
 csv/moves.csv: src/Move.hs csv/moves-raw.csv csv/types.csv csv/move-categories.csv
 	cabal run apripsql -- --command moves
 
-csv/learnsets-raw.csv: src/LearnsetRaw.hs
+csv/learnsets-raw.csv: src/RawLearnset.hs
 	cabal run apripsql -- --command learnsets-raw
 
 csv/learnsets.csv: src/Learnset.hs csv/learnsets-raw.csv csv/moves.csv csv/learn-methods.csv csv/pokemon.csv csv/games.csv
