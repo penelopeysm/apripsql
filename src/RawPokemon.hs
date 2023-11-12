@@ -86,8 +86,8 @@ errorPkmn ppkmn msg =
 getPokemon :: PokemonPartial -> IO Pokemon
 getPokemon ppkmn = do
   T.putStrLn $ "Scraping " <> pname ppkmn <> maybe "" ("-" <>) (pform ppkmn)
-  let haScraper :: Scraper Text Pokemon
-      haScraper = do
+  let pkmnScraper :: Scraper Text Pokemon
+      pkmnScraper = do
         -- Check that we are looking at the correct form
         forms <- texts ("a" @: [hasClass "sv-tabs-tab"])
         let expectedForm = forms !! pformNum ppkmn
@@ -146,16 +146,22 @@ getPokemon ppkmn = do
         abils <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
           heading <- text "th"
           guard $ heading == "Abilities"
-          nas <- texts ("span" @: [hasClass "text-muted"] // "a")
-          ha <- optional $ text ("small" @: [hasClass "text-muted"] // "a")
+          nas <- case pname ppkmn of
+            -- PokemonDB not fixed
+            "Shiftry" -> pure ["Wind Rider", "Early Bird"]
+            "Gallade" -> pure ["Steadfast", "Sharpness"]
+            "Tatsugiri" | pform ppkmn `elem` [Just "Droopy Form", Just "Stretchy Form"] -> pure ["Commander"]
+            _ -> texts ("span" @: [hasClass "text-muted"] // "a")
+          ha <- case pname ppkmn of
+            -- PokemonDB not fixed
+            s | s `elem` ["Piplup", "Prinplup", "Empoleon"] -> pure (Just "Competitive")
+            "Tatsugiri" | pform ppkmn `elem` [Just "Droopy Form", Just "Stretchy Form"] -> pure (Just "Storm Drain")
+            _ -> optional $ text ("small" @: [hasClass "text-muted"] // "a")
           pure $ case nas of
             [na1] -> (na1, Nothing, ha)
             [na1, na2] -> (na1, Just na2, ha)
             _ -> errorPkmn ppkmn "No ability found"
-        let (na1, na2, ha) = case pname ppkmn of
-                                  -- PokemonDB lacking data on other forms
-                                  "Tatsugiri" -> ("Commander", Nothing, Just "Storm Drain")
-                                  _ -> abils !! pformNum ppkmn
+        let (na1, na2, ha) = abils !! pformNum ppkmn
         -- Base stats"
         let readStat :: Text -> Scraper Text Int
             readStat heading = do
@@ -243,7 +249,7 @@ getPokemon ppkmn = do
               eggCycles = eggCycles,
               url = pmonUrl ppkmn
             }
-  maybePkmn <- scrapeURL (T.unpack $ pmonUrl ppkmn) haScraper
+  maybePkmn <- scrapeURL (T.unpack $ pmonUrl ppkmn) pkmnScraper
   case maybePkmn of
     Just pkmn -> pure pkmn
     Nothing -> errorPkmn ppkmn "Could not scrape Pokemon"
@@ -350,9 +356,9 @@ makeUniqueName nm' fm =
         "Nidoran♂" -> "nidoran-male"
         "Flabébé" -> "flabebe"
         p -> p
-   in T.replace ":" ""         -- Type: Null
-        . T.replace "%" ""     -- Zygarde {10,50}%
-        . T.replace "'" ""     -- Oricorio Pa'u
+   in T.replace ":" "" -- Type: Null
+        . T.replace "%" "" -- Zygarde {10,50}%
+        . T.replace "'" "" -- Oricorio Pa'u
         . T.replace " " "-"
         . T.strip
         . T.toLower

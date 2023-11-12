@@ -14,7 +14,13 @@ testAllIssues :: TestTree
 testAllIssues =
   testGroup
     "Unit tests for issues @ penelopeysm/apripsql"
-    [testIssue1, testIssue2, testIssue7, testIssue14, testIssue15]
+    [ testIssue1,
+      testIssue2,
+      testIssue4,
+      testIssue7,
+      testIssue14,
+      testIssue15
+    ]
 
 -- * Issue 1
 
@@ -39,6 +45,17 @@ testIssue2 = testCase "Issue 2: No Partner Pikachu/Eevee, Ash Greninja, Eternama
   assertBool "Partner Eevee found" (isNothing $ find (\p -> form p == Just "Partner Eevee") allRawPokemon)
   assertBool "Ash-Greninja found" (isNothing $ find (\p -> form p == Just "Ash-Greninja") allRawPokemon)
   assertBool "Eternamax found" (isNothing $ find (\p -> form p == Just "Eternamax") allRawPokemon)
+
+-- * Issue 4
+
+testIssue4 :: TestTree
+testIssue4 = testCase "Issue 4: Updated abilities in SV" $ do
+  allRawPokemon <- fromIdCsvWithoutId "csv/pokemon-raw.csv"
+  assertEqual "Piplup HA" (Just "Competitive") (find (\p -> name p == "Piplup") allRawPokemon >>= hiddenAbility)
+  assertEqual "Prinplup HA" (Just "Competitive") (find (\p -> name p == "Prinplup") allRawPokemon >>= hiddenAbility)
+  assertEqual "Empoleon HA" (Just "Competitive") (find (\p -> name p == "Empoleon") allRawPokemon >>= hiddenAbility)
+  assertEqual "Gallade ability 2" (Just "Sharpness") (find (\p -> name p == "Gallade") allRawPokemon >>= ability2)
+  assertEqual "Shiftry ability 1" (Just "Wind Rider") (ability1 <$> find (\p -> name p == "Shiftry") allRawPokemon)
 
 -- * Issue 7
 
