@@ -2,7 +2,7 @@ module Issues (testAllIssues) where
 
 import Ability (Ability (..))
 import Data.List (find)
-import Data.Maybe (isJust)
+import Data.Maybe (isJust, isNothing)
 import Data.Text (Text)
 import qualified Data.Text as T
 import RawPokemon (Pokemon (..))
@@ -14,24 +14,42 @@ testAllIssues :: TestTree
 testAllIssues =
   testGroup
     "Unit tests for issues @ penelopeysm/apripsql"
-    [testIssue7, testIssue14, testIssue15]
+    [testIssue1, testIssue2, testIssue7, testIssue14, testIssue15]
+
+-- * Issue 1
+
+testIssue1 :: TestTree
+testIssue1 = testCase "Issue 1: No Mega evolutions" $ do
+  allRawPokemon <- fromIdCsvWithoutId "csv/pokemon-raw.csv"
+  let hasMegas =
+        any
+          ( \p -> case form p of
+              Nothing -> False
+              Just f -> "Mega" `T.isInfixOf` f
+          )
+          allRawPokemon
+  assertEqual "Mega evolutions found" False hasMegas
+
+-- * Issue 2
+
+testIssue2 :: TestTree
+testIssue2 = testCase "Issue 2: No Partner Pikachu/Eevee, Ash Greninja, Eternamax" $ do
+  allRawPokemon <- fromIdCsvWithoutId "csv/pokemon-raw.csv"
+  assertBool "Partner Pikachu found" (isNothing $ find (\p -> form p == Just "Partner Pikachu") allRawPokemon)
+  assertBool "Partner Eevee found" (isNothing $ find (\p -> form p == Just "Partner Eevee") allRawPokemon)
+  assertBool "Ash-Greninja found" (isNothing $ find (\p -> form p == Just "Ash-Greninja") allRawPokemon)
+  assertBool "Eternamax found" (isNothing $ find (\p -> form p == Just "Eternamax") allRawPokemon)
 
 -- * Issue 7
 
 testIssue7 :: TestTree
 testIssue7 =
-  testGroup
-    "Issue 7: unique_names conform to [a-zA-Z0-9 ]+"
-    [testCase "All names" t7]
-
-t7Conforms :: Text -> Bool
-t7Conforms = T.all (`elem` ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- " :: String))
-
-t7 :: Assertion
-t7 = do
-  allRawPokemon <- fromIdCsvWithoutId "csv/pokemon-raw.csv"
-  let allNames = map uniqueName allRawPokemon
-  assertBool "All names conform to [a-zA-Z0-9 ]+" $ all t7Conforms allNames
+  testCase "Issue 7: unique_names conform to [a-zA-Z0-9 ]+" $ do
+    let t7Conforms :: Text -> Bool
+        t7Conforms = T.all (`elem` ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- " :: String))
+    allRawPokemon <- fromIdCsvWithoutId "csv/pokemon-raw.csv"
+    let allNames = map uniqueName allRawPokemon
+    assertBool "All names conform to [a-zA-Z0-9 ]+" $ all t7Conforms allNames
 
 -- * Issue 14
 
@@ -39,29 +57,18 @@ testIssue14 :: TestTree
 testIssue14 =
   testGroup
     "Issue 14: Libero description"
-    [ testCase "Libero" libero,
-      testCase "Protean" protean
+    [ testCase "Libero" (t14 "Libero"),
+      testCase "Protean" (t14 "Protean")
     ]
 
-libero :: Assertion
-libero = do
+t14 :: Text -> Assertion
+t14 name = do
   allAbilities <- fromIdCsvWithoutId "csv/abilities.csv"
-  case find (\a -> abilityName a == "Libero") allAbilities of
-    Nothing -> assertFailure "Could not find Libero"
+  case find (\a -> abilityName a == name) allAbilities of
+    Nothing -> assertFailure $ "Could not find " <> T.unpack name
     Just x ->
       assertEqual
-        "Libero description is accurate"
-        "Changes the Pokémon’s type to the type of the move it’s about to use. This works only once each time the Pokémon enters battle."
-        (abilityFlavorText x)
-
-protean :: Assertion
-protean = do
-  allAbilities <- fromIdCsvWithoutId "csv/abilities.csv"
-  case find (\a -> abilityName a == "Protean") allAbilities of
-    Nothing -> assertFailure "Could not find Protean"
-    Just x ->
-      assertEqual
-        "Protean description is accurate"
+        (T.unpack name <> " description is accurate")
         "Changes the Pokémon’s type to the type of the move it’s about to use. This works only once each time the Pokémon enters battle."
         (abilityFlavorText x)
 
