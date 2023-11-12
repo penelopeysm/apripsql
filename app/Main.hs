@@ -1,10 +1,23 @@
 module Main where
 
+import Ability (setupAbilities)
 import Data.List (intercalate)
 import Data.Map (Map)
 import qualified Data.Map as M
 import EggGroup (setupEggGroups)
+import Game (setupGames)
+import GenderRatio (setupGenderRatios)
+import LearnMethod (setupLearnMethods)
+import Learnset (setupLearnsets)
+import Legality (setupLegalities)
+import Move (setupMoves)
+import MoveCategory (setupMoveCategories)
+import Nature (setupNatures)
 import Options.Applicative
+import Pokemon (setupPokemon)
+import RawLearnset (setupRawLearnsets)
+import RawMove (setupRawMoves)
+import RawPokemon (setupRawPokemon)
 import Type (setupTypes)
 
 -- | To add new commands, just extend this Map. None of the rest of the code
@@ -12,7 +25,20 @@ import Type (setupTypes)
 commands :: Map String (IO ())
 commands =
   M.fromList
-    [ ("egg-groups", setupEggGroups),
+    [ ("abilities", setupAbilities),
+      ("egg-groups", setupEggGroups),
+      ("games", setupGames),
+      ("gender-ratios", setupGenderRatios),
+      ("learn-methods", setupLearnMethods),
+      ("learnsets-raw", setupRawLearnsets),
+      ("learnsets", setupLearnsets),
+      ("legalities", setupLegalities),
+      ("move-categories", setupMoveCategories),
+      ("moves-raw", setupRawMoves),
+      ("moves", setupMoves),
+      ("natures", setupNatures),
+      ("pokemon", setupPokemon),
+      ("pokemon-raw", setupRawPokemon),
       ("types", setupTypes)
     ]
 

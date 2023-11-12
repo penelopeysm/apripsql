@@ -1,27 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module Setup
-  ( clearDatabase,
-    setupAbilities,
-    setupEggGroups,
-    setupTypes,
-    setupGenderRatios,
-    setupPokemon,
-    setupMoveCategories,
-    setupMoves,
-    setupGames,
-    setupLearnMethods,
-    setupLearnsets,
-    setupPosts,
-    setupVotes,
-    setupDiscord,
-    setupTokens,
-    setupEvolutionFamilies,
-    setupLegality,
-    setupNatures,
-  )
-where
+module Setup where
 
 import Control.Monad (forM_, unless, void)
 import qualified Data.ByteString.Lazy as BL
@@ -38,8 +18,6 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 import System.Directory (doesFileExist)
 import System.Environment (lookupEnv)
-import Types
-import Web
 
 withConnection' :: (Connection -> IO a) -> IO a
 withConnection' act = do
@@ -684,6 +662,18 @@ setupTokens = do
             scopes TEXT NOT NULL,
             refresh_token TEXT NOT NULL
           )|]
+
+getEvolutionFamilies :: IO [[Text]]
+getEvolutionFamilies = do
+  let url = "https://pokemondb.net/evolution"
+  let evoFamilyScraper :: Scraper Text [[Text]]
+      evoFamilyScraper = chroots ("div" @: [hasClass "infocard-filter-block"]) $ do
+        chroots ("div" @: [hasClass "infocard"]) $ do
+          text ("a" @: [hasClass "ent-name"])
+  results <- fromJust <$> scrapeURL url evoFamilyScraper
+  let printLine = T.putStrLn . T.intercalate ", " . nub
+  mapM_ printLine results
+  pure results
 
 setupEvolutionFamilies :: IO ()
 setupEvolutionFamilies = do

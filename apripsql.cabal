@@ -25,7 +25,8 @@ common common-deps
         filepath,
         mtl,
         text,
-        transformers
+        transformers,
+        unordered-containers
     default-extensions:
         OverloadedStrings,
         ScopedTypeVariables,
@@ -36,8 +37,22 @@ common common-deps
 
 library
     import:           common-deps
-    exposed-modules:  EggGroup, Type,
-                      Setup, Types, Utils, Web
+    exposed-modules:  Ability,
+                      EggGroup,
+                      Game,
+                      GenderRatio,
+                      LearnMethod,
+                      Learnset,
+                      Legality,
+                      Move,
+                      MoveCategory,
+                      Nature,
+                      Pokemon,
+                      RawLearnset,
+                      RawMove,
+                      RawPokemon,
+                      Type,
+                      Utils
     build-depends:    scalpel,
                       deepseq,
                       postgresql-simple,

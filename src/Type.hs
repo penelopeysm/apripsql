@@ -1,10 +1,7 @@
-module Type (setupTypes) where
+module Type (Type (..), setupTypes) where
 
 import qualified Data.Csv as Csv
-import Data.Text (Text)
-import qualified Data.Text as T
-import qualified Data.Text.IO as T
-import Utils (safeToEnum, toCsv)
+import Utils (toIdCsv)
 
 data Type
   = Normal
@@ -27,26 +24,42 @@ data Type
   | Fairy
   deriving (Eq, Ord, Show, Bounded, Enum)
 
+toString :: Type -> String
+toString = show
+
+fromString :: String -> Maybe Type
+fromString "Normal" = Just Normal
+fromString "Fire" = Just Fire
+fromString "Water" = Just Water
+fromString "Electric" = Just Electric
+fromString "Grass" = Just Grass
+fromString "Ice" = Just Ice
+fromString "Fighting" = Just Fighting
+fromString "Poison" = Just Poison
+fromString "Ground" = Just Ground
+fromString "Flying" = Just Flying
+fromString "Psychic" = Just Psychic
+fromString "Bug" = Just Bug
+fromString "Rock" = Just Rock
+fromString "Ghost" = Just Ghost
+fromString "Dragon" = Just Dragon
+fromString "Dark" = Just Dark
+fromString "Steel" = Just Steel
+fromString "Fairy" = Just Fairy
+fromString _ = Nothing
+
 instance Csv.ToNamedRecord Type where
-  toNamedRecord eg =
-    Csv.namedRecord
-      [ ("id", Csv.toField $ succ $ fromEnum eg),
-        ("name", Csv.toField $ show eg)
-      ]
+  toNamedRecord x = Csv.namedRecord ["name" Csv..= toString x]
 
 instance Csv.FromNamedRecord Type where
   parseNamedRecord m = do
-    typeId <- m Csv..: "id"
-    case safeToEnum (typeId - 1) of
-      Nothing -> fail $ "Invalid type id: " <> show typeId
-      Just eg -> pure eg
+    nameString <- m Csv..: "name"
+    case fromString nameString of
+      Just x -> return x
+      Nothing -> fail $ "Invalid type: " ++ nameString
 
 instance Csv.DefaultOrdered Type where
-  headerOrder _ = Csv.header ["id", "name"]
+  headerOrder = const $ Csv.header ["name"]
 
--- | Generates csv/egg_groups.csv from internal data.
 setupTypes :: IO ()
-setupTypes = do
-  T.putStrLn "Setting up types..."
-  toCsv "csv/types.csv" ([minBound ..] :: [Type])
-  T.putStrLn "Done."
+setupTypes = toIdCsv "csv/types.csv" ([minBound ..] :: [Type])
