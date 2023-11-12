@@ -1,4 +1,4 @@
-module Ability (setupAbilities) where
+module Ability (Ability (..), setupAbilities) where
 
 import Control.Applicative (empty)
 import Control.Exception (throwIO)
@@ -12,10 +12,10 @@ import Utils (toIdCsv)
 
 getAbilityFlavorText :: Text -> IO Text
 getAbilityFlavorText abil = do
-  T.putStrLn $ "Scraping flavor text for " <> abil <> "..."
   let url =
         "https://pokemondb.net/ability/"
           <> (T.toLower . T.replace " " "-" . T.replace "'" "" $ abil)
+  T.putStrLn $ "Scraping " <> url
   let flavorTextScraper :: Scraper Text Text
       flavorTextScraper = chroot ("div" @: [hasClass "grid-col"]) $ inSerial $ do
         -- Find the first h2 that contains "Game descriptions"

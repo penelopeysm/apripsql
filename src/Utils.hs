@@ -6,6 +6,7 @@ module Utils
     fromIdCsvWithId,
     fromIdCsvWithoutId,
     readInt,
+    readMaybeInt,
     bsToString,
   )
 where
@@ -75,6 +76,11 @@ readInt s = fst . fromRightPartial . decimal $ s
   where
     fromRightPartial (Right b) = b
     fromRightPartial (Left _) = error $ T.unpack $ "fromRightPartial: Left when decoding " <> s
+
+readMaybeInt :: Text -> Maybe Int
+readMaybeInt s = case decimal s of
+  Right (i, _) -> Just i
+  Left _ -> Nothing
 
 bsToString :: B.ByteString -> String
 bsToString = T.unpack . TE.decodeUtf8

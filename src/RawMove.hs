@@ -10,23 +10,29 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import MoveCategory (MoveCategory (..))
 import Text.HTML.Scalpel
-import Utils (toCsv)
+import Utils (readMaybeInt, toIdCsv)
 
 data Move = Move
   { moveName :: Text,
     moveType :: Text,
     moveCategory :: MoveCategory,
-    moveFlavorText :: Text
+    moveFlavorText :: Text,
+    moveBasePower :: Maybe Int,
+    moveAccuracy :: Maybe Int,
+    movePP :: Maybe Int -- Only Dynamax moves don't have PP
   }
   deriving (Show)
 
 instance Csv.ToNamedRecord Move where
-  toNamedRecord (Move name type_ category flavorText) =
+  toNamedRecord (Move name type_ category flavorText bp acc pp) =
     Csv.namedRecord
       [ "name" Csv..= name,
         "type" Csv..= type_,
         "category" Csv..= category,
-        "flavor_text" Csv..= flavorText
+        "flavor_text" Csv..= flavorText,
+        "base_power" Csv..= bp,
+        "accuracy" Csv..= acc,
+        "pp" Csv..= pp
       ]
 
 instance Csv.FromNamedRecord Move where
@@ -36,9 +42,12 @@ instance Csv.FromNamedRecord Move where
       <*> m Csv..: "type"
       <*> m Csv..: "category"
       <*> m Csv..: "flavor_text"
+      <*> m Csv..: "base_power"
+      <*> m Csv..: "accuracy"
+      <*> m Csv..: "pp"
 
 instance Csv.DefaultOrdered Move where
-  headerOrder = const $ Csv.header ["name", "type", "category", "flavor_text"]
+  headerOrder = const $ Csv.header ["name", "type", "category", "flavor_text", "base_power", "accuracy", "pp"]
 
 getAllMoves :: IO [Move]
 getAllMoves = do
@@ -49,13 +58,14 @@ getAllMoves = do
         url <-
           ("https://pokemondb.net" <>)
             <$> attr "href" ("a" @: [hasClass "ent-name"])
-        liftIO $ print url
         inGameFlavorText <- liftIO (getMoveFlavorText url)
+        liftIO $ T.putStrLn $ "Scraping: " <> url
         flavorText <- case inGameFlavorText of
           Just ft -> pure ft
           Nothing -> text ("td" @: [hasClass "cell-long-text"])
         type_ <- text ("a" @: [hasClass "type-icon"])
         category <- attr "title" "img"
+        (bpStr : accStr : ppStr : _) <- texts ("td" @: [hasClass "cell-num"])
         pure $
           Move
             name
@@ -67,6 +77,9 @@ getAllMoves = do
                 _ -> error "Invalid move category"
             )
             flavorText
+            (readMaybeInt bpStr)
+            (readMaybeInt accStr)
+            (readMaybeInt ppStr)
   tags <- fetchTags (T.unpack url)
   fromJust <$> scrapeT moveScraper tags
 
@@ -90,15 +103,40 @@ getMoveFlavorText url = do
 patch :: [Move] -> IO [Move]
 patch moves = do
   let tealMaskMoves =
-        [ Move "Syrup Bomb" "Grass" Special "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns.",
-          Move "Ivy Cudgel" "Grass" Physical "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit.",
-          Move "Matcha Gotcha" "Grass" Special "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn.",
-          Move "Blood Moon" "Normal" Special "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row."
+        [ Move
+            "Syrup Bomb"
+            "Grass"
+            Special
+            "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns."
+            (Just 60)
+            (Just 85)
+            (Just 10),
+          Move
+            "Ivy Cudgel"
+            "Grass"
+            Physical
+            "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit."
+            (Just 100)
+            (Just 100)
+            (Just 10),
+          Move
+            "Matcha Gotcha"
+            "Grass"
+            Special
+            "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn."
+            (Just 80)
+            (Just 90)
+            (Just 15),
+          Move
+            "Blood Moon"
+            "Normal"
+            Special
+            "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row."
+            (Just 140)
+            (Just 100)
+            (Just 5)
         ]
   pure $ moves <> tealMaskMoves
 
 setupRawMoves :: IO ()
-setupRawMoves = do
-  T.putStrLn "Not implemented"
-  -- moves <- getAllMoves >>= patch
-  -- toCsv "csv/moves.csv" moves
+setupRawMoves = getAllMoves >>= patch >>= toIdCsv "csv/moves-raw.csv"

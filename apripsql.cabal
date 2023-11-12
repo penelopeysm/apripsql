@@ -69,7 +69,8 @@ executable apripsql
 
 test-suite apripsql-test
     import:           common-deps
-    build-depends:    apripsql
+    build-depends:    apripsql, tasty, tasty-hunit
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
+    other-modules:    Issues.I14
