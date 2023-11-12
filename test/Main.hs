@@ -3,6 +3,8 @@ module Main where
 import Data.Text (Text)
 import qualified Data.Text as T
 import Issues.I14 (testIssue14)
+import Issues.I15 (testIssue15)
+import Issues.I7 (testIssue7)
 import Test.Tasty
 import Test.Tasty.HUnit
 
@@ -11,7 +13,7 @@ main =
   defaultMain $
     testGroup
       "Unit tests for issues @ penelopeysm/apripsql"
-      [testIssue14]
+      [testIssue7, testIssue14, testIssue15]
 
 -- Helpers
 
