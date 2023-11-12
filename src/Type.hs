@@ -1,7 +1,7 @@
-module Type (Type (..), setupTypes) where
+module Type (toString, fromString, Type (..), setupTypes) where
 
 import qualified Data.Csv as Csv
-import Utils (toIdCsv)
+import Utils (bsToString, toIdCsv)
 
 data Type
   = Normal
@@ -47,6 +47,16 @@ fromString "Dark" = Just Dark
 fromString "Steel" = Just Steel
 fromString "Fairy" = Just Fairy
 fromString _ = Nothing
+
+instance Csv.ToField Type where
+  toField = Csv.toField . toString
+
+instance Csv.FromField Type where
+  parseField bs = do
+    let s = bsToString bs
+    case fromString s of
+      Just x -> return x
+      Nothing -> fail $ "Invalid type: " ++ s
 
 instance Csv.ToNamedRecord Type where
   toNamedRecord x = Csv.namedRecord ["name" Csv..= toString x]

@@ -1,7 +1,7 @@
 module GenderRatio (GenderRatio (..), setupGenderRatios) where
 
 import qualified Data.Csv as Csv
-import Utils (toIdCsv)
+import Utils (bsToString, toIdCsv)
 
 data GenderRatio
   = Genderless
@@ -34,6 +34,16 @@ fromString "Male 3:1" = Just Male31
 fromString "Male 7:1" = Just Male71
 fromString "Male only" = Just MaleOnly
 fromString _ = Nothing
+
+instance Csv.ToField GenderRatio where
+  toField = Csv.toField . toString
+
+instance Csv.FromField GenderRatio where
+  parseField bs = do
+    let s = bsToString bs
+    case fromString s of
+      Just x -> return x
+      Nothing -> fail $ "Invalid gender ratio: " ++ s
 
 instance Csv.ToNamedRecord GenderRatio where
   toNamedRecord x = Csv.namedRecord ["name" Csv..= toString x]

@@ -1,7 +1,7 @@
-module EggGroup (EggGroup (..), setupEggGroups) where
+module EggGroup (fromString, toString, EggGroup (..), setupEggGroups) where
 
 import qualified Data.Csv as Csv
-import Utils (toIdCsv)
+import Utils (bsToString, toIdCsv)
 
 data EggGroup
   = Monster
@@ -55,6 +55,16 @@ fromString "Ditto" = Just Ditto
 fromString "Dragon" = Just Dragon
 fromString "Undiscovered" = Just Undiscovered
 fromString _ = Nothing
+
+instance Csv.ToField EggGroup where
+  toField = Csv.toField . toString
+
+instance Csv.FromField EggGroup where
+  parseField bs = do
+    let s = bsToString bs
+    case fromString s of
+      Just x -> return x
+      Nothing -> fail $ "Invalid egg group: " ++ s
 
 instance Csv.ToNamedRecord EggGroup where
   toNamedRecord x = Csv.namedRecord ["name" Csv..= toString x]
