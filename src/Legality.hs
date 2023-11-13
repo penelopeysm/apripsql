@@ -1,3 +1,5 @@
+-- | For the original legality calculations, see:
+-- https://docs.google.com/spreadsheets/d/1C7hRMvIUHYITEajm56yM8mO42LsK-08Cz8irewA73nw/edit
 module Legality (RawLegality (..), Legality (..), setupLegalities) where
 
 import qualified Data.Csv as Csv
