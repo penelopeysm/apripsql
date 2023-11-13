@@ -44,7 +44,7 @@ csv/learnsets.csv: src/Learnset.hs csv/learnsets-raw.csv csv/moves.csv csv/learn
 csv/natures.csv: src/Nature.hs csv/pokemon.csv static/natures-raw.csv
 	cabal run apripsql -- --command natures
 
-csv/legalities.csv: src/Legality.hs csv/games.csv csv/pokemon.csv
+csv/legalities.csv: src/Legality.hs csv/pokemon.csv static/legalities-raw.csv
 	cabal run apripsql -- --command legalities
 
 clean:
