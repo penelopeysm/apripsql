@@ -9,6 +9,7 @@ import Data.Text (Text)
 import qualified Data.Text as T
 import Legality (Legality (..))
 import Pokemon (PokemonFinal (..))
+import RawMove (Move (..))
 import RawPokemon (Pokemon (..))
 import Test.Tasty
 import Test.Tasty.HUnit
@@ -148,3 +149,13 @@ t15 formName = do
   assertBool "hiddenAbility differs" (fmap hiddenAbility curly == fmap hiddenAbility tatsu)
   assertBool "eggGroup1 differs" (fmap eggGroup1 curly == fmap eggGroup1 tatsu)
   assertBool "eggGroup2 differs" (fmap eggGroup2 curly == fmap eggGroup2 tatsu)
+
+-- * Issue 18
+
+testIssue18 :: TestTree
+testIssue18 = testCase "Issue 18: Grassy Glide BP is 55" $ do
+  allRawMoves <- fromCsv "csv/moves-raw.csv"
+  let grassyGlide = find (\m -> RawMove.moveName m == "Grassy Glide") allRawMoves
+  case grassyGlide of
+    Nothing -> assertFailure "Grassy Glide not found"
+    Just m -> assertEqual "Grassy Glide BP is 55" (Just 55) (RawMove.moveBasePower m)

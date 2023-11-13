@@ -30,19 +30,27 @@ data LearnsetEntry = LearnsetEntry
 isRegionalNotInUSUM :: PokemonPartial -> Bool
 isRegionalNotInUSUM pkmn =
   case pform pkmn of
-    Just form -> any (`T.isInfixOf` form) ["Galarian", "Hisuian", "Paldean"]
+    Just form -> any (`T.isInfixOf` form) ["Galarian", "Hisuian", "Paldean", "White-Striped"]
     Nothing -> False
 
 isRegionalNotInBDSP :: PokemonPartial -> Bool
 isRegionalNotInBDSP pkmn =
   case pform pkmn of
-    Just form -> any (`T.isInfixOf` form) ["Alolan", "Galarian", "Hisuian", "Paldean"]
+    Just form ->
+      any
+        (`T.isInfixOf` form)
+        [ "Alolan",
+          "Galarian",
+          "Hisuian",
+          "Paldean",
+          "White-Striped"
+        ]
     Nothing -> False
 
 isRegionalNotInSwSh :: PokemonPartial -> Bool
 isRegionalNotInSwSh pkmn =
   case pform pkmn of
-    Just form -> "Paldean" `T.isInfixOf` form
+    Just form -> any (`T.isInfixOf` form) ["Hisuian", "Paldean", "White-Striped"]
     Nothing -> False
 
 getLearnset :: PokemonPartial -> Game -> IO [LearnsetEntry]

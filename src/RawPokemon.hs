@@ -383,7 +383,7 @@ makeUniqueName nm' fm =
             | "Primal " `T.isPrefixOf` f -> nm <> "-primal"
             | "Partner " `T.isPrefixOf` f -> nm <> "-partner"
             | " Forme" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Forme" "" f
-            | " -Striped Form" `T.isSuffixOf` f -> nm <> "-" <> T.replace " -Striped Form" "" f
+            | "-Striped Form" `T.isSuffixOf` f -> nm <> "-" <> T.replace "-Striped Form" "" f
             | " Form" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Form" "" f
             | " Breed" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Breed" "" f
             | " Cloak" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Cloak" "" f

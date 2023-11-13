@@ -83,7 +83,11 @@ getAllMoves = do
                 _ -> error "Invalid move category"
             )
             flavorText
-            (readMaybeInt bpStr)
+            ( case name of
+                -- Gen 9 update
+                "Grassy Glide" -> Just 55
+                _ -> readMaybeInt bpStr
+            )
             (readMaybeInt accStr)
             (readMaybeInt ppStr)
   tags <- fetchTags (T.unpack url)
