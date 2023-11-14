@@ -5,6 +5,7 @@ import Data.List (intercalate)
 import Data.Map (Map)
 import qualified Data.Map as M
 import EggGroup (setupEggGroups)
+import Evolution (setupEvolutions)
 import Game (setupGames)
 import GenderRatio (setupGenderRatios)
 import LearnMethod (setupLearnMethods)
@@ -15,6 +16,7 @@ import MoveCategory (setupMoveCategories)
 import Nature (setupNatures)
 import Options.Applicative
 import Pokemon (setupPokemon)
+import RawEvolution (setupRawEvolutions)
 import RawLearnset (setupRawLearnsets)
 import RawMove (setupRawMoves)
 import RawPokemon (setupRawPokemon)
@@ -39,7 +41,9 @@ commands =
       ("natures", setupNatures),
       ("pokemon", setupPokemon),
       ("pokemon-raw", setupRawPokemon),
-      ("types", setupTypes)
+      ("types", setupTypes),
+      ("evolutions-raw", setupRawEvolutions),
+      ("evolutions", setupEvolutions)
     ]
 
 commandKeys :: String

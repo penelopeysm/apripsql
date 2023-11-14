@@ -19,6 +19,8 @@ Checking family [687, 688] in game 2 DIFFERENT EGG MOVES FOUND
 Checking family [689, 690] in game 2 DIFFERENT EGG MOVES FOUND
 Checking family [833, 834] in game 2 DIFFERENT EGG MOVES FOUND
 Checking family [835, 836] in game 2 DIFFERENT EGG MOVES FOUND
+Checking family [898, 899, 900, 901, 902] in game 2 DIFFERENT EGG MOVES FOUND
+Checking family [391, 501, 502] in game 2 DIFFERENT EGG MOVES FOUND
 
 FIX THESE IN SV - they are written down
 Checking family [147, 148, 149] in game 4 DIFFERENT EGG MOVES FOUND
@@ -57,19 +59,8 @@ Checking family [887, 888, 889] in game 4 DIFFERENT EGG MOVES FOUND
 Checking family [896, 897] in game 4 DIFFERENT EGG MOVES FOUND
 Checking family [91, 92, 93] in game 4 DIFFERENT EGG MOVES FOUND
 Checking family [941, 942, 943] in game 4 DIFFERENT EGG MOVES FOUND
-
-CHECK THIS - Teddiursa family in SV
 Checking family [278, 279, 1073, 1074] in game 4 DIFFERENT EGG MOVES FOUND
-
-CHECK THIS - Roserade shouldn't have Synthesis in SwSh as it is Budew exclusive
-Checking family [391, 501, 502] in game 2 DIFFERENT EGG MOVES FOUND
-
-THINK ABOUT THIS - Meowstic EMs are not listed for male form (why?)
-Checking family [812, 813, 814] in game 1 DIFFERENT EGG MOVES FOUND
-Checking family [812, 813, 814] in game 2 DIFFERENT EGG MOVES FOUND
-
-CHECK THIS - Lycanroc Dusk form has no EMs (why?)
-Checking family [898, 899, 900, 901, 902] in game 2 DIFFERENT EGG MOVES FOUND
 Checking family [898, 899, 900, 901, 902] in game 4 DIFFERENT EGG MOVES FOUND
+Checking family [812, 813, 814] in game 2 DIFFERENT EGG MOVES FOUND
 
 ADDITIONALLY, CHECK ALL REGIONALS VERY CAREFULLY. NONE OF THEM ARE LISTED ABOVE.

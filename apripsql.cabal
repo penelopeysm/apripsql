@@ -39,6 +39,7 @@ library
     import:           common-deps
     exposed-modules:  Ability,
                       EggGroup,
+                      Evolution,
                       Game,
                       GenderRatio,
                       LearnMethod,
@@ -48,6 +49,7 @@ library
                       MoveCategory,
                       Nature,
                       Pokemon,
+                      RawEvolution,
                       RawLearnset,
                       RawMove,
                       RawPokemon,

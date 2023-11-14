@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-all: csv/learnsets.csv csv/natures.csv csv/legalities.csv
+all: csv/learnsets.csv csv/natures.csv csv/legalities.csv csv/evolutions.csv
 
 csv/egg-groups.csv: src/EggGroup.hs
 	cabal run apripsql -- --command egg-groups
@@ -46,6 +46,12 @@ csv/natures.csv: src/Nature.hs csv/pokemon.csv static/natures-raw.csv
 
 csv/legalities.csv: src/Legality.hs csv/pokemon.csv static/legalities-raw.csv
 	cabal run apripsql -- --command legalities
+
+csv/evolutions-raw.csv: src/RawEvolution.hs
+	cabal run apripsql -- --command evolutions-raw
+
+csv/evolutions.csv: src/Evolution.hs csv/evolutions-raw.csv csv/pokemon.csv
+	cabal run apripsql -- --command evolutions
 
 clean:
 	rm -f csv/*.csv
