@@ -1,4 +1,4 @@
-module LearnMethod (LearnMethod (..), setupLearnMethods) where
+module LearnMethod (LearnMethod (..), setupLearnMethods, fromString, toString) where
 
 import qualified Data.Csv as Csv
 import Utils (toIdCsv)
