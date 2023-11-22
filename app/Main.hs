@@ -4,6 +4,7 @@ import Ability (setupAbilities)
 import Data.List (intercalate)
 import Data.Map (Map)
 import qualified Data.Map as M
+import Database (setupDatabase)
 import EggGroup (setupEggGroups)
 import Evolution (setupEvolutions)
 import Game (setupGames)
@@ -45,7 +46,8 @@ commands =
       ("pokemon-raw", setupRawPokemon),
       ("types", setupTypes),
       ("evolutions-raw", setupRawEvolutions),
-      ("evolutions", setupEvolutions)
+      ("evolutions", setupEvolutions),
+      ("database", setupDatabase)
     ]
 
 commandKeys :: String

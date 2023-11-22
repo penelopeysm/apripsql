@@ -61,7 +61,7 @@ id,name,type_id,category_id,flavor_text,base_power,accuracy,pp
 60,Bitter Malice,14,2,The user attacks the target with spine-chilling resentment. This also lowers the target’s Attack stat.,75,100,10
 61,Blast Burn,2,2,The target is razed by a fiery explosion. The user can’t move on the next turn.,150,90,5
 62,Blaze Kick,2,1,The user launches a kick that has a heightened chance of landing a critical hit. This may also leave the target with a burn.,85,90,10
-63,Blazing Torque,2,1,,80,100,10
+63,Blazing Torque,2,1,Signature move of the Schedar Starmobile.,80,100,10
 64,Bleakwind Storm,10,2,The user attacks with savagely cold winds that cause both body and spirit to tremble. This may also lower the Speed stats of opposing Pokémon.,100,80,10
 65,Blizzard,6,2,A howling blizzard is summoned to strike opposing Pokémon. This may also leave the opposing Pokémon frozen.,110,70,5
 66,Block,1,3,The user blocks the target’s way with arms spread wide to prevent the target from fleeing.,,,5
@@ -118,7 +118,7 @@ id,name,type_id,category_id,flavor_text,base_power,accuracy,pp
 117,Coaching,7,3,"The user properly coaches its ally Pokémon, boosting their Attack and Defense stats.",,,10
 118,Coil,8,3,The user coils up and concentrates. This boosts its Attack and Defense stats as well as its accuracy.,,,20
 119,Collision Course,7,1,"The user transforms and crashes to the ground, causing a massive prehistoric explosion. This move’s power is boosted more than usual if it’s a supereffective hit.",100,100,5
-120,Combat Torque,7,1,,100,100,10
+120,Combat Torque,7,1,Signature move of the Caph Starmobile.,100,100,10
 121,Comet Punch,1,1,The target is hit with a flurry of punches that strike two to five times in a row.,18,85,15
 122,Comeuppance,16,1,The user retaliates with much greater force against the opponent that last inflicted damage on it.,1,100,10
 123,Confide,1,3,"The user tells the target a secret, and the target loses its ability to concentrate. This lowers the target’s Sp. Atk stat.",,,20
@@ -423,7 +423,7 @@ id,name,type_id,category_id,flavor_text,base_power,accuracy,pp
 422,Magic Powder,11,3,The user scatters a cloud of magic powder that changes the target’s type to Psychic.,,100,20
 423,Magic Room,11,3,The user creates a bizarre area in which Pokémon’s held items lose their effects for five turns.,,,10
 424,Magical Leaf,5,2,The user scatters curious leaves that chase the target. This attack never misses.,60,,20
-425,Magical Torque,18,1,,100,100,10
+425,Magical Torque,18,1,Signature move of the Ruchbah Starmobile.,100,100,10
 426,Magma Storm,2,2,The user traps the target inside a maelstrom of fire that inflicts damage for four to five turns.,100,75,5
 427,Magnet Bomb,17,1,The user launches steel bombs that stick to the target. This attack never misses.,60,,20
 428,Magnet Rise,4,3,The user levitates using electrically generated magnetism for five turns.,,,10
@@ -487,7 +487,7 @@ id,name,type_id,category_id,flavor_text,base_power,accuracy,pp
 486,Nightmare,14,3,A sleeping target sees a nightmare that inflicts some damage every turn.,,100,15
 487,No Retreat,7,3,This move boosts all the user’s stats but prevents the user from switching out or fleeing.,,,5
 488,Noble Roar,1,3,"Letting out a noble roar, the user intimidates the target and lowers the target’s Attack and Sp. Atk stats.",,100,30
-489,Noxious Torque,8,1,,100,100,10
+489,Noxious Torque,8,1,Signature move of the Navi Starmobile.,100,100,10
 490,Nuzzle,4,1,The user attacks by nuzzling its electrified cheeks against the target. This also leaves the target with paralysis.,20,100,20
 491,Oblivion Wing,10,2,The user absorbs the target’s HP. The user’s HP is restored by over half the damage taken by the target.,80,100,10
 492,Obstruct,16,3,This move enables the user to protect itself from all attacks. Its chance of failing rises if used in succession. Direct contact harshly lowers the attacker’s Defense stat.,,100,10
@@ -828,7 +828,7 @@ id,name,type_id,category_id,flavor_text,base_power,accuracy,pp
 827,Whirlpool,3,2,"The user traps the target inside a violent, swirling whirlpool that inflicts damage for four to five turns.",35,85,15
 828,Whirlwind,1,3,"The target is blown away, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon.",,,20
 829,Wicked Blow,16,1,"The user, having mastered the Dark style, strikes the target with a fierce blow. This move always lands a critical hit.",75,100,5
-830,Wicked Torque,16,1,,80,100,10
+830,Wicked Torque,16,1,Signature move of the Segin Starmobile.,80,100,10
 831,Wide Guard,13,3,The user and its allies are protected from wide-ranging attacks for one turn.,,,10
 832,Wild Charge,4,1,The user shrouds itself in electricity and smashes into the target. This also damages the user a little.,90,100,15
 833,Wildbolt Storm,4,2,The user summons a thunderous tempest and savagely attacks with lightning and wind. This may also leave opposing Pokémon with paralysis.,100,80,10

@@ -38,6 +38,7 @@ common common-deps
 library
     import:           common-deps
     exposed-modules:  Ability,
+                      Database,
                       EggGroup,
                       Evolution,
                       Game,

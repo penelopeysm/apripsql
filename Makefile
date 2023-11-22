@@ -1,6 +1,9 @@
 .PHONY: all clean
 
-all: csv/learnsets.csv csv/natures.csv csv/legalities.csv csv/evolutions.csv
+all: database
+
+database: src/Database.hs csv/learnsets.csv csv/natures.csv csv/legalities.csv csv/evolutions.csv
+	cabal run apripsql -- --command database
 
 csv/egg-groups.csv: src/EggGroup.hs
 	cabal run apripsql -- --command egg-groups
