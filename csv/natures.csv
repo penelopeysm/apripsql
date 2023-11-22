@@ -1,0 +1,469 @@
+pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
+1,Timid,Modest,Modest,Modest
+4,Timid,Timid,Timid,Timid / Jolly
+7,Calm/Modest,Bold / Modest,Bold / Modest,Timid / Modest
+10,Timid,Timid,Timid,Timid
+13,,,Jolly,Jolly
+16,,,Jolly,Jolly
+19,,,Jolly,Jolly
+20,,,,Jolly / Adamant
+23,,,Jolly,Jolly
+25,,,Adamant,Adamant
+30,Adamant,Adamant,Adamant,Jolly
+31,Adamant,Jolly,,Jolly
+34,Timid,Modest,Modest,Timid / Modest
+37,Timid,Timid,Timid,Timid / Modest
+43,Timid,Timid,,Timid
+42,Timid,Timid,Timid,Timid
+48,Jolly,Jolly,Jolly,Jolly
+50,Modest,Bold (Vileplume) / Timid (Bellossom),Bold (Vileplume) / Timid (Bellossom),Bold (Vileplume) / Timid (Bellossom)
+53,,,Careful,Careful
+55,,,Timid,Timid
+58,Jolly,Jolly,,Jolly
+57,Jolly,Adamant,Adamant,Adamant / Jolly
+62,Timid,Jolly,,Timid
+63,Adamant,Adamant,,
+61,Jolly,Jolly,Jolly,Timid
+66,Timid,Timid / Modest,Timid / Modest,Modest
+68,,,Jolly,Jolly
+70,Jolly/Timid,Jolly,Jolly,Jolly
+74,Calm,Bold (Politoed) / Jolly / Adamant (Poliwrath),Bold (Politoed) / Jolly / Adamant (Poliwrath),Timid (Poliwrath) / Calm (Politoed)
+77,Timid,Timid,Timid,Timid
+80,Adamant,Adamant,Adamant,Adamant
+83,,,Timid / Modest,Timid / Modest
+86,Calm,Timid,Timid,Timid
+89,,,,Jolly
+88,,,Adamant / Jolly,Adamant / Jolly
+95,Jolly,Jolly / Timid,,
+94,Jolly,Jolly,Jolly,Jolly
+99,Relaxed,Modest (Slowbro) / Calm (Slowking),,
+98,Relaxed,Relaxed (Slowbro) / Bold (Slowking),Relaxed (Slowbro) / Bold (Slowking),Bold (Slowbro) / Modest (Slowking)
+102,Modest,Modest / Bold,Modest / Bold,Modest / Timid
+105,Adamant,Adamant,,
+104,Adamant,Adamant,Adamant,Adamant
+106,,,Jolly,Jolly
+108,,,Calm,Calm
+111,,,,Adamant
+110,,,Careful,Careful
+114,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
+116,Timid,Timid,Timid,Timid
+119,Brave,Impish,Impish,Brave / Impish
+120,,,Jolly,Jolly
+122,Adamant,Jolly,Jolly,Adamant / Jolly
+124,,,Jolly / Timid,Jolly / Timid
+128,Quiet,Modest / Timid / Quiet (Kanto) / Modest (Alola),Modest / Timid / Quiet ,Quiet (K) / Modest (A)
+131,Adamant,Adamant,Adamant,Brave (K) / Adamant (A)
+136,Impish,Careful,Careful,Calm
+137,Timid,Bold,Bold,Bold
+140,Brave,Adamant,Adamant,Adamant
+142,Bold,Bold,Bold,Bold
+143,Sassy,Sassy / Relaxed,Sassy / Relaxed,Sassy
+144,Jolly,Adamant / Jolly,Adamant / Jolly,Jolly
+145,Timid/Jolly,Rash / Naive,Rash / Naive,Modest
+147,Careful,Jolly / Adamant,Jolly / Adamant,Adamant
+149,Timid,Timid,Timid,Timid
+151,Relaxed,Timid,Timid,Timid
+152,Quiet,Timid / Modest / Calm,,
+153,Adamant,Adamant / Careful,Adamant / Careful,Impish / Adamant
+157,Jolly,Jolly,Jolly,Jolly
+158,Jolly,Jolly,Jolly,Naive / Adamant
+160,Jolly,,,
+159,Jolly,,,
+161,Jolly,,,
+162,Jolly,Jolly,Jolly,Jolly
+164,Calm,Bold,Bold,Modest
+166,Modest,Timid (Es / Jo) / Bold (Va / Sy) / Careful (Um) / Modest (Gl) / Jolly (Le) / Careful / Calm / Adamant (Fl),Timid (Es / Jo) / Bold (Va) / Careful (Um) / Modest (Gl) / Jolly (Le) / Careful / Calm / Adamant (Fl),"Timid (E,G,J) / Adamant (F) / Jolly (L) / Bold (S,V) / Calm (U)"
+170,Sassy/Timid,Timid,Timid,Timid
+171,Modest,Modest / Timid,Modest / Timid,Modest / Timid
+173,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
+175,Jolly,Jolly,Jolly,Jolly
+176,Sassy,Adamant / Careful,Adamant / Careful,Careful
+183,Adamant,Jolly / Adamant,Jolly / Adamant,Jolly
+188,,,Calm,Calm
+191,,,Timid,Timid
+195,,,Jolly / Adamant,Jolly / Adamant
+198,,,Jolly,Jolly
+200,Modest,Modest,Modest,Modest
+202,,,Jolly,Jolly
+204,,,Jolly,Jolly
+207,Calm,Modest,Modest,Modest
+209,Timid,Timid,Timid,Timid
+210,Calm,Bold / Timid,Bold / Timid,Bold
+211,Modest,Calm,Calm,Timid
+212,Modest/Timid/Calm/Bold (mostly Modest),Bold,Bold,Timid
+214,Timid,Bold,Bold,Impish / Modest
+216,,,Modest,Modest
+220,Adamant,Adamant,Adamant,Adamant
+222,Brave,Adamant / Brave,Adamant / Brave,Adamant
+224,,,Jolly,Jolly
+227,,,Jolly,Jolly
+228,,,Modest,Modest
+230,,,Timid,Timid
+232,Careful,,,
+231,Relaxed,Bold,Bold,Relaxed
+236,,,Jolly,Jolly
+239,,,Timid,Timid
+241,Calm,Bold,Bold,Bold
+242,,,Jolly,Jolly
+243,,,Jolly,Jolly
+245,Adamant,Adamant,Adamant,Adamant
+246,,,Jolly,Jolly
+248,Impish,,Adamant,Adamant
+250,Adamant,Jolly,Jolly,Timid / Jolly
+253,Relaxed,Bold,Bold,Calm
+254,Adamant,Jolly,Jolly,Adamant / Jolly
+255,Jolly,Jolly,Jolly,Jolly
+257,,,Brave,Brave
+259,,,Calm,Calm
+261,Adamant/Jolly,Adamant / Jolly,Adamant / Jolly,Adamant / Jolly
+264,Quiet,Timid / Modest,,
+263,Bold,Bold,Bold,Bold
+265,Modest,Modest,Modest,Quiet 
+267,Jolly,Adamant,Jolly,Timid
+268,Modest,Bold,Bold,Calm
+269,Impish,Impish,Impish,Bold
+270,,,Timid,Timid
+273,,,Adamant,Adamant
+276,,,Jolly,Lonely / Hasty
+277,,,Jolly,Jolly
+278,Adamant/Careful,Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful (C) / Adamant (L) / Impish (T)
+280,Timid,Timid,Timid,Timid
+281,Adamant,Adamant / Jolly,Adamant / Jolly,Naive / Modest / Jolly
+282,Timid,Modest,Modest,Modest
+283,Impish,Calm,Careful,Calm
+288,Adamant,Adamant,Adamant,Adamant
+294,Timid,Timid,Timid,Timid
+297,Adamant,Adamant / Jolly,Adamant / Jolly,Jolly / Adamant
+300,Adamant,Jolly / Adamant,Jolly / Adamant,Adamant / Jolly
+303,,,Adamant / Jolly,Adamant / Jolly
+305,Jolly,Adamant,Adamant,Adamant
+306,Jolly,Adamant,,
+309,,,Bold (Dust) / Timid (Beau),Bold (D) / Timid (B)
+314,Modest,Modest,Modest,Modest / Timid
+317,Jolly,Adamant,Adamant,Lonely / Hasty
+320,,,Timid,Timid
+322,Modest/Timid,Bold / Modest,Bold / Modest,Bold
+324,Timid/Adamant,Timid (Gardevoir) / Jolly (Gallade),Timid (Gardevoir) / Jolly (Gallade),Timid (V) / Jolly (L)
+327,,,Timid,Timid
+329,,,Careful,Careful
+331,,,Naive,Naive
+334,Adamant,Adamant (Ninjask) / Adamant / Jolly (Shedinja),Adamant (Ninjask) / Adamant / Jolly (Shedinja),Jolly (N) / Adamant (S)
+337,Modest,Timid / Modest,Timid / Modest,Timid
+340,,,Adamant,Adamant
+343,Calm,,Modest,Modest
+344,Jolly,,Jolly,Jolly
+346,Careful,Careful,Careful,Careful
+347,Adamant,Adamant,Adamant,Adamant
+348,Adamant,Careful,Careful,Careful
+351,,,Jolly / Adamant,Jolly / Adamant
+353,Timid,Timid,Timid,Timid
+355,Timid,,Timid,Timid
+356,Timid,,Timid,Timid
+357,Timid,,Relaxed,Relaxed
+358,Timid,,Relaxed,Relaxed
+359,Timid,Timid,Timid,Timid
+360,,,Quiet,Quiet
+362,Adamant,Adamant / Jolly,Adamant / Jolly,Adamant / Jolly
+364,Modest,Calm,Calm,Calm
+366,,,Calm,Calm
+368,Quiet,Bold,Bold,Bold
+369,,,Timid,Timid
+371,,,Brave,Brave
+372,Jolly,Jolly,Jolly,Jolly
+375,Adamant,,Mild,Mild
+377,Calm,Calm,Calm,Adamant
+379,,,Adamant / Jolly,Adamant / Jolly
+380,,,Naughty,Naughty
+381,Modest,Timid,Timid,Modest / Timid
+382,Adamant,Impish,Impish,Impish
+383,Adamant,Modest,Modest,Jolly
+385,Adamant,Adamant / Naughty,Adamant / Naughty,Jolly
+387,Bold,Calm,Calm,Bold
+389,Modest,Bold,Bold,Bold
+391,Adamant,Adamant,Adamant,Adamant
+393,Bold/Calm,Bold,Bold,Calm
+395,,,Timid,Timid
+399,Careful,,Adamant,Adamant
+400,,,Adamant,Adamant
+402,Sassy,Adamant,Adamant,Adamant
+404,,,Bold,Bold
+405,,,Timid,Timid
+406,Adamant,Jolly / Adamant,Jolly / Adamant,Adamant / Jolly
+407,,Bold,Bold,Calm
+408,Impish,Timid ,Timid ,Jolly (G) / Timid (F)
+410,Calm,Adamant,Adamant,Calm
+413,,,Modest / Timid (Gore) / Naughty (Hunt),Modest (G) / Timid (G) / Naughty (H) 
+416,Adamant,Adamant,Adamant,Adamant
+417,,,Modest / Timid,Modest / Timid
+418,Jolly,Timid / Jolly / Naive / Impish,Timid / Jolly / Naive / Impish,Adamant / Jolly
+421,Adamant,Adamant / Jolly,Adamant / Jolly,Jolly / Adamant
+437,,,Impish,Impish
+440,,,Jolly,Jolly
+443,Modest,,Calm,Calm
+446,,,Jolly,Jolly
+449,,,Adamant,Adamant
+451,Adamant,,Jolly,Jolly
+453,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
+456,,Timid,Timid,Timid
+458,,,Jolly,Jolly
+460,,,Careful,Careful
+462,,,Timid / Rash (Moth),Timid / Rash (M)
+464,,,Careful / Rash (Moth),Careful / Rash (M)
+463,,,Impish / Rash (Moth),Impish / Rash (M)
+469,Adamant,Bold / Impish,Bold / Impish,Bold
+471,Impish,,Impish,Impish
+472,,,Timid,Timid
+474,Modest,Timid,Timid,Jolly
+476,Bold,Calm / Sassy,Calm / Sassy,Sassy
+479,Timid,Bold,Bold,Modest / Timid
+481,Jolly,Jolly,Jolly,Jolly
+485,,,Jolly,Jolly
+487,,,Calm,Calm
+488,Jolly,Timid / Modest,Timid / Modest,Jolly
+490,Relaxed,Sassy / Careful,Sassy / Careful,Calm
+492,,Adamant / Brave,Adamant / Brave,Adamant
+495,,,Timid,Timid
+496,Relaxed,Adamant / Bold,Adamant / Bold,Adamant / Brave
+497,Jolly,Jolly / Naive / Hasty,Jolly / Naive / Hasty,Jolly
+501,Jolly,Jolly,Jolly,Jolly / Adamant
+503,Impish,Impish,Impish,Impish
+505,Jolly,Jolly,Jolly,Jolly
+507,Adamant,Jolly,Jolly,Jolly
+509,,,Adamant,Adamant
+510,,,Bold,Bold
+513,Quiet,Modest / Mild,Modest / Mild,Modest / Mild
+533,Modest,Timid,Timid,Timid / Bold (Fan)
+534,Modest,Timid,Timid,Timid
+535,Modest,Timid,Timid,Timid
+536,Modest,Timid,Timid,Timid
+537,Modest,Timid,Timid,Bold
+538,Modest,Timid,Timid,Timid
+551,,,,Relaxed
+558,,,,Timid
+561,,,,Jolly
+564,,,,Timid
+568,,,,Adamant / Jolly
+570,Jolly,Adamant,,Adamant / Jolly
+573,Jolly,Jolly / Adamant,,Jolly
+575,,,,Jolly
+577,,,,Timid
+579,,,,Timid
+581,Relaxed,Bold / Modest,,Modest
+583,Adamant,Jolly,,Adamant
+586,,,,Timid
+588,Brave,Careful,,Careful
+591,Timid,Timid,,Timid
+593,Adamant,Jolly,,Jolly
+595,Calm,Careful,,Calm
+596,Adamant,Adamant / Careful,,Adamant
+599,Adamant,Relaxed / Adamant,,Timid
+602,Adamant,Careful / Adamant,,Impish / Adamant
+603,Jolly,Jolly,,Jolly
+604,,,,Jolly
+607,Jolly,Adamant / Jolly,,Jolly
+610,Timid,Timid,,Timid
+612,Timid,Timid,,Timid
+616,Adamant,Adamant,,Naive
+615,Adamant,Naive,,Adamant
+617,Adamant,,,
+618,Jolly,Jolly,,Jolly / Adamant
+622,Jolly,Jolly,,
+621,Jolly,Jolly,,Jolly / Adamant
+627,Bold,Hasty / Mild,,Naughty
+628,Adamant,Jolly,,Jolly
+630,Careful,Careful,,Jolly
+632,Timid,Timid,,Timid
+634,Relaxed,Impish,,
+633,Relaxed,Quiet / Modest,,Quiet
+636,Adamant,Naughty / Adamant,,Adamant / Jolly
+638,Jolly,Jolly,,Naive
+640,Adamant,Impish,,Impish
+642,Jolly,Timid,,Timid
+643,Timid,,,
+646,Jolly,Jolly,,Jolly
+648,Jolly/Impish,Bold,,Modest
+651,Quiet,Bold,,Quiet / Bold
+654,,,,Timid
+656,Timid,Timid,,Modest
+659,Jolly,,,Jolly
+661,Timid,Timid,,Timid
+662,Brave,Careful,,Adamant
+664,Relaxed/Sassy,Bold,,Calm / Modest
+666,Calm,Bold,,Bold
+668,,,,Impish
+669,Timid,Timid,,Timid
+671,Relaxed,Careful / Sassy,,Careful / Sassy
+673,Jolly,Jolly,,Adamant
+676,Quiet,,,Rash
+679,Quiet,Bold / Modest / Quiet,,Quiet
+681,Modest,Timid,,Timid / Modest
+684,Adamant,Jolly,,Adamant
+687,Jolly,Adamant,,Adamant
+689,Timid,Timid,,Calm
+690,Timid,Timid,,Timid
+693,Impish,Careful,,
+692,Calm,Calm,,Bold
+694,Jolly,Jolly,,Jolly / Naive
+696,Impish,Impish,,Adamant
+697,Adamant,Adamant,,Adamant
+699,Adamant,Adamant,,Adamant
+701,Brave,Adamant,,Adamant
+702,Jolly,Jolly,,Careful
+705,Calm,Impish,,Bold
+707,Modest,Adamant / Timid / Modest,,Rash
+708,Jolly,Jolly,,Jolly
+709,Modest,Timid,,Modest
+712,Timid,Timid,,Timid / Modest
+733,Impish,,,Impish
+736,,,,Timid
+739,Timid,,,Timid / Hasty
+742,Jolly,Adamant,,Adamant
+744,Jolly,Jolly,,Jolly
+747,Timid,,,Timid
+750,,,,Timid
+752,Calm,,,Timid
+755,Adamant,,,Careful
+757,Adamant,Adamant,,Adamant
+759,,,,Jolly
+760,Timid,Timid,,Timid (F) / Bold (M)
+763,Quiet,Adamant,,Sassy
+767,Relaxed,Bold,,Quiet
+769,Timid,Adamant / Jolly,,Adamant / Jolly
+771,Adamant,Careful,,Careful
+773,Adamant,Jolly,,Naive / Jolly
+775,Modest,Modest,,Modest
+777,Modest,Modest,,Modest
+779,Timid,Timid,,Timid
+781,Adamant,Adamant / Jolly,,Jolly
+783,Modest,Modest / Timid,,Modest / Timid
+786,Adamant,Adamant,,Adamant
+787,Jolly,Timid,,Timid
+788,Relaxed,Relaxed,,Relaxed
+789,Modest,Timid / Modest,,Timid / Hasty
+794,Bold,Careful,,Careful
+795,Brave,Jolly,,Jolly
+799,Relaxed,Jolly / Adamant / Naive / Timid,,Impish
+797,Jolly,Jolly / Adamant / Naive / Timid,,Adamant
+798,Jolly,Jolly / Adamant / Naive / Timid,,Jolly
+800,Relaxed,Jolly / Adamant / Naive / Timid,,Bold
+805,Adamant,Impish,,Impish
+808,Timid,Timid,,Timid
+819,Adamant,Timid,,Timid
+823,Careful/Impish,Careful,,Jolly
+826,Modest,Modest / Bold,,Modest
+829,,,,Rash / Naive
+832,Brave,,,Adamant
+834,Quiet,Modest,,Modest
+837,Adamant,,,Adamant
+839,Timid,,,Timid
+841,Timid,,,Timid
+840,Timid,,,Timid
+842,Timid,,,Timid
+843,Timid,Timid,,Timid
+845,Jolly,Jolly / Adamant,,Jolly (B) / Adamant (M)
+846,Jolly,Jolly,,Jolly
+850,Brave,Bold / Calm,,Quiet
+851,Brave,Bold / Calm,,Quiet
+852,Calm,Bold / Impish / Relaxed,,Calm
+854,Brave,Impish,,Impish
+856,Brave,Adamant,,Adamant
+858,Brave,Bold,,Bold
+860,Sassy,Calm,,Modest
+862,Timid,Timid,,Timid
+864,Adamant,Jolly,,Adamant
+866,Adamant,Jolly,,Adamant / Jolly
+869,Bold/Calm,Bold,,Modest
+870,Sassy,Modest / Quiet / Calm,,Quiet
+871,Adamant,Jolly,,Jolly
+872,Adamant,Adamant,,Adamant
+874,Quiet,Bold,,Bold
+876,Calm,Bold,,Bold
+879,,,,Naughty / Adamant
+880,,,,Naughty / Adamant
+881,Adamant,,,Adamant
+882,Quiet,Calm,,Timid
+883,Jolly,Jolly,,Jolly
+884,Jolly,Jolly / Adamant,,Adamant / Jolly
+885,Jolly,,,Jolly / Adamant
+886,Modest,Bold / Modest,,Modest
+887,Brave,Adamant,,Adamant
+888,Bold/Modest,Bold / Impish / Naive / Jolly / Timid,,Hasty / Jolly
+919,Adamant,Adamant,,
+922,Jolly,Jolly / Adamant,,
+925,Timid,Timid,,
+928,Adamant,Adamant / Impish,,
+930,Careful,Careful / Relaxed / Impish,,
+933,Timid,Timid,,
+936,Timid,Timid,,
+938,Bold,Modest,,
+940,Impish,Impish,,
+942,Adamant,Jolly / Adamant,,
+944,Timid,Jolly,,
+946,Modest,Adamant,,
+949,Adamant,Modest / Bold (Appletun) / Jolly (Flapple),,
+952,Careful,Impish / Careful,,
+954,Adamant,Timid,,
+955,Adamant,Adamant,,
+957,Modest,Timid / Modest / Rash,,
+960,Adamant,Jolly,,
+962,Careful,Adamant,,
+964,Timid,Timid / Modest,,
+966,Quiet,Bold / Quiet,,
+969,Careful,Bold,,
+978,Bold,Bold,,
+980,Adamant,Jolly / Adamant,,
+981,Quiet,Bold / Modest,,
+982,Modest,Timid,,
+984,Adamant,Jolly,,
+985,Adamant/Jolly,Jolly,,
+986,Adamant/Jolly,Jolly,,
+988,Bold/Relaxed,Timid,,
+987,Bold/Relaxed,Timid,,
+989,Jolly,Jolly,,
+990,Jolly,Jolly,,
+991,Brave,Adamant / Careful,,
+997,Modest,Timid,,
+998,Jolly,Timid,,
+1027,Jolly,,,
+1030,Modest,,,
+1033,Adamant,,,
+1036,Impish,,,
+1039,Relaxed/Sassy,,,
+1041,Jolly,,,
+1043,Jolly,,,
+1046,Jolly,,,
+1049,Impish,,,
+1051,Modest,,,
+1054,Jolly,,,
+1057,Jolly,,,
+1056,Jolly,,,
+1055,Jolly,,,
+1058,Relaxed,,,
+1061,Modest/Adamant,,,
+1064,Bold,,,
+1066,Timid,,,
+1068,Adamant,,,
+1070,Careful,,,
+1072,Adamant,,,
+1074,Bold/Calm,,,
+1076,Impish,,,
+1077,Naive,,,
+1079,Quiet,,,
+1081,Timid,,,
+1083,Adamant,,,
+1086,Jolly,,,
+1088,Adamant,,,
+1089,Jolly,,,
+1092,Jolly,,,
+1094,Jolly,,,
+1095,Impish,,,
+1096,Timid,,,
+1098,Adamant,,,
+1100,Jolly,,,
+1101,Adamant,,,
+1103,Adamant,,,
+1104,Adamant/Jolly,,,
+1106,Modest,,,
+1105,Modest,,,
+1107,Modest,,,
+1126,Adamant,,,

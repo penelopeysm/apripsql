@@ -1,0 +1,520 @@
+prevo_id,evo_id,method
+1,2,Level 16
+2,3,Level 32
+4,5,Level 16
+5,6,Level 36
+7,8,Level 16
+8,9,Level 36
+10,11,Level 7
+11,12,Level 10
+13,14,Level 7
+14,15,Level 10
+16,17,Level 18
+17,18,Level 36
+19,21,Level 20
+20,22,"Level 20, Nighttime"
+23,24,Level 20
+25,26,Level 22
+30,32,Level 22
+31,33,use Ice Stone
+34,35,Level 16
+35,36,use Moon Stone
+37,38,Level 16
+38,39,use Moon Stone
+40,41,use Moon Stone
+42,44,use Fire Stone
+43,45,use Ice Stone
+46,47,use Moon Stone
+48,49,Level 22
+49,206,high Friendship
+50,52,use Leaf Stone
+50,219,use Sun Stone
+53,54,Level 24
+55,56,Level 31
+57,59,Level 26
+58,60,Level 26
+61,64,Level 28
+62,65,high Friendship
+63,973,Level 28
+66,67,Level 33
+68,69,Level 28
+69,1108,Use Rage Fist 20 times
+70,72,use Fire Stone
+71,73,use Fire Stone
+74,76,use Water Stone
+74,223,trade holding Kings Rock
+77,78,Level 16
+78,79,Trade
+80,81,Level 28
+81,82,Trade
+83,84,Level 21
+84,85,use Leaf Stone
+86,87,Level 30
+88,90,Level 25
+89,91,Level 25
+90,92,Trade
+91,93,Trade
+94,96,Level 40
+95,97,Level 40
+98,100,Level 37
+98,237,trade holding Kings Rock
+99,101,use Galarica Cuff
+99,238,use Galarica Wreath
+102,103,Level 30
+103,516,"use Thunder Stone, in Gen 8+, or level up in a Magnetic Field area"
+105,975,achieve 3 critical hits in one battle
+106,107,Level 31
+108,109,Level 34
+110,112,Level 38
+111,113,Level 38
+114,115,use Water Stone
+116,117,Level 25
+117,118,Trade
+119,247,trade holding Metal Coat
+120,121,Level 26
+122,123,Level 28
+124,126,Level 30
+125,127,use Leaf Stone
+128,129,"use Leaf Stone, outside Alola"
+128,130,"use Leaf Stone, in Alola"
+131,132,"Level 28, outside Alola"
+131,133,"Level 28, Nighttime, in Alola"
+136,517,after Rollout learned
+137,138,"Level 35, outside Galar"
+137,139,"Level 35, in Galar"
+140,141,Level 42
+141,518,trade holding Protector
+142,284,high Friendship
+143,519,after Ancient Power learned
+145,146,Level 32
+146,272,trade holding Dragon Scale
+147,148,Level 33
+149,150,use Water Stone
+152,976,Level 42
+153,252,trade holding Metal Coat
+153,1018,use Black Augurite
+155,520,trade holding Electirizer
+156,521,trade holding Magmarizer
+162,163,Level 20
+166,167,use Water Stone
+166,168,use Thunder Stone
+166,169,use Fire Stone
+166,234,"high Friendship, Daytime"
+166,235,"high Friendship, Nighttime"
+166,524,"use Leaf Stone, or level up near a Mossy Rock"
+166,525,"use Ice Stone, or level up near an Icy Rock"
+166,785,"after Fairy-type move learned, and either ♥♥ Affection in Gen 6-7 or high friendship in Gen 8+"
+170,275,trade holding Upgrade
+171,172,Level 40
+173,174,Level 40
+183,184,Level 30
+184,185,Level 55
+188,189,Level 16
+189,190,Level 32
+191,193,Level 36
+191,194,"Level 36, in Legends: Arceus"
+195,196,Level 18
+196,197,Level 30
+198,199,Level 15
+200,201,Level 20
+202,203,Level 18
+204,205,Level 22
+207,208,Level 27
+209,28,"use Thunder Stone, outside Alola"
+209,29,"use Thunder Stone, in Alola"
+210,40,high Friendship
+211,46,high Friendship
+212,213,high Friendship
+213,522,use Shiny Stone
+214,215,Level 25
+216,217,Level 15
+217,218,Level 30
+220,221,Level 18
+224,225,Level 18
+225,226,Level 27
+227,478,after Double Hit learned
+228,229,use Sun Stone
+230,523,after Ancient Power learned
+231,233,Level 20
+232,1109,Level 20
+236,484,use Dusk Stone
+239,483,use Dusk Stone
+242,1110,after Twin Beam learned
+243,244,Level 31
+245,1111,after Hyper Drill learned
+245,1112,"after Hyper Drill learned, rare"
+246,526,"hold Razor Fang, Nighttime"
+248,249,Level 23
+251,1024,use Barb Barrage 20 times in Strong Style
+255,515,"hold Razor Claw, Nighttime"
+256,1023,"use Razor Claw, Daytime"
+257,258,Level 30
+258,1019,"use Peat Block, under a full moon, in Legends: Arceus"
+259,260,Level 38
+261,262,Level 33
+262,527,after Ancient Power learned
+264,974,Level 38
+265,266,Level 25
+270,271,Level 24
+273,274,Level 25
+275,528,trade holding Dubious Disc
+276,1017,use Psyshield Bash 20 times in Agile Style
+278,134,"Level 20, Attack > Defense"
+278,135,"Level 20, Attack < Defense"
+278,279,"Level 20, Attack = Defense"
+280,154,Level 30
+281,155,Level 30
+282,156,Level 30
+288,289,Level 30
+289,290,Level 55
+294,295,Level 16
+295,296,Level 36
+297,298,Level 16
+298,299,Level 36
+300,301,Level 16
+301,302,Level 36
+303,304,Level 18
+305,307,Level 20
+306,308,Level 20
+308,972,"Level 35, Nighttime"
+309,310,"Level 7, random based on personality"
+309,312,"Level 7, random based on personality"
+310,311,Level 10
+312,313,Level 10
+314,315,Level 14
+315,316,use Water Stone
+317,318,Level 14
+318,319,use Leaf Stone
+320,321,Level 22
+322,323,Level 25
+324,326,Level 30
+324,529,"use Dawn Stone, Male"
+327,328,Level 22
+329,330,Level 23
+331,332,Level 18
+332,333,Level 36
+334,335,Level 20
+334,335,"Level 20, empty spot in party, Pokéball in bag"
+337,338,Level 20
+338,339,Level 40
+340,341,Level 24
+342,220,high Friendship
+343,530,level up in a Magnetic Field area
+344,345,use Moon Stone
+348,349,Level 32
+349,350,Level 42
+351,352,Level 37
+353,354,Level 26
+359,457,use Shiny Stone
+360,361,Level 26
+362,363,Level 30
+364,365,Level 40
+366,367,Level 33
+369,370,Level 32
+372,373,Level 35
+373,374,Level 45
+375,376,Level 32
+377,378,Level 35
+383,384,Level 30
+385,386,Level 30
+387,388,Level 36
+389,390,Level 40
+391,392,Level 40
+393,394,"trade holding Prism Scale, or level up with max Beauty"
+400,401,Level 37
+402,403,Level 37
+403,531,trade holding Reaper Cloth
+407,241,Level 15
+408,409,Level 42
+408,532,"use Dawn Stone, Female"
+410,411,Level 32
+411,412,Level 44
+413,414,trade holding Deep Sea Tooth
+413,415,trade holding Deep Sea Scale
+418,419,Level 30
+419,420,Level 50
+421,422,Level 20
+422,423,Level 45
+437,438,Level 18
+438,439,Level 32
+440,441,Level 14
+441,442,Level 36
+443,444,Level 16
+444,445,Level 36
+446,447,Level 14
+447,448,Level 34
+449,450,Level 15
+451,452,Level 10
+453,454,Level 15
+454,455,Level 30
+456,359,"high Friendship, Daytime"
+458,459,Level 30
+460,461,Level 30
+462,465,"Level 20, Female, in grass"
+462,468,"Level 20, Male"
+463,466,"Level 20, Female, in caves"
+463,468,"Level 20, Male"
+464,467,"Level 20, Female, in buildings"
+464,468,"Level 20, Male"
+469,470,"Level 21, Female"
+472,473,Level 26
+474,475,Level 25
+476,477,Level 30
+479,480,Level 28
+481,482,high Friendship
+485,486,Level 38
+487,405,"high Friendship, Nighttime"
+488,489,Level 34
+490,491,Level 33
+492,222,after Mimic learned
+493,151,"after Mimic learned, outside Galar"
+493,152,"after Mimic learned, in Galar"
+494,142,"hold Oval Stone, Daytime"
+497,498,Level 24
+498,499,Level 48
+500,176,high Friendship
+501,502,"high Friendship, Daytime"
+503,504,Level 34
+505,506,Level 40
+507,508,Level 37
+510,511,Level 31
+512,268,with Remoraid in party
+513,514,Level 40
+558,559,Level 17
+559,560,Level 36
+561,562,Level 17
+562,563,Level 36
+564,566,Level 36
+564,567,"Level 36, in Legends: Arceus"
+568,569,Level 20
+570,571,Level 16
+571,572,Level 32
+573,574,Level 20
+575,576,use Leaf Stone
+577,578,use Fire Stone
+579,580,use Water Stone
+581,582,use Moon Stone
+583,584,Level 21
+584,585,Level 32
+586,587,Level 27
+588,589,Level 25
+589,590,Trade
+591,592,high Friendship
+593,594,Level 31
+596,597,Level 25
+597,598,Trade
+599,600,Level 25
+600,601,Level 36
+604,605,Level 20
+605,606,high Friendship
+607,608,Level 22
+608,609,Level 30
+610,611,use Sun Stone
+612,613,use Sun Stone
+612,614,"use Sun Stone, in Legends: Arceus"
+617,1021,"Male, receive 294 recoil damage in battle"
+617,1022,"Female, receive 294 recoil damage in battle"
+618,619,Level 29
+619,620,Level 40
+621,623,Level 35
+622,625,use Ice Stone
+628,629,Level 34
+630,631,Level 39
+633,635,Level 34
+634,977,near Dusty Bowl
+636,637,Level 37
+638,639,Level 37
+640,641,Level 36
+642,644,Level 30
+643,645,"Level 30, in Legends: Arceus"
+646,647,use Shiny Stone
+648,649,Level 32
+649,650,Level 41
+651,652,Level 32
+652,653,Level 41
+654,655,Level 35
+656,657,Level 35
+657,658,Level 47
+659,660,Level 34
+662,663,Trade with Shelmet
+664,665,Level 39
+666,667,Level 40
+669,670,Level 36
+671,672,Level 40
+673,674,Level 38
+674,675,Level 49
+676,677,Level 39
+677,678,use Thunder Stone
+679,680,Level 42
+681,682,Level 41
+682,683,use Dusk Stone
+684,685,Level 38
+685,686,Level 48
+687,688,Level 37
+690,691,Trade with Karrablast
+694,695,Level 50
+697,698,Level 43
+699,700,Level 52
+700,1113,defeat 3 Bisharp that are holding Leader's Crest
+702,703,Level 54
+702,704,"Level 54, in Legends: Arceus"
+705,706,Level 54
+709,710,Level 50
+710,711,Level 64
+712,713,Level 59
+733,734,Level 16
+734,735,Level 36
+736,737,Level 16
+737,738,Level 36
+739,740,Level 16
+740,741,Level 36
+742,743,Level 20
+744,745,Level 17
+745,746,Level 35
+747,748,Level 9
+748,749,Level 12
+750,751,Level 35
+752,753,Level 19
+753,754,use Shiny Stone
+755,756,Level 32
+757,758,"Level 32, Dark type Pokémon in party"
+760,761,"Level 25, Male"
+760,762,"Level 25, Female"
+763,764,Level 35
+764,765,use Dusk Stone
+764,766,use Dusk Stone
+767,768,trade holding Sachet
+769,770,trade holding Whipped Dream
+771,772,"Level 30, holding console upside down"
+773,774,Level 39
+775,776,Level 48
+777,778,Level 37
+779,780,use Sun Stone
+781,782,"Level 39, Daytime"
+783,784,"Level 39, Nighttime"
+789,790,Level 40
+789,791,"Level 40, in Legends: Arceus"
+790,792,"Level 50, during rain"
+791,793,"Level 50, during rain, in Legends: Arceus"
+795,796,Trade
+797,801,Trade
+798,802,Trade
+799,803,Trade
+800,804,Trade
+805,806,Level 37
+805,807,"Level 37, in Legends: Arceus"
+808,809,Level 48
+819,821,Level 34
+819,822,"Level 36, in Legends: Arceus"
+823,824,Level 17
+824,825,Level 34
+826,827,Level 17
+827,828,Level 34
+829,830,Level 14
+830,831,Level 28
+832,833,"Level 20, Daytime"
+834,835,Level 20
+835,836,"use Thunder Stone, in Gen 8, or level up in a Magnetic Field area"
+837,838,"use Ice Stone, or at Mount Lanakila in Alola"
+843,844,Level 25
+845,847,"Level 25, Daytime"
+845,848,"Level 25, Nighttime"
+846,849,"Level 25, Dusk"
+852,853,Level 38
+854,855,Level 30
+856,857,Level 22
+858,859,"Level 34, Daytime"
+860,861,Level 24
+862,863,"Level 33, Female"
+864,865,Level 27
+866,867,Level 18
+867,868,after Stomp learned
+872,873,Level 30
+874,875,Level 42
+877,878,high Friendship
+888,889,Level 35
+889,890,Level 45
+895,897,"Level 53, in Pokémon Sun or Ultra Sun"
+895,898,"Level 53, in Pokémon Moon or Ultra Moon"
+912,913,after Dragon Pulse learned
+917,918,"Pokémon GO only, 400 Meltan Candies"
+919,920,Level 16
+920,921,Level 35
+922,923,Level 16
+923,924,Level 35
+925,926,Level 16
+926,927,Level 35
+928,929,Level 24
+930,931,Level 18
+931,932,Level 38
+933,934,Level 10
+934,935,Level 30
+936,937,Level 18
+938,939,Level 20
+940,941,Level 24
+942,943,Level 22
+944,945,Level 25
+946,947,Level 18
+947,948,Level 34
+949,950,use Tart Apple
+949,951,use Sweet Apple
+952,953,Level 36
+955,956,Level 26
+957,958,"Level 30, with an amped Nature"
+957,959,"Level 30, with a low key Nature"
+960,961,Level 28
+962,963,after Taunt learned
+964,965,use Cracked Pot
+966,967,Level 32
+967,968,Level 42
+969,970,Level 32
+970,971,Level 42
+978,979,spin around holding Sweet
+982,983,"high Friendship, Nighttime"
+991,992,Level 34
+998,999,Level 50
+999,1000,Level 60
+1006,1007,"use Scroll Of Darkness, or in Tower of Darkness in Galar"
+1006,1008,"use Scroll Of Waters, or in Tower of Water in Galar"
+1027,1028,Level 16
+1028,1029,Level 36
+1030,1031,Level 16
+1031,1032,Level 36
+1033,1034,Level 16
+1034,1035,Level 36
+1036,1037,"Level 18, Male"
+1036,1038,"Level 18, Female"
+1039,1040,Level 15
+1041,1042,Level 24
+1043,1044,Level 18
+1044,1045,"walk 1,000 steps in Let's Go mode"
+1046,1047,Level 25
+1046,1048,"Level 25, rare"
+1049,1050,Level 26
+1051,1052,Level 25
+1052,1053,Level 35
+1058,1059,Level 24
+1059,1060,Level 38
+1061,1062,use Auspicious Armor
+1061,1063,use Malicious Armor
+1064,1065,use Thunder Stone
+1066,1067,Level 25
+1068,1069,Level 30
+1070,1071,Level 28
+1072,1073,"walk 1,000 steps in Let's Go mode"
+1074,1075,Level 30
+1077,1078,use Fire Stone
+1079,1080,"walk 1,000 steps in Let's Go mode"
+1081,1082,Level 35
+1083,1084,Level 24
+1084,1085,Level 38
+1086,1087,Level 26
+1089,1090,"Level 38, while in multiplayer"
+1092,1093,Level 40
+1096,1097,Level 35
+1098,1099,"Level 30, Nighttime"
+1101,1102,use Ice Stone
+1126,1127,Level 35
+1127,1128,Level 54
+1129,1131,collect 999 Coins from Roaming Form
+1143,1144,use Unremarkable Teacup
