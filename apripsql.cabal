@@ -53,6 +53,7 @@ library
                       RawLearnset,
                       RawMove,
                       RawPokemon,
+                      SupplementaryLearnset,
                       Type,
                       Utils
     build-depends:    scalpel,

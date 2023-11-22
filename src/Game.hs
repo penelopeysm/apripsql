@@ -1,4 +1,4 @@
-module Game (Game (..), setupGames) where
+module Game (toString, fromString, Game (..), setupGames) where
 
 import qualified Data.Csv as Csv
 import Utils (toIdCsv)

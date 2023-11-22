@@ -395,6 +395,7 @@ makeUniqueName nm' fm =
             | " Mode" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Mode" "" f
             | " Size" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Size" "" f
             | " Plumage" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Plumage" "" f
+            | " Strike Style" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Strike Style" "" f
             | " Style" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Style" "" f
             | " Face" `T.isSuffixOf` f -> nm <> "-" <> T.replace " Face" "" f
             -- Specific stuff

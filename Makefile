@@ -38,6 +38,9 @@ csv/moves.csv: src/Move.hs csv/moves-raw.csv csv/types.csv csv/move-categories.c
 csv/learnsets-raw.csv: src/RawLearnset.hs
 	cabal run apripsql -- --command learnsets-raw
 
+csv/learnsets-suppl.csv: src/SupplementaryLearnset.hs csv/pokemon.csv
+	cabal run apripsql -- --command learnsets-suppl
+
 csv/learnsets.csv: src/Learnset.hs csv/learnsets-raw.csv csv/moves.csv csv/learn-methods.csv csv/pokemon.csv csv/games.csv
 	cabal run apripsql -- --command learnsets
 

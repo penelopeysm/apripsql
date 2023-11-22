@@ -20,6 +20,7 @@ import RawEvolution (setupRawEvolutions)
 import RawLearnset (setupRawLearnsets)
 import RawMove (setupRawMoves)
 import RawPokemon (setupRawPokemon)
+import SupplementaryLearnset (setupSupplementaryLearnsets)
 import Type (setupTypes)
 
 -- | To add new commands, just extend this Map. None of the rest of the code
@@ -33,6 +34,7 @@ commands =
       ("gender-ratios", setupGenderRatios),
       ("learn-methods", setupLearnMethods),
       ("learnsets-raw", setupRawLearnsets),
+      ("learnsets-suppl", setupSupplementaryLearnsets),
       ("learnsets", setupLearnsets),
       ("legalities", setupLegalities),
       ("move-categories", setupMoveCategories),

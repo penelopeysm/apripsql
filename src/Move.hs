@@ -1,4 +1,4 @@
-module Move (setupMoves) where
+module Move (MoveFinal (..), setupMoves) where
 
 import qualified Data.Csv as Csv
 import Data.Map (Map)
@@ -19,7 +19,7 @@ data MoveFinal = MoveFinal
     accuracy :: Maybe Int,
     pp :: Maybe Int
   }
-  deriving (Show)
+  deriving (Show, Eq, Ord)
 
 makeMoveFinal ::
   Map Type.Type Int ->
