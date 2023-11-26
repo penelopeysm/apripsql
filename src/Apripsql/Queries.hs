@@ -1,14 +1,12 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module Queries
-  ( withConnString,
-    GetPokemonResult (..),
+module Apripsql.Queries
+  ( GetPokemonResult (..),
     getPokemon,
     DBPokemon (..),
   )
 where
 
-import Control.Exception (bracket)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -17,11 +15,6 @@ import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
 import GHC.Generics (Generic)
 import Setup.Pokemon (PokemonFinal (..))
-
--- | Run a query atomically using a connection string.
-withConnString :: Text -> (Connection -> IO a) -> IO a
-withConnString connString =
-  bracket (connectPostgreSQL (TE.encodeUtf8 connString)) close
 
 -- | For more descriptive type signatures.
 type PkmnId = Int

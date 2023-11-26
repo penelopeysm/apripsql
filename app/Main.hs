@@ -1,5 +1,6 @@
 module Main where
 
+import Utils (withConnString)
 import Control.Exception (bracket)
 import Data.List (intercalate)
 import Data.Map (Map)
@@ -9,7 +10,6 @@ import qualified Data.Text as T
 import Data.Text.Encoding (encodeUtf8)
 import Database.PostgreSQL.Simple
 import Options.Applicative
-import Queries (withConnString)
 import Setup.Ability (setupAbilities)
 import Setup.Database (setupDatabase)
 import Setup.EggGroup (setupEggGroups)

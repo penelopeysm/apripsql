@@ -38,7 +38,7 @@ common common-deps
 
 library
     import:           common-deps
-    exposed-modules:  Queries,
+    exposed-modules:  Apripsql.Queries,
                       Setup.Ability,
                       Setup.Database,
                       Setup.EggGroup,

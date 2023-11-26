@@ -10,9 +10,11 @@ module Utils
     readMaybeInt,
     bsToString,
     (?!),
+    withConnString,
   )
 where
 
+import Control.Exception (bracket)
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.Csv as Csv
@@ -25,6 +27,7 @@ import qualified Data.Text.Encoding as TE
 import qualified Data.Text.IO as T
 import Data.Text.Read (decimal)
 import qualified Data.Vector as V
+import Database.PostgreSQL.Simple
 
 toCsv :: (Csv.ToNamedRecord a, Csv.DefaultOrdered a) => FilePath -> [a] -> IO ()
 toCsv fname = BL.writeFile fname . Csv.encodeDefaultOrderedByName
@@ -97,3 +100,8 @@ bsToString = T.unpack . TE.decodeUtf8
 (?!) m k = case M.lookup k m of
   Nothing -> error $ "Key " <> show k <> " not found in map"
   Just v -> v
+
+-- | Run a query atomically using a connection string.
+withConnString :: Text -> (Connection -> IO a) -> IO a
+withConnString connString =
+  bracket (connectPostgreSQL (TE.encodeUtf8 connString)) close
