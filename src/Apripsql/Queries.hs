@@ -26,8 +26,31 @@ import Setup.Pokemon (PokemonFinal (..))
 type PkmnId = Int
 
 data DBPokemon = DBPokemon
-  { pkmnId :: PkmnId,
-    pkmn :: PokemonFinal
+  { dbId :: PkmnId,
+    dbName :: Text,
+    dbForm :: Maybe Text,
+    dbUniqueName :: Text,
+    dbNdex :: Int,
+    dbGalarDex :: Maybe Int, -- Galar
+    dbIoaDex :: Maybe Int, -- Isle of Armor
+    dbCtDex :: Maybe Int, -- Crown Tundra
+    dbPaldeaDex :: Maybe Int, -- Paldea
+    dbTmDex :: Maybe Int, -- Teal Mask
+    dbType1Id :: Int,
+    dbType2Id :: Maybe Int,
+    dbHp :: Int,
+    dbAtk :: Int,
+    dbDef :: Int,
+    dbSpa :: Int,
+    dbSpd :: Int,
+    dbSpe :: Int,
+    dbEggGroup1Id :: Int,
+    dbEggGroup2Id :: Maybe Int,
+    dbGenderRatioId :: Int,
+    dbAbility1Id :: Int,
+    dbAbility2Id :: Maybe Int,
+    dbHiddenAbilityId :: Maybe Int,
+    dbEggCycles :: Int
   }
   deriving (Eq, Ord, Show)
 
@@ -35,32 +58,30 @@ instance FromRow DBPokemon where
   fromRow =
     DBPokemon
       <$> field
-      <*> ( PokemonFinal
-              <$> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-              <*> field
-          )
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
+      <*> field
 
 -- | Data type representing the return type when searching for a Pokemon by
 -- name.
@@ -95,8 +116,8 @@ getPokemon name conn = do
   case results of
     [] -> pure NoneFound
     [x] -> pure $ FoundOne x
-    xs -> case filter (\ps -> uniqueName (pkmn ps) == hyphenatedName) xs of
-      [] -> pure $ NoneFoundButSuggesting (map (uniqueName . pkmn) xs)
+    xs -> case filter (\ps -> dbUniqueName ps == hyphenatedName) xs of
+      [] -> pure $ NoneFoundButSuggesting (map dbUniqueName xs)
       [x] -> pure $ FoundOne x
       _ -> error "getPokemonIdsAndDetails: multiple results returned"
 
