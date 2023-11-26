@@ -1,13 +1,13 @@
-module SupplementaryLearnset (setupSupplementaryLearnsets) where
+module Setup.SupplementaryLearnset (setupSupplementaryLearnsets) where
 
 import Control.Monad (guard, unless)
 import Control.Monad.IO.Class (liftIO)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
-import Game (Game (..))
-import Pokemon (PokemonFinal (..))
-import RawLearnset
+import Setup.Game (Game (..))
+import Setup.Pokemon (PokemonFinal (..))
+import Setup.RawLearnset
   ( LearnMethodWithLevel (..),
     LearnedMove (..),
     LearnsetEntry (..),

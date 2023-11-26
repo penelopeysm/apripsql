@@ -1,13 +1,13 @@
-module Move (MoveFinal (..), setupMoves) where
+module Setup.Move (MoveFinal (..), setupMoves) where
 
 import qualified Data.Csv as Csv
 import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
-import qualified MoveCategory
-import qualified RawMove as Raw
-import qualified Type
+import Setup.MoveCategory (MoveCategory (..))
+import Setup.Type (Type (..))
+import qualified Setup.RawMove as Raw
 import Utils (fromCsv, fromIdCsvWithId, makeMapFromWithIds, toIdCsv, (?!))
 
 data MoveFinal = MoveFinal
@@ -22,8 +22,8 @@ data MoveFinal = MoveFinal
   deriving (Show, Eq, Ord)
 
 makeMoveFinal ::
-  Map Type.Type Int ->
-  Map MoveCategory.MoveCategory Int ->
+  Map Type Int ->
+  Map MoveCategory Int ->
   Raw.Move ->
   MoveFinal
 makeMoveFinal typeMap catMap rm =

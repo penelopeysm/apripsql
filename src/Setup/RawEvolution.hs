@@ -1,4 +1,4 @@
-module RawEvolution (EdgePkmn (..), RawEvolutionTreeEdge (..), setupRawEvolutions) where
+module Setup.RawEvolution (EdgePkmn (..), RawEvolutionTreeEdge (..), setupRawEvolutions) where
 
 import Control.Applicative (some, (<|>))
 import Control.Monad (guard)
@@ -98,7 +98,12 @@ branchedScraper = do
   prevo <- seekNext $ getPkmnFromInfocard ("div" @: [hasClass "infocard"])
   evos <- seekNext $ innerScraper ("span" @: [hasClass "infocard-evo-split"])
   guard $ not (null evos)
-  pure $ Node prevo evos
+  -- Hardcode Shedinja because PokemonDB lists it as Nincada evolving into
+  -- "Ninjask plus Shedinja" and only Ninjask gets parsed.
+  let evos' = case epName prevo of
+        "Nincada" -> map (\(mtd, evo) -> if "empty spot" `T.isInfixOf` mtd then (mtd, Leaf (EdgePkmn "Shedinja" Nothing)) else (mtd, evo)) evos
+        _ -> evos
+  pure $ Node prevo evos'
 
 scraper :: ScraperT Text IO [EvolutionTree]
 scraper =

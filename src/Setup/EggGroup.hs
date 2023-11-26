@@ -1,4 +1,4 @@
-module EggGroup (fromString, toString, EggGroup (..), setupEggGroups) where
+module Setup.EggGroup (fromString, toString, EggGroup (..), setupEggGroups) where
 
 import qualified Data.Csv as Csv
 import Utils (bsToString, toIdCsv)

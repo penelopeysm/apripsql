@@ -1,4 +1,4 @@
-module RawMove (Move (..), setupRawMoves) where
+module Setup.RawMove (Move (..), setupRawMoves) where
 
 import Control.Applicative (empty)
 import Control.Monad (guard)
@@ -9,10 +9,10 @@ import Data.Maybe (fromJust)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
-import MoveCategory (MoveCategory (..))
+import Setup.MoveCategory (MoveCategory (..))
+import Setup.Type (Type (..), fromString)
+import qualified Setup.Type
 import Text.HTML.Scalpel
-import Type (Type (..))
-import qualified Type
 import Utils (readMaybeInt, toCsv)
 
 data Move = Move
@@ -65,14 +65,20 @@ getAllMoves = do
         liftIO $ T.putStrLn $ "Scraping: " <> url
         flavorText <- case inGameFlavorText of
           Just ft -> pure ft
-          Nothing -> text ("td" @: [hasClass "cell-long-text"])
+          Nothing -> case name of
+            "Blazing Torque" -> pure "Signature move of the Schedar Starmobile."
+            "Combat Torque" -> pure "Signature move of the Caph Starmobile."
+            "Magical Torque" -> pure "Signature move of the Ruchbah Starmobile."
+            "Noxious Torque" -> pure "Signature move of the Navi Starmobile."
+            "Wicked Torque" -> pure "Signature move of the Segin Starmobile."
+            _ -> text ("td" @: [hasClass "cell-long-text"])
         type_ <- text ("a" @: [hasClass "type-icon"])
         category <- attr "title" "img"
         (bpStr : accStr : ppStr : _) <- texts ("td" @: [hasClass "cell-num"])
         pure $
           Move
             name
-            ( case Type.fromString (T.unpack type_) of
+            ( case fromString (T.unpack type_) of
                 Just t -> t
                 Nothing -> error "Invalid move type"
             )

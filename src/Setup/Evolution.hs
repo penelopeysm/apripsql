@@ -1,4 +1,4 @@
-module Evolution (EvolutionEdgeFinal (..), setupEvolutions) where
+module Setup.Evolution (EvolutionEdgeFinal (..), setupEvolutions) where
 
 import qualified Data.Csv as Csv
 import Data.List (sort)
@@ -6,8 +6,8 @@ import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
-import Pokemon (PokemonFinal (..))
-import RawEvolution (EdgePkmn (..), RawEvolutionTreeEdge (..))
+import Setup.Pokemon (PokemonFinal (..))
+import Setup.RawEvolution (EdgePkmn (..), RawEvolutionTreeEdge (..))
 import Utils (fromCsv, fromIdCsvWithId, makeMapFromWithIds, toCsv, (?!))
 
 data EvolutionEdgeFinal = EvolutionEdgeFinal {prevo_id :: Int, evo_id :: Int, method :: Text}

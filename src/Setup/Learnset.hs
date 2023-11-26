@@ -1,4 +1,4 @@
-module Learnset (setupLearnsets) where
+module Setup.Learnset (setupLearnsets) where
 
 import qualified Data.Csv as Csv
 import Data.HashMap.Strict (union)
@@ -7,11 +7,11 @@ import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
-import Game (Game (..))
-import qualified LearnMethod as LM
-import Move (MoveFinal (..))
-import Pokemon (PokemonFinal (..))
-import RawLearnset (LearnMethodWithLevel (..), LearnedMove (..), LearnsetEntry (..))
+import Setup.Game (Game (..))
+import qualified Setup.LearnMethod as LM
+import Setup.Move (MoveFinal (..))
+import Setup.Pokemon (PokemonFinal (..))
+import Setup.RawLearnset (LearnMethodWithLevel (..), LearnedMove (..), LearnsetEntry (..))
 import Utils (fromCsv, fromIdCsvWithId, makeMapFromWithIds, toCsv, (?!))
 
 data LearnsetEntryFinal = LearnsetEntryFinal
@@ -69,7 +69,7 @@ setupLearnsets = do
   rawLearnsets <- fromCsv "csv/learnsets-raw.csv"
   supplLearnsets <- fromCsv "csv/learnsets-suppl.csv"
   gameMap <- makeMapFromWithIds <$> fromCsv "csv/games.csv"
-  pokemonMap <- M.mapKeys Pokemon.uniqueName . makeMapFromWithIds <$> fromCsv "csv/pokemon.csv"
-  moveMap <- M.mapKeys Move.name . makeMapFromWithIds <$> fromCsv "csv/moves.csv"
+  pokemonMap <- M.mapKeys Setup.Pokemon.uniqueName . makeMapFromWithIds <$> fromCsv "csv/pokemon.csv"
+  moveMap <- M.mapKeys Setup.Move.name . makeMapFromWithIds <$> fromCsv "csv/moves.csv"
   let finalEntries = map (makeLearnsetEntryFinal pokemonMap moveMap gameMap) (rawLearnsets ++ supplLearnsets)
   toCsv "csv/learnsets.csv" (sort finalEntries)

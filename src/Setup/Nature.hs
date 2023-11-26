@@ -1,11 +1,11 @@
-module Nature (setupNatures) where
+module Setup.Nature (setupNatures) where
 
 import qualified Data.Csv as Csv
 import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
-import Pokemon (uniqueName)
+import Setup.Pokemon (uniqueName)
 import Utils (fromCsv, fromIdCsvWithId, makeMapFromWithIds, toCsv, (?!))
 
 data RawNature = RawNature

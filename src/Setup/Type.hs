@@ -1,4 +1,4 @@
-module Type (toString, fromString, Type (..), setupTypes) where
+module Setup.Type (toString, fromString, Type (..), setupTypes) where
 
 import qualified Data.Csv as Csv
 import Utils (bsToString, toIdCsv)

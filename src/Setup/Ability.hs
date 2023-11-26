@@ -1,4 +1,4 @@
-module Ability (Ability (..), setupAbilities) where
+module Setup.Ability (Ability (..), setupAbilities) where
 
 import Control.Applicative (empty)
 import Control.Exception (throwIO)

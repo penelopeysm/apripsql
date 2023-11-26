@@ -1,6 +1,6 @@
 {-# LANGUAGE RecordWildCards #-}
 
-module RawPokemon (PokemonPartial (..), Pokemon (..), setupRawPokemon) where
+module Setup.RawPokemon (PokemonPartial (..), Pokemon (..), setupRawPokemon) where
 
 import Control.Applicative (optional, (<|>))
 import Control.Monad (guard, when)
@@ -9,10 +9,10 @@ import Data.List (groupBy)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
-import qualified EggGroup
-import GenderRatio (GenderRatio (..))
+import qualified Setup.EggGroup as EggGroup
+import Setup.GenderRatio (GenderRatio (..))
 import Text.HTML.Scalpel
-import qualified Type
+import qualified Setup.Type as Type
 import Utils (readMaybeInt, toCsv)
 
 -- | A @PokemonPartial@ represents the data that we can scrape from the page

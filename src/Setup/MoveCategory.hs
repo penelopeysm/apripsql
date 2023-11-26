@@ -1,4 +1,4 @@
-module MoveCategory (MoveCategory (..), setupMoveCategories) where
+module Setup.MoveCategory (MoveCategory (..), setupMoveCategories) where
 
 import qualified Data.Csv as Csv
 import Utils (bsToString, toIdCsv)

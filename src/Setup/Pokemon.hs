@@ -1,17 +1,17 @@
 {-# LANGUAGE RecordWildCards #-}
 
-module Pokemon (PokemonFinal (..), setupPokemon) where
+module Setup.Pokemon (PokemonFinal (..), setupPokemon) where
 
-import qualified Ability
+import qualified Setup.Ability
 import qualified Data.Csv as Csv
 import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Text (Text)
 import qualified Data.Text as T
-import qualified EggGroup
-import qualified GenderRatio
-import qualified RawPokemon as Raw
-import qualified Type
+import qualified Setup.EggGroup as EggGroup
+import qualified Setup.GenderRatio as GenderRatio
+import qualified Setup.RawPokemon as Raw
+import qualified Setup.Type as Type
 import Utils
   ( fromCsv,
     fromIdCsvWithId,
@@ -175,6 +175,6 @@ setupPokemon = do
   egMap <- makeMapFromWithIds <$> fromIdCsvWithId "csv/egg-groups.csv"
   typeMap <- makeMapFromWithIds <$> fromIdCsvWithId "csv/types.csv"
   grMap <- makeMapFromWithIds <$> fromIdCsvWithId "csv/gender-ratios.csv"
-  abilityNameMap <- M.mapKeys Ability.abilityName . makeMapFromWithIds <$> fromIdCsvWithId "csv/abilities.csv"
+  abilityNameMap <- M.mapKeys Setup.Ability.abilityName . makeMapFromWithIds <$> fromIdCsvWithId "csv/abilities.csv"
   let allPokemon = map (makePokemonFinal typeMap egMap grMap abilityNameMap) allRawPokemon
   toIdCsv "csv/pokemon.csv" allPokemon

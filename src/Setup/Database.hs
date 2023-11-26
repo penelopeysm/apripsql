@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module Database (setupDatabase) where
+module Setup.Database (setupDatabase) where
 
 import Control.Exception (bracket)
 import Control.Monad (forM_, unless, void)

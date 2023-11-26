@@ -1,4 +1,4 @@
-module RawLearnset
+module Setup.RawLearnset
   ( LearnMethodWithLevel (..),
     LearnedMove (..),
     LearnsetEntry (..),
@@ -19,9 +19,9 @@ import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Data.Vector as V
-import Game (Game (..), fromString)
-import qualified LearnMethod as LM
-import RawPokemon (Pokemon (..))
+import Setup.Game (Game (..), fromString)
+import qualified Setup.LearnMethod as LM
+import Setup.RawPokemon (Pokemon (..))
 import Text.HTML.Scalpel
 import Utils (fromCsv, readInt, toCsv)
 
@@ -112,7 +112,7 @@ instance Csv.FromNamedRecord LearnsetEntry where
   parseNamedRecord m = do
     uniqueName <- m Csv..: "unique_name"
     gameStr <- m Csv..: "game"
-    let game = case Game.fromString gameStr of
+    let game = case Setup.Game.fromString gameStr of
           Just g -> g
           Nothing -> error $ "Unknown game: " ++ gameStr
     learnedMove <- Csv.parseNamedRecord m
@@ -518,7 +518,7 @@ getLearnsetIn pkmn game
             SwSh -> (8, "Sword/Shield")
             BDSP -> (8, "Brilliant Diamond/Shining Pearl")
             SV -> (9, "Scarlet/Violet")
-          url = RawPokemon.url pkmn <> "/moves/" <> T.pack (show gen)
+          url = Setup.RawPokemon.url pkmn <> "/moves/" <> T.pack (show gen)
       tags <- fetchTags (T.unpack url)
       -- If we get a 404, then the Pokemon doesn't exist in this game. Scalpel
       -- doesn't expose any HTTP request errors and I can't be bothered to
@@ -534,7 +534,7 @@ getLearnsetIn pkmn game
           let tabTitles = fromJust $ scrape tabListScraper tags
           tabId <- case filter ((== targetTagName) . fst) tabTitles of
             [(_, elemId)] -> pure elemId
-            _ -> throwIO $ userError $ T.unpack ("Could not find " <> targetTagName <> " tab for Pokemon named " <> RawPokemon.name pkmn)
+            _ -> throwIO $ userError $ T.unpack ("Could not find " <> targetTagName <> " tab for Pokemon named " <> Setup.RawPokemon.name pkmn)
 
           -- Step 2: Define convenience functions which can be reused
           let chrootSerialTabId :: SerialScraper Text a -> Scraper Text a
@@ -584,17 +584,17 @@ getLearnsetIn pkmn game
                   formsIds -> do
                     case filter
                       ( \(fm, _) ->
-                          RawPokemon.form pkmn == Just fm
-                            || (isNothing (RawPokemon.form pkmn) && RawPokemon.name pkmn == fm)
+                          Setup.RawPokemon.form pkmn == Just fm
+                            || (isNothing (Setup.RawPokemon.form pkmn) && Setup.RawPokemon.name pkmn == fm)
                       )
                       formsIds of
                       [] -> pure [] -- No moves for the given form
                       [(_, id')] -> withMoveTableFormFound id' scraper -- Form-specific moves
 
           -- Step 3: actual parsing
-          let pkmnFullName = T.unpack $ case RawPokemon.form pkmn of
-                Nothing -> RawPokemon.name pkmn
-                Just fm -> RawPokemon.name pkmn <> " (" <> fm <> ")"
+          let pkmnFullName = T.unpack $ case Setup.RawPokemon.form pkmn of
+                Nothing -> Setup.RawPokemon.name pkmn
+                Just fm -> Setup.RawPokemon.name pkmn <> " (" <> fm <> ")"
 
           -- Level up
           let lvlupScraper :: Scraper Text [LearnedMove]
@@ -638,7 +638,7 @@ getLearnsetIn pkmn game
                 findNextH3With ["Egg moves"]
                 findNextPWith ["does not learn any moves by breeding"]
                 pure []
-          eggMoves <- case (RawPokemon.uniqueName pkmn, game) of
+          eggMoves <- case (Setup.RawPokemon.uniqueName pkmn, game) of
             ("grimer-alola", SV) -> pure $ map (`LearnedMove` WLEgg) ["Assurance", "Clear Smog", "Curse", "Mean Look", "Recycle", "Shadow Sneak", "Spite", "Spit Up", "Stockpile", "Swallow"]
             ("muk-alola", SV) -> pure $ map (`LearnedMove` WLEgg) ["Assurance", "Clear Smog", "Curse", "Mean Look", "Recycle", "Shadow Sneak", "Spite", "Spit Up", "Stockpile", "Swallow"]
             ("luvdisc", SV) -> pure $ map (`LearnedMove` WLEgg) ["Aqua Jet", "Entrainment", "Splash", "Supersonic"]
@@ -720,12 +720,12 @@ getLearnsetIn pkmn game
 
 getLearnset :: Pokemon -> IO (Text, Learnset)
 getLearnset pkmn = do
-  T.putStrLn $ "Getting learnset for " <> RawPokemon.uniqueName pkmn
+  T.putStrLn $ "Getting learnset for " <> Setup.RawPokemon.uniqueName pkmn
   usum <- getLearnsetIn pkmn USUM
   swsh <- getLearnsetIn pkmn SwSh
   bdsp <- getLearnsetIn pkmn BDSP
   sv <- getLearnsetIn pkmn SV
-  pure (RawPokemon.uniqueName pkmn, Learnset usum swsh bdsp sv)
+  pure (Setup.RawPokemon.uniqueName pkmn, Learnset usum swsh bdsp sv)
 
 takeEMsFrom :: Game -> Text -> Text -> Map Text Learnset -> Map Text Learnset
 takeEMsFrom game child parent learnsets =

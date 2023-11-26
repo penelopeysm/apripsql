@@ -1,4 +1,4 @@
-module GenderRatio (GenderRatio (..), setupGenderRatios) where
+module Setup.GenderRatio (GenderRatio (..), setupGenderRatios) where
 
 import qualified Data.Csv as Csv
 import Utils (bsToString, toIdCsv)
