@@ -1,9 +1,16 @@
 module Main where
 
-import Setup.Ability (setupAbilities)
+import Control.Exception (bracket)
 import Data.List (intercalate)
 import Data.Map (Map)
 import qualified Data.Map as M
+import Data.Text (Text)
+import qualified Data.Text as T
+import Data.Text.Encoding (encodeUtf8)
+import Database.PostgreSQL.Simple
+import Options.Applicative
+import Queries (withConnString)
+import Setup.Ability (setupAbilities)
 import Setup.Database (setupDatabase)
 import Setup.EggGroup (setupEggGroups)
 import Setup.Evolution (setupEvolutions)
@@ -15,7 +22,6 @@ import Setup.Legality (setupLegalities)
 import Setup.Move (setupMoves)
 import Setup.MoveCategory (setupMoveCategories)
 import Setup.Nature (setupNatures)
-import Options.Applicative
 import Setup.Pokemon (setupPokemon)
 import Setup.RawEvolution (setupRawEvolutions)
 import Setup.RawLearnset (setupRawLearnsets)
@@ -23,6 +29,16 @@ import Setup.RawMove (setupRawMoves)
 import Setup.RawPokemon (setupRawPokemon)
 import Setup.SupplementaryLearnset (setupSupplementaryLearnsets)
 import Setup.Type (setupTypes)
+import System.Environment (lookupEnv)
+
+-- | Essentially withConnection, but also generates the Connection needed to run
+-- the action.
+wc :: (Connection -> IO a) -> IO a
+wc actn = do
+  connString <- lookupEnv "FLY_PG_PROXY_CONN_STRING"
+  case connString of
+    Nothing -> error "FLY_PG_PROXY_CONN_STRING not set"
+    Just cs -> withConnString (T.pack cs) actn
 
 -- | To add new commands, just extend this Map. None of the rest of the code
 -- needs to be touched.
@@ -47,7 +63,7 @@ commands =
       ("types", setupTypes),
       ("evolutions-raw", setupRawEvolutions),
       ("evolutions", setupEvolutions),
-      ("database", setupDatabase)
+      ("database", wc setupDatabase)
     ]
 
 commandKeys :: String

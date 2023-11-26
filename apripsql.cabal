@@ -24,6 +24,7 @@ common common-deps
         directory,
         filepath,
         mtl,
+        postgresql-simple,
         text,
         transformers,
         unordered-containers
@@ -37,7 +38,8 @@ common common-deps
 
 library
     import:           common-deps
-    exposed-modules:  Setup.Ability,
+    exposed-modules:  Queries,
+                      Setup.Ability,
                       Setup.Database,
                       Setup.EggGroup,
                       Setup.Evolution,
@@ -59,7 +61,6 @@ library
                       Utils
     build-depends:    scalpel,
                       deepseq,
-                      postgresql-simple,
                       bytestring,
                       time,
                       vector

@@ -2,25 +2,14 @@
 
 module Setup.Database (setupDatabase) where
 
-import Control.Exception (bracket)
 import Control.Monad (forM_, unless, void)
 import qualified Data.ByteString as BS
 import Data.Text (Text)
 import qualified Data.Text as T
-import Data.Text.Encoding (encodeUtf8)
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.Copy
 import Database.PostgreSQL.Simple.SqlQQ
 import Database.PostgreSQL.Simple.Types (Identifier (..))
-import System.Environment (lookupEnv)
-
--- | withConnection
-wc :: (Connection -> IO a) -> IO a
-wc actn = do
-  connString <- lookupEnv "FLY_PG_PROXY_CONN_STRING"
-  case fmap (encodeUtf8 . T.pack) connString of
-    Nothing -> error "FLY_PG_PROXY_CONN_STRING not set"
-    Just cs -> bracket (connectPostgreSQL cs) close actn
 
 emptyDatabase :: Connection -> IO ()
 emptyDatabase conn = do
@@ -52,15 +41,14 @@ setupTable path tableName createTableQuery conn = do
   n <- putCopyEnd conn
   putStrLn $ "Loaded " ++ show n ++ " rows."
 
-setupDatabase :: IO ()
-setupDatabase = do
+setupDatabase :: Connection -> IO ()
+setupDatabase conn = do
   -- Clean up.
-  wc emptyDatabase
-  wc $ \conn -> do
-    n :: [Only Text] <- query_ conn "SELECT tablename FROM pg_tables WHERE schemaname = 'public'"
-    unless (null n) $ error "Database not empty"
+  emptyDatabase conn
+  n :: [Only Text] <- query_ conn "SELECT tablename FROM pg_tables WHERE schemaname = 'public'"
+  unless (null n) $ error "Database not empty"
   -- Create tables
-  wc $ \conn -> void $ do
+  void $ do
     setupTable
       "csv/abilities.csv"
       "abilities"
