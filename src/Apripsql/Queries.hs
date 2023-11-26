@@ -4,6 +4,12 @@ module Apripsql.Queries
   ( GetPokemonResult (..),
     getPokemon,
     DBPokemon (..),
+    getBaseForm,
+    getAllParents,
+    getAllEvolutionTreeMembers,
+    getAllCrossbreedableForms,
+    isPokemonUnbreedable,
+    getHiddenAbility,
   )
 where
 
