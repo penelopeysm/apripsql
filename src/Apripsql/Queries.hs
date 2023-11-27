@@ -4,15 +4,29 @@ module Apripsql.Queries
   ( GetPokemonResult (..),
     getPokemon,
     DBPokemon (..),
+
+    -- * Evolution families and crossbreeding info
     getBaseForm,
     getAllParents,
     getAllEvolutionTreeMembers,
     getAllCrossbreedableForms,
     isPokemonUnbreedable,
+
+    -- * Abilities
+    randomAbility,
     getAbility,
+
+    -- * Egg moves
+    Parent (..),
+    EggMove (..),
+    EggMoveParents (..),
+    randomMoves,
+    getEMs,
+    getEMParents,
   )
 where
 
+import Control.Monad (forM)
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -20,6 +34,7 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.SqlQQ
 import GHC.Generics (Generic)
+import Setup.Game (Game (..))
 import Setup.Pokemon (PokemonFinal (..))
 
 -- | For more descriptive type signatures.
@@ -82,6 +97,17 @@ instance FromRow DBPokemon where
       <*> field
       <*> field
       <*> field
+
+makeName :: Text -> Maybe Text -> Text
+makeName name form = case form of
+  Just f
+    | "Alolan" `T.isPrefixOf` f
+        || "Galarian" `T.isPrefixOf` f
+        || "Hisuian" `T.isPrefixOf` f
+        || "Paldean" `T.isPrefixOf` f ->
+        f
+  Just f | otherwise -> name <> " (" <> f <> ")"
+  Nothing -> name
 
 -- * Look up a Pokemon by name.
 
@@ -267,3 +293,193 @@ getAbility abilityId conn = do
   case result of
     [(name, ft)] -> pure (name, ft)
     _ -> error "getAbility: could not get ability from database"
+
+-- * Egg moves
+
+data Parent
+  = LevelUpParent {lupPkmnName :: Text, lupLevel :: Int}
+  | EvolutionParent {epPkmnName :: Text}
+  | BreedParent {bpPkmnName :: Text}
+  deriving (Eq, Ord, Show)
+
+data EggMove = EggMove
+  { emName :: Text,
+    emFlavorText :: Text
+  }
+  deriving (Eq, Ord, Show)
+
+data EggMoveParents = EggMoveParents
+  { empMove :: EggMove,
+    empParents :: [Parent]
+  }
+  deriving (Eq, Ord, Show)
+
+-- * TODO THIS IS NOT WORKING YET
+
+getParentsGen78 :: [Text] -> Maybe Int -> Text -> Game -> Connection -> IO [Parent]
+getParentsGen78 eggGroups evoFamilyId moveName game conn = do
+  learnParents :: [Parent] <-
+    map
+      ( \(n, f, maybel) -> case maybel of
+          Just l -> LevelUpParent (makeName n f) l
+          Nothing -> EvolutionParent (makeName n f)
+      )
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form, l.level FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 LEFT JOIN gender_ratios as gr ON p.gr_id = gr.id
+                 LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+                 LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND (lm.name = 'Level up' OR lm.name = 'Evolution')
+                   -- Remove parents that cannot breed
+                   AND eg1.name != 'Undiscovered'
+                   AND ((p.evolution_family_id IS NOT NULL AND p.evolution_family_id = ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
+                   -- Shares egg groups with the desired parents
+                   AND (eg1.name in ? OR eg2.name in ?)
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game, evoFamilyId, In eggGroups, In eggGroups)
+  breedParents :: [Parent] <-
+    map (\(n, f) -> BreedParent (makeName n f))
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 LEFT JOIN gender_ratios as gr ON p.gr_id = gr.id
+                 LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+                 LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND lm.name = 'Egg'
+                   -- Remove parents that cannot breed
+                   AND eg1.name != 'Undiscovered'
+                   AND ((p.evolution_family_id IS NOT NULL AND p.evolution_family_id = ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
+                   -- Shares egg groups with the desired parents
+                   AND (eg1.name in ? OR eg2.name in ?)
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game, evoFamilyId, In eggGroups, In eggGroups)
+  pure $ learnParents <> breedParents
+
+getParentsGen9 :: Text -> Game -> Connection -> IO [Parent]
+getParentsGen9 moveName game conn = do
+  learnParents :: [Parent] <-
+    map
+      ( \(n, f, maybel) -> case maybel of
+          Just l -> LevelUpParent (makeName n f) l
+          Nothing -> EvolutionParent (makeName n f)
+      )
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form, l.level FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND (lm.name = 'Level up' OR lm.name = 'Evolution')
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game)
+  breedParents :: [Parent] <-
+    map (\(n, f) -> BreedParent (makeName n f))
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND lm.name = 'Egg'
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game)
+  pure $ learnParents <> breedParents
+
+-- | Generate a random set of moves.
+randomMoves :: Int -> Connection -> IO [(Text, Text)]
+randomMoves nMoves conn = do
+  query
+    conn
+    [sql|SELECT name, flavor_text
+             FROM moves
+             ORDER BY RANDOM()
+             LIMIT ?;|]
+    (Only nMoves)
+
+getEMs :: Game -> PkmnId -> Connection -> IO [EggMove]
+getEMs game pkmnId conn = do
+  movesAndFlavorTexts :: [(Text, Text)] <-
+    query
+      conn
+      [sql|SELECT m.name, m.flavor_text FROM learnsets as l
+                   LEFT JOIN moves as m ON l.move_id = m.id
+                   LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                   LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                   LEFT JOIN games as g ON l.game_id = g.id
+                   WHERE p.id = ? AND lm.name = 'Egg' AND g.name = ?;|]
+      (pkmnId, show game)
+  pure $ map (uncurry EggMove) movesAndFlavorTexts
+
+getEMParents :: Game -> Int -> Connection -> IO [EggMoveParents]
+getEMParents game pkmnId conn = do
+  movesAndFlavorTexts :: [(Text, Text)] <-
+    query
+      conn
+      [sql|SELECT m.name, m.flavor_text FROM learnsets as l
+                   LEFT JOIN moves as m ON l.move_id = m.id
+                   LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                   LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                   LEFT JOIN games as g ON l.game_id = g.id
+                   WHERE p.id = ? AND lm.name = 'Egg' AND g.name = ?;|]
+      (pkmnId, T.pack (show game))
+  forM movesAndFlavorTexts $ \(nm, ft) -> do
+    parents <-
+      if game `elem` [USUM, SwSh, BDSP]
+        then do
+          eggGroups <- do
+            (eg1, eg2) <-
+              head
+                <$> query
+                  conn
+                  [sql|SELECT eg1.name, eg2.name FROM pokemon as p
+                               LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+                               LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
+                               WHERE p.id = ?;|]
+                  (Only pkmnId)
+            case eg2 of
+              Just eg2' -> pure [eg1, eg2']
+              Nothing -> pure [eg1]
+          familyId <-
+            fromOnly . head
+              <$> query
+                conn
+                [sql|SELECT evolution_family_id FROM pokemon WHERE id = ?;|]
+                (Only pkmnId)
+          getParentsGen78 eggGroups familyId nm game conn
+        else getParentsGen9 nm game conn
+    pure $ EggMoveParents (EggMove nm ft) parents
