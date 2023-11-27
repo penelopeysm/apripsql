@@ -9,7 +9,7 @@ module Apripsql.Queries
     getAllEvolutionTreeMembers,
     getAllCrossbreedableForms,
     isPokemonUnbreedable,
-    getHiddenAbility,
+    getAbility,
   )
 where
 
@@ -83,6 +83,8 @@ instance FromRow DBPokemon where
       <*> field
       <*> field
 
+-- * Look up a Pokemon by name.
+
 -- | Data type representing the return type when searching for a Pokemon by
 -- name.
 data GetPokemonResult
@@ -120,6 +122,8 @@ getPokemon name conn = do
       [] -> pure $ NoneFoundButSuggesting (map dbUniqueName xs)
       [x] -> pure $ FoundOne x
       _ -> error "getPokemonIdsAndDetails: multiple results returned"
+
+-- * Evolution families and crossbreeding info
 
 -- | Get the ID corresponding to the base form of a Pokemon.
 getBaseForm :: PkmnId -> Connection -> IO PkmnId
@@ -240,17 +244,26 @@ isPokemonUnbreedable pkmnId conn = do
     [Only False] -> pure False
     _ -> error "isPokemonUnbreedable: expected exactly one Boolean result"
 
-getHiddenAbility :: PkmnId -> Connection -> IO (Maybe (Text, Text))
-getHiddenAbility pkmnId conn = do
+-- * Abilities
+
+-- | Generate a random ability.
+randomAbility :: Connection -> IO (Text, Text)
+randomAbility conn = do
+  abty <-
+    query_
+      conn
+      [sql|SELECT name, flavor_text FROM abilities ORDER BY RANDOM() LIMIT 1;|]
+  case abty of
+    [(name, ft)] -> pure (name, ft)
+    _ -> error "randomAbility: could not get random ability from database"
+
+getAbility :: Int -> Connection -> IO (Text, Text)
+getAbility abilityId conn = do
   result <-
     query
       conn
-      [sql|SELECT a.name, a.flavor_text
-             FROM pokemon p LEFT OUTER JOIN abilities a
-             ON p.ha_id = a.id
-             WHERE p.id = ?;|]
-      (Only pkmnId)
+      [sql|SELECT name, flavor_text FROM abilities WHERE id = ?;|]
+      (Only abilityId)
   case result of
-    [(Just name, Just flavorText)] -> pure $ Just (name, flavorText)
-    [(Nothing, Nothing)] -> pure Nothing
-    _ -> error $ "HA query returned invalid results (this should not happen!): " <> show result
+    [(name, ft)] -> pure (name, ft)
+    _ -> error "getAbility: could not get ability from database"
