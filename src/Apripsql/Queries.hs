@@ -268,14 +268,25 @@ getEggGroupsForBreeding pkmnId conn = do
   eggGroups <-
     query
       conn
-      [sql|SELECT eg.name FROM egg_groups as eg
-           LEFT JOIN pokemon as p ON eg.id = p.eg1_id
+      [sql|SELECT eg1.name, eg2.name FROM pokemon as p
+           LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+           LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
            WHERE p.id = ?;|]
       (Only pkmnId)
   case eggGroups of
-    [Only eg1] -> pure [eg1]
-    [Only eg1, Only eg2] -> pure [eg1, eg2]
-    _ -> error "getEggGroupsForBreeding: expected one or two egg groups"
+    [(Just "Undiscovered", Nothing)] -> do
+      -- Check if there is a parent with non-Undiscovered egg groups
+      maybeParentId <-
+        query
+          conn
+          [sql|SELECT evo_id FROM evolutions WHERE prevo_id = ?;|]
+          (Only pkmnId)
+      case maybeParentId of
+        [Only parentId] -> getEggGroupsForBreeding parentId conn
+        _ -> pure ["Undiscovered"]
+    [(Just eg1, Nothing)] -> pure [eg1]
+    [(Just eg1, Just eg2)] -> pure [eg1, eg2]
+    _ -> error $ "getEggGroupsForBreeding: got more than one result for pokemonId" <> show pkmnId
 
 getParentsGen78 :: [Text] -> [PkmnId] -> Text -> Game -> Connection -> IO [Parent]
 getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
@@ -422,20 +433,8 @@ getEMParents game pkmnId conn = do
     parents <-
       if game `elem` [USUM, SwSh, BDSP]
         then do
-          eggGroups <- do
-            (eg1, eg2) <-
-              head
-                <$> query
-                  conn
-                  [sql|SELECT eg1.name, eg2.name FROM pokemon as p
-                               LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
-                               LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
-                               WHERE p.id = ?;|]
-                  (Only pkmnId)
-            case eg2 of
-              Just eg2' -> pure [eg1, eg2']
-              Nothing -> pure [eg1]
+          eggGroupNames <- getEggGroupsForBreeding pkmnId conn
           evoParentIds <- getAllEvolutionTreeMembers pkmnId conn
-          getParentsGen78 eggGroups evoParentIds nm game conn
+          getParentsGen78 eggGroupNames evoParentIds nm game conn
         else getParentsGen9 nm game conn
     pure $ EggMoveParents (EggMove nm ft) parents
