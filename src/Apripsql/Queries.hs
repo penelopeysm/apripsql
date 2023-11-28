@@ -288,6 +288,11 @@ getEggGroupsForBreeding pkmnId conn = do
     [(Just eg1, Just eg2)] -> pure [eg1, eg2]
     _ -> error $ "getEggGroupsForBreeding: got more than one result for pokemonId" <> show pkmnId
 
+isMaleOnly :: PkmnId -> Connection -> IO Bool
+isMaleOnly pkmnId conn = do
+  res <- query conn [sql|SELECT gr_id FROM pokemon WHERE id = ?;|] (Only pkmnId)
+  pure $ res == [Only (8 :: Int)]
+
 getParentsGen78 :: [Text] -> [PkmnId] -> Text -> Game -> Connection -> IO [Parent]
 getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
   learnParents :: [Parent] <-
@@ -342,6 +347,68 @@ getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
                    -- Remove parents that cannot breed
                    AND eg1.name != 'Undiscovered'
                    AND ((p.id IN ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
+                   -- Shares egg groups with the desired parents
+                   AND (eg1.name IN ? OR eg2.name IN ?)
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
+  pure $ learnParents <> breedParents
+
+-- | The same as above, but for Pokemon which are male only (meaning that the
+-- only mons which can pass down egg moves are those in its evolution family).
+getParentsGen78MaleOnly :: [Text] -> [PkmnId] -> Text -> Game -> Connection -> IO [Parent]
+getParentsGen78MaleOnly eggGroups evoPokemonIds moveName game conn = do
+  learnParents :: [Parent] <-
+    map
+      ( \(n, f, maybel) -> case maybel of
+          Just l -> LevelUpParent (makeName n f) l
+          Nothing -> EvolutionParent (makeName n f)
+      )
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form, l.level FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 LEFT JOIN gender_ratios as gr ON p.gr_id = gr.id
+                 LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+                 LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND (lm.name = 'Level up' OR lm.name = 'Evolution')
+                   -- Remove parents that cannot breed
+                   AND eg1.name != 'Undiscovered'
+                   AND (p.id IN ?)
+                   -- Shares egg groups with the desired parents
+                   AND (eg1.name IN ? OR eg2.name IN ?)
+                 ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
+        (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
+  breedParents :: [Parent] <-
+    map (\(n, f) -> BreedParent (makeName n f))
+      <$> query
+        conn
+        [sql|SELECT p.name, p.form FROM learnsets as l
+                 LEFT JOIN pokemon as p ON l.pokemon_id = p.id
+                 LEFT JOIN moves as m ON l.move_id = m.id
+                 LEFT JOIN learn_methods as lm ON l.learn_method_id = lm.id
+                 LEFT JOIN games as g ON l.game_id = g.id
+                 LEFT JOIN gender_ratios as gr ON p.gr_id = gr.id
+                 LEFT JOIN egg_groups as eg1 ON p.eg1_id = eg1.id
+                 LEFT JOIN egg_groups as eg2 ON p.eg2_id = eg2.id
+                 WHERE
+                   -- The egg move we're interested in
+                   m.name = ?
+                   -- The game we're looking in
+                   AND g.name = ?
+                   -- The type of parent we're looking for
+                   AND lm.name = 'Egg'
+                   -- Remove parents that cannot breed
+                   AND eg1.name != 'Undiscovered'
+                   AND p.id IN ?
                    -- Shares egg groups with the desired parents
                    AND (eg1.name IN ? OR eg2.name IN ?)
                  ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
@@ -435,6 +502,10 @@ getEMParents game pkmnId conn = do
         then do
           eggGroupNames <- getEggGroupsForBreeding pkmnId conn
           evoParentIds <- getAllEvolutionTreeMembers pkmnId conn
-          getParentsGen78 eggGroupNames evoParentIds nm game conn
+          isMaleOnly <- isMaleOnly pkmnId conn
+          if isMaleOnly
+            then getParentsGen78MaleOnly eggGroupNames evoParentIds nm game conn
+            else getParentsGen78 eggGroupNames evoParentIds nm game conn
         else getParentsGen9 nm game conn
+    print parents
     pure $ EggMoveParents (EggMove nm ft) parents
