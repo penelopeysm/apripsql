@@ -167,6 +167,7 @@ setupDatabase conn = do
       CREATE TABLE ? (
         prevo_id INTEGER NOT NULL REFERENCES pokemon(id),
         evo_id INTEGER NOT NULL REFERENCES pokemon(id),
+        base_evo_id INTEGER NOT NULL REFERENCES pokemon(id),
         method TEXT NOT NULL,
         PRIMARY KEY (prevo_id, evo_id)
       )|]

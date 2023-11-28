@@ -21,16 +21,23 @@ getPrevo :: EvolutionTree -> EdgePkmn
 getPrevo (Leaf p) = p
 getPrevo (Node p _) = p
 
-data RawEvolutionTreeEdge = RawEvolutionTreeEdge {rFrom :: EdgePkmn, rTo :: EdgePkmn, rMethod :: Text}
+data RawEvolutionTreeEdge = RawEvolutionTreeEdge
+  { rFrom :: EdgePkmn,
+    rTo :: EdgePkmn,
+    rBaseEvo :: EdgePkmn,
+    rMethod :: Text
+  }
   deriving (Eq, Ord, Show)
 
 instance Csv.ToNamedRecord RawEvolutionTreeEdge where
-  toNamedRecord (RawEvolutionTreeEdge prevo evo method) =
+  toNamedRecord (RawEvolutionTreeEdge prevo evo baseEvo method) =
     Csv.namedRecord
       [ "prevo_name" Csv..= epName prevo,
         "prevo_form" Csv..= epForm prevo,
         "evo_name" Csv..= epName evo,
         "evo_form" Csv..= epForm evo,
+        "base_evo_name" Csv..= epName baseEvo,
+        "base_evo_form" Csv..= epForm baseEvo,
         "method" Csv..= method
       ]
 
@@ -38,8 +45,9 @@ instance Csv.FromNamedRecord RawEvolutionTreeEdge where
   parseNamedRecord m = do
     prevo <- EdgePkmn <$> m Csv..: "prevo_name" <*> m Csv..: "prevo_form"
     evo <- EdgePkmn <$> m Csv..: "evo_name" <*> m Csv..: "evo_form"
+    baseEvo <- EdgePkmn <$> m Csv..: "base_evo_name" <*> m Csv..: "base_evo_form"
     method <- m Csv..: "method"
-    pure $ RawEvolutionTreeEdge prevo evo method
+    pure $ RawEvolutionTreeEdge prevo evo baseEvo method
 
 instance Csv.DefaultOrdered RawEvolutionTreeEdge where
   headerOrder _ =
@@ -48,6 +56,8 @@ instance Csv.DefaultOrdered RawEvolutionTreeEdge where
         "prevo_form",
         "evo_name",
         "evo_form",
+        "base_evo_name",
+        "base_evo_form",
         "method"
       ]
 
@@ -55,8 +65,12 @@ instance Csv.DefaultOrdered RawEvolutionTreeEdge where
 getPairs :: EvolutionTree -> [RawEvolutionTreeEdge]
 getPairs (Leaf _) = []
 getPairs (Node p chains) =
-  map (\(mtd, tree) -> RawEvolutionTreeEdge p (getPrevo tree) mtd) chains
-    ++ concatMap (getPairs . snd) chains
+  let getPairsWithBase :: EdgePkmn -> EvolutionTree -> [RawEvolutionTreeEdge]
+      getPairsWithBase _ (Leaf _) = []
+      getPairsWithBase base (Node p chains') =
+        map (\(mtd, tree) -> RawEvolutionTreeEdge p (getPrevo tree) base mtd) chains'
+          ++ concatMap (getPairsWithBase base . snd) chains'
+   in getPairsWithBase p (Node p chains)
 
 getPkmnFromInfocard :: Selector -> ScraperT Text IO EdgePkmn
 getPkmnFromInfocard _ =
@@ -122,30 +136,37 @@ getRawEvolutions = do
 
 patch :: [RawEvolutionTreeEdge] -> [RawEvolutionTreeEdge]
 patch =
-  -- Separate Burmy "All forms"
-  filter (/= RawEvolutionTreeEdge (EdgePkmn "Burmy" (Just "All forms")) (EdgePkmn "Mothim" Nothing) "Level 20, Male")
-    . ( <>
-          [ RawEvolutionTreeEdge (EdgePkmn "Burmy" (Just "Plant Cloak")) (EdgePkmn "Mothim" Nothing) "Level 20, Male",
-            RawEvolutionTreeEdge (EdgePkmn "Burmy" (Just "Sandy Cloak")) (EdgePkmn "Mothim" Nothing) "Level 20, Male",
-            RawEvolutionTreeEdge (EdgePkmn "Burmy" (Just "Trash Cloak")) (EdgePkmn "Mothim" Nothing) "Level 20, Male"
-          ]
-      )
-    -- Separate Aegislash forms
-    . filter (/= RawEvolutionTreeEdge (EdgePkmn "Doublade" Nothing) (EdgePkmn "Aegislash" Nothing) "use Dusk Stone")
-    . ( <>
-          [ RawEvolutionTreeEdge (EdgePkmn "Doublade" Nothing) (EdgePkmn "Aegislash" (Just "Shield Forme")) "use Dusk Stone",
-            RawEvolutionTreeEdge (EdgePkmn "Doublade" Nothing) (EdgePkmn "Aegislash" (Just "Blade Forme")) "use Dusk Stone"
-          ]
-      )
-    -- Separate Pumpkaboo sizes forms
-    . filter (/= RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" Nothing) (EdgePkmn "Gourgeist" Nothing) "Trade")
-    . ( <>
-          [ RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" (Just "Small Size")) (EdgePkmn "Gourgeist" (Just "Small Size")) "Trade",
-            RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" (Just "Average Size")) (EdgePkmn "Gourgeist" (Just "Average Size")) "Trade",
-            RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" (Just "Large Size")) (EdgePkmn "Gourgeist" (Just "Large Size")) "Trade",
-            RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" (Just "Super Size")) (EdgePkmn "Gourgeist" (Just "Super Size")) "Trade"
-          ]
-      )
+  let mothim = EdgePkmn "Mothim" Nothing
+      burmy t = EdgePkmn "Burmy" (Just t)
+      honedge = EdgePkmn "Honedge" Nothing
+      doublade = EdgePkmn "Doublade" Nothing
+      aegislash t = EdgePkmn "Aegislash" (Just t)
+      pumpkaboo t = EdgePkmn "Pumpkaboo" (Just t)
+      gourgeist t = EdgePkmn "Gourgeist" (Just t)
+   in -- Separate Burmy "All forms"
+      filter (/= RawEvolutionTreeEdge (burmy "All forms") mothim (burmy "All forms") "Level 20, Male")
+        . ( <>
+              [ RawEvolutionTreeEdge (burmy "Plant Cloak") mothim (burmy "Plant Cloak") "Level 20, Male",
+                RawEvolutionTreeEdge (burmy "Sandy Cloak") mothim (burmy "Sandy Cloak") "Level 20, Male",
+                RawEvolutionTreeEdge (burmy "Trash Cloak") mothim (burmy "Trash Cloak") "Level 20, Male"
+              ]
+          )
+        -- Separate Aegislash forms
+        . filter (/= RawEvolutionTreeEdge doublade (EdgePkmn "Aegislash" Nothing) honedge "use Dusk Stone")
+        . ( <>
+              [ RawEvolutionTreeEdge doublade (aegislash "Shield Forme") honedge "use Dusk Stone",
+                RawEvolutionTreeEdge doublade (aegislash "Blade Forme") honedge "use Dusk Stone"
+              ]
+          )
+        -- Separate Pumpkaboo sizes forms
+        . filter (/= RawEvolutionTreeEdge (EdgePkmn "Pumpkaboo" Nothing) (EdgePkmn "Gourgeist" Nothing) (EdgePkmn "Pumpkaboo" Nothing) "Trade")
+        . ( <>
+              [ RawEvolutionTreeEdge (pumpkaboo "Small Size") (gourgeist "Small Size") (pumpkaboo "Small Size") "Trade",
+                RawEvolutionTreeEdge (pumpkaboo "Average Size") (gourgeist "Average Size") (pumpkaboo "Average Size") "Trade",
+                RawEvolutionTreeEdge (pumpkaboo "Large Size") (gourgeist "Large Size") (pumpkaboo "Large Size") "Trade",
+                RawEvolutionTreeEdge (pumpkaboo "Super Size") (gourgeist "Super Size") (pumpkaboo "Super Size") "Trade"
+              ]
+          )
 
 setupRawEvolutions :: IO ()
 setupRawEvolutions = do

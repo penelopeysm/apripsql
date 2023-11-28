@@ -157,21 +157,9 @@ getBaseForm pkmnId conn = do
   baseForm <-
     query
       conn
-      [sql|WITH RECURSIVE cte_base AS (
-        SELECT prevo_id, evo_id, 0 as level FROM evolutions
-        WHERE evo_id = ?
-        UNION
-        SELECT e.prevo_id, e.evo_id, level + 1 FROM evolutions e
-        INNER JOIN cte_base c ON c.prevo_id = e.evo_id
-      )
-      SELECT prevo_id
-      FROM (
-        -- This gets all real prevos
-        SELECT * FROM cte_base
-        -- This adds the current form being searched for to the list
-        UNION SELECT * FROM (VALUES (?, 0, -1)) AS t (prevo_id, evo_id, level)
-        ORDER BY level DESC LIMIT 1
-      ) AS t2;|]
+      [sql|SELECT base_evo_id FROM evolutions
+           WHERE evo_id = ? OR prevo_id = ?
+           LIMIT 1;|]
       (pkmnId, pkmnId)
   case baseForm of
     [] -> pure pkmnId -- No prevos.
@@ -184,55 +172,16 @@ getAllParents pkmnId conn = do
   evos <-
     query
       conn
-      [sql|WITH RECURSIVE evos AS (
-          SELECT prevo_id, evo_id FROM evolutions
-          WHERE prevo_id = ?
-          UNION
-          SELECT e.prevo_id, e.evo_id FROM evolutions e
-          INNER JOIN evos e2 ON e2.evo_id = e.prevo_id
-        )
-        SELECT evo_id FROM evos;|]
+      [sql|SELECT evo_id FROM evolutions
+           WHERE base_evo_id = ?|]
       (Only pkmnId)
   pure $ pkmnId : map fromOnly evos
 
--- | Get all members of an evolution tree. In principle, this could be
--- implemented as _getBaseForm >=> _getAllParents, but that would require two
--- database calls. Here we've merged it into one single query. I'm not actually
--- sure if this is faster, though.
+-- | Get all members of an evolution tree.
 getAllEvolutionTreeMembers :: PkmnId -> Connection -> IO [PkmnId]
 getAllEvolutionTreeMembers pkmnId conn = do
-  ns <-
-    query
-      conn
-      [sql|
-      WITH RECURSIVE
-      cte_base AS (
-        SELECT prevo_id, evo_id, 0 as level FROM evolutions
-        WHERE evo_id = ?
-        UNION
-        SELECT e.prevo_id, e.evo_id, level + 1 FROM evolutions e
-        INNER JOIN cte_base c ON c.prevo_id = e.evo_id
-      ),
-      base_form_id AS (
-        SELECT prevo_id
-        FROM (SELECT *
-            FROM cte_base
-            UNION SELECT * FROM (VALUES (?, 0, -1)) AS t (prevo_id, evo_id, level)
-            ORDER BY level DESC LIMIT 1)
-        AS t2
-      ),
-      cte_evos AS (
-        SELECT prevo_id, evo_id, 0 as level FROM evolutions
-        WHERE prevo_id = (SELECT prevo_id FROM base_form_id)
-        UNION
-        SELECT e.prevo_id, e.evo_id, level + 1 FROM evolutions e
-        INNER JOIN cte_evos c ON c.evo_id = e.prevo_id
-      )
-      SELECT evo_id FROM cte_evos
-      UNION (SELECT prevo_id FROM base_form_id)
-      ORDER BY evo_id ASC;|]
-      (pkmnId, pkmnId)
-  pure $ map fromOnly ns
+  baseForm <- getBaseForm pkmnId conn
+  getAllParents baseForm conn
 
 -- | Get all Pokemon forms which can be crossbred from a given list of Pokemon.
 getAllCrossbreedableForms :: [PkmnId] -> Connection -> IO [PkmnId]
@@ -316,8 +265,8 @@ data EggMoveParents = EggMoveParents
 
 -- * TODO THIS IS NOT WORKING YET
 
-getParentsGen78 :: [Text] -> Maybe Int -> Text -> Game -> Connection -> IO [Parent]
-getParentsGen78 eggGroups evoFamilyId moveName game conn = do
+getParentsGen78 :: [Text] -> [PkmnId] -> Text -> Game -> Connection -> IO [Parent]
+getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
   learnParents :: [Parent] <-
     map
       ( \(n, f, maybel) -> case maybel of
@@ -343,11 +292,11 @@ getParentsGen78 eggGroups evoFamilyId moveName game conn = do
                    AND (lm.name = 'Level up' OR lm.name = 'Evolution')
                    -- Remove parents that cannot breed
                    AND eg1.name != 'Undiscovered'
-                   AND ((p.evolution_family_id IS NOT NULL AND p.evolution_family_id = ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
+                   AND ((p.id IN ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
                    -- Shares egg groups with the desired parents
                    AND (eg1.name in ? OR eg2.name in ?)
                  ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
-        (moveName, show game, evoFamilyId, In eggGroups, In eggGroups)
+        (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
   breedParents :: [Parent] <-
     map (\(n, f) -> BreedParent (makeName n f))
       <$> query
@@ -369,11 +318,11 @@ getParentsGen78 eggGroups evoFamilyId moveName game conn = do
                    AND lm.name = 'Egg'
                    -- Remove parents that cannot breed
                    AND eg1.name != 'Undiscovered'
-                   AND ((p.evolution_family_id IS NOT NULL AND p.evolution_family_id = ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
+                   AND ((p.id IN ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
                    -- Shares egg groups with the desired parents
                    AND (eg1.name in ? OR eg2.name in ?)
                  ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
-        (moveName, show game, evoFamilyId, In eggGroups, In eggGroups)
+        (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
   pure $ learnParents <> breedParents
 
 getParentsGen9 :: Text -> Game -> Connection -> IO [Parent]
@@ -474,12 +423,7 @@ getEMParents game pkmnId conn = do
             case eg2 of
               Just eg2' -> pure [eg1, eg2']
               Nothing -> pure [eg1]
-          familyId <-
-            fromOnly . head
-              <$> query
-                conn
-                [sql|SELECT evolution_family_id FROM pokemon WHERE id = ?;|]
-                (Only pkmnId)
-          getParentsGen78 eggGroups familyId nm game conn
+          evoParentIds <- getAllEvolutionTreeMembers pkmnId conn
+          getParentsGen78 eggGroups evoParentIds nm game conn
         else getParentsGen9 nm game conn
     pure $ EggMoveParents (EggMove nm ft) parents
