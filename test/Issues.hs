@@ -1,16 +1,19 @@
 module Issues (testAllIssues) where
 
-import Ability (Ability (..))
+import Setup.Ability (Ability (..))
 import Data.List (find)
 import Data.Map (Map)
 import qualified Data.Map as M
 import Data.Maybe (isJust, isNothing)
 import Data.Text (Text)
 import qualified Data.Text as T
-import Legality (Legality (..))
-import Pokemon (PokemonFinal (..))
-import RawMove (Move (..))
-import RawPokemon (Pokemon (..))
+import Setup.Legality (Legality (..))
+import Setup.Pokemon (PokemonFinal (..))
+import qualified Setup.Pokemon as Pokemon
+import Setup.RawMove (Move (..))
+import qualified Setup.RawMove as RawMove
+import Setup.RawPokemon (Pokemon (..))
+import qualified Setup.RawPokemon as RawPokemon
 import Test.Tasty
 import Test.Tasty.HUnit
 import Utils (fromCsv, fromIdCsvWithId, fromIdCsvWithoutId, makeMapFromWithIds)

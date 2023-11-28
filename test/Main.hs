@@ -1,14 +1,67 @@
 module Main where
 
+import Apripsql.Queries
+import Data.Set (Set)
+import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text as T
+import Database.PostgreSQL.Simple
 import Issues (testAllIssues)
+import Setup.Game (Game (..))
+import System.Environment (lookupEnv)
 import Test.Tasty
 import Test.Tasty.HUnit
+import Utils (withConnString)
 
 main :: IO ()
 main =
-  defaultMain $ testAllIssues
+  defaultMain $ testGroup "All tests" [testAllIssues, testRandoms]
+
+wc :: (Connection -> IO a) -> IO a
+wc actn = do
+  connString <- lookupEnv "FLY_PG_PROXY_CONN_STRING"
+  case connString of
+    Nothing -> error "FLY_PG_PROXY_CONN_STRING not set"
+    Just cs -> withConnString (T.pack cs) actn
+
+testRandoms :: TestTree
+testRandoms =
+  testGroup
+    "Random tests"
+    [ testTogeSwShEMParents "Togepi",
+      testTogeSwShEMParents "Togetic",
+      testTogeSwShEMParents "Togekiss"
+    ]
+
+testTogeSwShEMParents :: Text -> TestTree
+testTogeSwShEMParents name = testCase "Togetic SwSh EM parents" $ wc $ \conn -> do
+  search <- getPokemon name conn
+  case search of
+    FoundOne dbPkmn -> do
+      let pkmnId = dbId dbPkmn
+      parents <- getEMParents SwSh pkmnId conn
+      let aerialAceParents = case filter (\p -> emName (empMove p) == "Aerial Ace") parents of
+            [p] -> empParents p
+            _ -> error "Aerial Ace not found"
+      assertEqual
+        "Aerial Ace parents"
+        ( S.fromList
+            [ LevelUpParent "Farfetch'd" 20,
+              LevelUpParent "Rufflet" 30,
+              LevelUpParent "Braviary" 30,
+              LevelUpParent "Fletchling" 30,
+              LevelUpParent "Fletchinder" 36,
+              LevelUpParent "Talonflame" 38,
+              LevelUpParent "Hawlucha" 12,
+              BreedParent "Togetic",
+              BreedParent "Togekiss",
+              BreedParent "Wingull",
+              BreedParent "Pelipper",
+              BreedParent "Cramorant"
+            ]
+        )
+        (S.fromList aerialAceParents)
+    _ -> error $ "Pokemon " ++ T.unpack name ++ " not found"
 
 -- Helpers
 

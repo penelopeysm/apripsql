@@ -263,7 +263,19 @@ data EggMoveParents = EggMoveParents
   }
   deriving (Eq, Ord, Show)
 
--- * TODO THIS IS NOT WORKING YET
+getEggGroupsForBreeding :: PkmnId -> Connection -> IO [Text]
+getEggGroupsForBreeding pkmnId conn = do
+  eggGroups <-
+    query
+      conn
+      [sql|SELECT eg.name FROM egg_groups as eg
+           LEFT JOIN pokemon as p ON eg.id = p.eg1_id
+           WHERE p.id = ?;|]
+      (Only pkmnId)
+  case eggGroups of
+    [Only eg1] -> pure [eg1]
+    [Only eg1, Only eg2] -> pure [eg1, eg2]
+    _ -> error "getEggGroupsForBreeding: expected one or two egg groups"
 
 getParentsGen78 :: [Text] -> [PkmnId] -> Text -> Game -> Connection -> IO [Parent]
 getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
