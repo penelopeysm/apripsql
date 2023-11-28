@@ -34,7 +34,7 @@ testRandoms =
     ]
 
 testTogeSwShEMParents :: Text -> TestTree
-testTogeSwShEMParents name = testCase "Togetic SwSh EM parents" $ wc $ \conn -> do
+testTogeSwShEMParents name = testCase (T.unpack name <> " SwSh EM parents") $ wc $ \conn -> do
   search <- getPokemon name conn
   case search of
     FoundOne dbPkmn -> do

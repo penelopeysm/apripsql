@@ -11,8 +11,8 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Setup.EggGroup as EggGroup
 import Setup.GenderRatio (GenderRatio (..))
-import Text.HTML.Scalpel
 import qualified Setup.Type as Type
+import Text.HTML.Scalpel
 import Utils (readMaybeInt, toCsv)
 
 -- | A @PokemonPartial@ represents the data that we can scrape from the page
@@ -179,48 +179,55 @@ getPokemon ppkmn = do
         spa <- readStat "Sp. Atk"
         spd <- readStat "Sp. Def"
         spe <- readStat "Speed"
-        -- Egg groups (these don't differ by form, so we don't need the !! at
-        -- the end)
-        eggGroups <- chroot ("table" @: [hasClass "vitals-table"] // "tr") $ do
-          heading <- text "th"
-          guard $ heading == "Egg Groups"
-          map (EggGroup.fromString . T.unpack) <$> texts "a"
-        let (egg1, egg2) = case eggGroups of
-              [Just e1] -> (e1, Nothing)
-              [Just e1, Just e2] -> (e1, Just e2)
+        -- Egg groups
+        (egg1, egg2) <- case pname ppkmn of
+          "Tatsugiri" -> pure (EggGroup.Water2, Nothing)
+          _ -> do
+            eggGroups <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
+              heading <- text "th"
+              guard $ heading == "Egg Groups"
+              map (EggGroup.fromString . T.unpack) <$> texts "a"
+            case eggGroups !! pformNum ppkmn of
+              [Just e1] -> pure (e1, Nothing)
+              [Just e1, Just e2] -> pure (e1, Just e2)
               _ -> errorPkmn ppkmn "Pokemon had invalid number of egg groups"
-        -- And the gender ratio and egg cycles (which don't differ by form)
+        -- And the gender ratio and egg cycles
         genderRatio <- case pname ppkmn of
           -- Hardcoded for things that aren't on PokemonDB (yet?)
           s | s `elem` ["Walking Wake", "Iron Leaves"] -> pure Genderless
-          _ -> chroot ("table" @: [hasClass "vitals-table"] // "tr") $ do
-            heading <- text "th"
-            guard $ heading == "Gender"
-            ratio <- text ("span" @: [hasClass "text-blue"]) <|> text "td"
-            pure $ case ratio of
-              "Genderless" -> Genderless
-              "—" -> Genderless
-              "0% male" -> FemaleOnly
-              "12.5% male" -> Female71
-              "25% male" -> Female31
-              "50% male" -> Equal
-              "75% male" -> Male31
-              "87.5% male" -> Male71
-              "100% male" -> MaleOnly
-              _ -> errorPkmn ppkmn ("Could not determine gender ratio: got " <> ratio)
+          _ -> do
+            grs <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
+              heading <- text "th"
+              guard $ heading == "Gender"
+              ratio <- text ("span" @: [hasClass "text-blue"]) <|> text "td"
+              pure $ case ratio of
+                "Genderless" -> Genderless
+                "—" -> Genderless
+                "0% male" -> FemaleOnly
+                "12.5% male" -> Female71
+                "25% male" -> Female31
+                "50% male" -> Equal
+                "75% male" -> Male31
+                "87.5% male" -> Male71
+                "100% male" -> MaleOnly
+                _ -> errorPkmn ppkmn ("Could not determine gender ratio: got " <> ratio)
+            pure $ grs !! pformNum ppkmn
         eggCycles <- case pname ppkmn of
           -- Hardcoded for things that aren't on PokemonDB (yet?)
           s | s `elem` ["Walking Wake", "Iron Leaves"] -> pure 50
           s | s `elem` ["Dipplin", "Poltchageist", "Sinistcha"] -> pure 20
           s | s `elem` ["Okidogi", "Munkidori", "Fezandipiti"] -> pure 120
           "Ogerpon" -> pure 10
-          _ -> chroot ("table" @: [hasClass "vitals-table"] // "tr") $ do
-            heading <- text ("th" // "a")
-            guard $ heading == "Egg cycles"
-            ec <- readMaybeInt . head . T.words <$> text "td"
-            pure $ case ec of
-              Just ec' -> ec'
-              Nothing -> errorPkmn ppkmn "Could not determine egg cycles"
+          "Ursaluna" -> pure 20
+          _ -> do
+            ecs <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
+              heading <- text ("th" // "a")
+              guard $ heading == "Egg cycles"
+              ec <- readMaybeInt . head . T.words <$> text "td"
+              pure $ case ec of
+                Just ec' -> ec'
+                Nothing -> errorPkmn ppkmn "Could not determine egg cycles"
+            pure $ ecs !! pformNum ppkmn
         pure $
           Pokemon
             { name = pname ppkmn,

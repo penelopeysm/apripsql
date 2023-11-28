@@ -176,11 +176,11 @@ id,name,form,unique_name,ndex,galar_dex,ioa_dex,ct_dex,paldea_dex,tm_dex,type1_i
 175,Aerodactyl,,aerodactyl,142,,,127,,,13,10,80,105,65,60,75,130,4,,7,200,177,282,35
 176,Snorlax,,snorlax,143,261,,173,,103,1,,160,110,65,65,110,30,1,,7,108,268,81,40
 177,Articuno,,articuno,144,,,202,,,6,10,90,85,100,95,125,85,15,,1,177,,228,80
-178,Articuno,Galarian Articuno,articuno-galar,144,,,202,,,11,10,90,85,85,125,100,95,15,,1,33,,,80
+178,Articuno,Galarian Articuno,articuno-galar,144,,,202,,,11,10,90,85,85,125,100,95,15,,1,33,,,120
 179,Zapdos,,zapdos,145,,,203,,,4,10,90,90,85,125,90,100,15,,1,177,,240,80
-180,Zapdos,Galarian Zapdos,zapdos-galar,145,,,203,,,7,10,90,125,90,85,90,100,15,,1,49,,,80
+180,Zapdos,Galarian Zapdos,zapdos-galar,145,,,203,,,7,10,90,125,90,85,90,100,15,,1,49,,,120
 181,Moltres,,moltres,146,,,204,,,2,10,90,100,90,125,85,90,15,,1,177,,67,80
-182,Moltres,Galarian Moltres,moltres-galar,146,,,204,,,16,10,90,85,90,100,125,90,15,,1,21,,,80
+182,Moltres,Galarian Moltres,moltres-galar,146,,,204,,,16,10,90,85,90,100,125,90,15,,1,21,,,120
 183,Dratini,,dratini,147,,,194,347,,15,,41,64,45,50,50,50,14,2,5,218,,136,40
 184,Dragonair,,dragonair,148,,,195,348,,15,,61,84,65,70,70,70,14,2,5,218,,136,40
 185,Dragonite,,dragonite,149,,,196,349,,15,10,91,134,95,100,100,80,14,2,5,112,,148,40
@@ -760,7 +760,7 @@ id,name,form,unique_name,ndex,galar_dex,ioa_dex,ct_dex,paldea_dex,tm_dex,type1_i
 759,Furfrou,,furfrou,676,,,,,,1,,75,80,60,65,90,102,5,,5,78,,,20
 760,Espurr,,espurr,677,208,,,,,11,,62,48,54,63,60,68,5,,5,119,110,162,20
 761,Meowstic,Male,meowstic-male,678,209,,,,,11,,74,48,76,83,81,104,5,,8,119,110,176,20
-762,Meowstic,Female,meowstic-female,678,209,,,,,11,,74,48,76,83,81,104,5,,8,119,110,33,20
+762,Meowstic,Female,meowstic-female,678,209,,,,,11,,74,48,76,83,81,104,5,,2,119,110,33,20
 763,Honedge,,honedge,679,330,,,,,17,14,45,80,100,35,37,28,10,,5,155,,,20
 764,Doublade,,doublade,680,331,,,,,17,14,59,110,150,45,49,35,10,,5,155,,,20
 765,Aegislash,Shield Forme,aegislash-shield,681,332,,,,,17,14,60,50,140,50,140,60,10,,5,239,,,20
@@ -986,7 +986,7 @@ id,name,form,unique_name,ndex,galar_dex,ioa_dex,ct_dex,paldea_dex,tm_dex,type1_i
 985,Eiscue,Ice Face,eiscue-ice,875,370,,90,320,,6,,75,80,110,65,90,50,5,2,5,104,,,25
 986,Eiscue,Noice Face,eiscue-noice,875,370,,90,320,,6,,75,80,70,65,50,130,5,2,5,104,,,25
 987,Indeedee,Male,indeedee-male,876,337,,171,241,193,11,1,60,65,55,105,95,95,6,,8,112,260,183,40
-988,Indeedee,Female,indeedee-female,876,337,,171,241,193,11,1,70,55,65,95,105,85,6,,8,162,260,183,40
+988,Indeedee,Female,indeedee-female,876,337,,171,241,193,11,1,70,55,65,95,105,85,6,,2,162,260,183,40
 989,Morpeko,Full Belly Mode,morpeko-full-belly,877,344,104,157,,95,4,16,58,95,58,70,58,97,6,5,5,99,,,10
 990,Morpeko,Hangry Mode,morpeko-hangry,877,344,104,157,,95,4,16,58,95,58,70,58,97,6,5,5,99,,,10
 991,Cufant,,cufant,878,302,,108,124,,17,,72,80,49,40,49,40,5,10,5,219,,95,25
@@ -1018,9 +1018,9 @@ id,name,form,unique_name,ndex,galar_dex,ioa_dex,ct_dex,paldea_dex,tm_dex,type1_i
 1017,Wyrdeer,,wyrdeer,899,,,,,,1,11,103,105,72,105,75,65,5,,5,114,76,209,20
 1018,Kleavor,,kleavor,900,,,,,,12,13,70,135,95,45,70,85,3,,5,255,219,217,20
 1019,Ursaluna,,ursaluna,901,,,,,196,9,1,130,140,105,45,80,50,5,,5,90,24,282,20
-1020,Ursaluna,Bloodmoon,ursaluna-bloodmoon,901,,,,,196,9,1,113,70,120,135,65,52,5,,5,140,,,20
+1020,Ursaluna,Bloodmoon,ursaluna-bloodmoon,901,,,,,196,9,1,113,70,120,135,65,52,5,,8,140,,,20
 1021,Basculegion,Male,basculegion-male,902,,,,,195,3,14,120,112,65,80,75,78,12,,8,257,1,144,20
-1022,Basculegion,Female,basculegion-female,902,,,,,195,3,14,120,92,65,100,75,78,12,,8,257,1,144,20
+1022,Basculegion,Female,basculegion-female,902,,,,,195,3,14,120,92,65,100,75,78,12,,2,257,1,144,20
 1023,Sneasler,,sneasler,903,,,,,,7,8,80,130,60,40,80,120,5,,5,177,281,172,20
 1024,Overqwil,,overqwil,904,,,,,,16,8,85,115,95,65,65,85,12,,5,171,257,114,20
 1025,Enamorus,Incarnate Forme,enamorus-incarnate,905,,,,,,18,10,74,115,70,135,80,106,15,,2,42,,35,20
@@ -1036,7 +1036,7 @@ id,name,form,unique_name,ndex,galar_dex,ioa_dex,ct_dex,paldea_dex,tm_dex,type1_i
 1035,Quaquaval,,quaquaval,914,,,,9,,3,7,85,120,80,85,75,85,4,2,7,270,,147,20
 1036,Lechonk,,lechonk,915,,,,10,,1,,54,45,40,35,45,35,5,,5,11,81,268,15
 1037,Oinkologne,Male,oinkologne-male,916,,,,11,,1,,110,100,75,59,80,65,5,,8,127,81,268,15
-1038,Oinkologne,Female,oinkologne-female,916,,,,11,,1,,115,90,70,59,90,65,5,,8,11,81,268,15
+1038,Oinkologne,Female,oinkologne-female,916,,,,11,,1,,115,90,70,59,90,65,5,,2,11,81,268,15
 1039,Tarountula,,tarountula,917,,,,12,,12,,35,41,45,29,40,20,3,,5,113,,235,15
 1040,Spidops,,spidops,918,,,,13,,12,,60,79,92,52,86,35,3,,5,113,,235,15
 1041,Nymble,,nymble,919,,,,14,,12,,33,46,40,21,25,45,3,,5,255,,269,20

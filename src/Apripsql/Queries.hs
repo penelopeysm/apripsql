@@ -279,7 +279,7 @@ getEggGroupsForBreeding pkmnId conn = do
       maybeParentId <-
         query
           conn
-          [sql|SELECT evo_id FROM evolutions WHERE prevo_id = ?;|]
+          [sql|SELECT evo_id FROM evolutions WHERE prevo_id = ? LIMIT 1;|]
           (Only pkmnId)
       case maybeParentId of
         [Only parentId] -> getEggGroupsForBreeding parentId conn
@@ -317,7 +317,7 @@ getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
                    AND eg1.name != 'Undiscovered'
                    AND ((p.id IN ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
                    -- Shares egg groups with the desired parents
-                   AND (eg1.name in ? OR eg2.name in ?)
+                   AND (eg1.name IN ? OR eg2.name IN ?)
                  ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
         (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
   breedParents :: [Parent] <-
@@ -343,7 +343,7 @@ getParentsGen78 eggGroups evoPokemonIds moveName game conn = do
                    AND eg1.name != 'Undiscovered'
                    AND ((p.id IN ?) OR (gr.name != 'Genderless' AND gr.name != 'Female only'))
                    -- Shares egg groups with the desired parents
-                   AND (eg1.name in ? OR eg2.name in ?)
+                   AND (eg1.name IN ? OR eg2.name IN ?)
                  ORDER BY p.ndex ASC, p.form ASC NULLS FIRST;|]
         (moveName, show game, In evoPokemonIds, In eggGroups, In eggGroups)
   pure $ learnParents <> breedParents

@@ -176,11 +176,11 @@ Kabutops,,kabutops,141,,,126,,,Rock,Water,60,115,105,65,70,80,Water 1,Water 3,Ma
 Aerodactyl,,aerodactyl,142,,,127,,,Rock,Flying,80,105,65,60,75,130,Flying,,Male 7:1,Rock Head,Pressure,Unnerve,35,https://pokemondb.net/pokedex/aerodactyl
 Snorlax,,snorlax,143,261,,173,,103,Normal,,160,110,65,65,110,30,Monster,,Male 7:1,Immunity,Thick Fat,Gluttony,40,https://pokemondb.net/pokedex/snorlax
 Articuno,,articuno,144,,,202,,,Ice,Flying,90,85,100,95,125,85,Undiscovered,,Genderless,Pressure,,Snow Cloak,80,https://pokemondb.net/pokedex/articuno
-Articuno,Galarian Articuno,articuno-galar,144,,,202,,,Psychic,Flying,90,85,85,125,100,95,Undiscovered,,Genderless,Competitive,,,80,https://pokemondb.net/pokedex/articuno
+Articuno,Galarian Articuno,articuno-galar,144,,,202,,,Psychic,Flying,90,85,85,125,100,95,Undiscovered,,Genderless,Competitive,,,120,https://pokemondb.net/pokedex/articuno
 Zapdos,,zapdos,145,,,203,,,Electric,Flying,90,90,85,125,90,100,Undiscovered,,Genderless,Pressure,,Static,80,https://pokemondb.net/pokedex/zapdos
-Zapdos,Galarian Zapdos,zapdos-galar,145,,,203,,,Fighting,Flying,90,125,90,85,90,100,Undiscovered,,Genderless,Defiant,,,80,https://pokemondb.net/pokedex/zapdos
+Zapdos,Galarian Zapdos,zapdos-galar,145,,,203,,,Fighting,Flying,90,125,90,85,90,100,Undiscovered,,Genderless,Defiant,,,120,https://pokemondb.net/pokedex/zapdos
 Moltres,,moltres,146,,,204,,,Fire,Flying,90,100,90,125,85,90,Undiscovered,,Genderless,Pressure,,Flame Body,80,https://pokemondb.net/pokedex/moltres
-Moltres,Galarian Moltres,moltres-galar,146,,,204,,,Dark,Flying,90,85,90,100,125,90,Undiscovered,,Genderless,Berserk,,,80,https://pokemondb.net/pokedex/moltres
+Moltres,Galarian Moltres,moltres-galar,146,,,204,,,Dark,Flying,90,85,90,100,125,90,Undiscovered,,Genderless,Berserk,,,120,https://pokemondb.net/pokedex/moltres
 Dratini,,dratini,147,,,194,347,,Dragon,,41,64,45,50,50,50,Dragon,Water 1,Equal,Shed Skin,,Marvel Scale,40,https://pokemondb.net/pokedex/dratini
 Dragonair,,dragonair,148,,,195,348,,Dragon,,61,84,65,70,70,70,Dragon,Water 1,Equal,Shed Skin,,Marvel Scale,40,https://pokemondb.net/pokedex/dragonair
 Dragonite,,dragonite,149,,,196,349,,Dragon,Flying,91,134,95,100,100,80,Dragon,Water 1,Equal,Inner Focus,,Multiscale,40,https://pokemondb.net/pokedex/dragonite
@@ -760,7 +760,7 @@ Pangoro,,pangoro,675,112,,,,,Fighting,Dark,95,124,78,69,71,58,Field,Human-Like,E
 Furfrou,,furfrou,676,,,,,,Normal,,75,80,60,65,90,102,Field,,Equal,Fur Coat,,,20,https://pokemondb.net/pokedex/furfrou
 Espurr,,espurr,677,208,,,,,Psychic,,62,48,54,63,60,68,Field,,Equal,Keen Eye,Infiltrator,Own Tempo,20,https://pokemondb.net/pokedex/espurr
 Meowstic,Male,meowstic-male,678,209,,,,,Psychic,,74,48,76,83,81,104,Field,,Male only,Keen Eye,Infiltrator,Prankster,20,https://pokemondb.net/pokedex/meowstic
-Meowstic,Female,meowstic-female,678,209,,,,,Psychic,,74,48,76,83,81,104,Field,,Male only,Keen Eye,Infiltrator,Competitive,20,https://pokemondb.net/pokedex/meowstic
+Meowstic,Female,meowstic-female,678,209,,,,,Psychic,,74,48,76,83,81,104,Field,,Female only,Keen Eye,Infiltrator,Competitive,20,https://pokemondb.net/pokedex/meowstic
 Honedge,,honedge,679,330,,,,,Steel,Ghost,45,80,100,35,37,28,Mineral,,Equal,No Guard,,,20,https://pokemondb.net/pokedex/honedge
 Doublade,,doublade,680,331,,,,,Steel,Ghost,59,110,150,45,49,35,Mineral,,Equal,No Guard,,,20,https://pokemondb.net/pokedex/doublade
 Aegislash,Shield Forme,aegislash-shield,681,332,,,,,Steel,Ghost,60,50,140,50,140,60,Mineral,,Equal,Stance Change,,,20,https://pokemondb.net/pokedex/aegislash
@@ -986,7 +986,7 @@ Stonjourner,,stonjourner,874,369,,89,319,,Rock,,100,125,135,20,20,70,Mineral,,Eq
 Eiscue,Ice Face,eiscue-ice,875,370,,90,320,,Ice,,75,80,110,65,90,50,Field,Water 1,Equal,Ice Face,,,25,https://pokemondb.net/pokedex/eiscue
 Eiscue,Noice Face,eiscue-noice,875,370,,90,320,,Ice,,75,80,70,65,50,130,Field,Water 1,Equal,Ice Face,,,25,https://pokemondb.net/pokedex/eiscue
 Indeedee,Male,indeedee-male,876,337,,171,241,193,Psychic,Normal,60,65,55,105,95,95,Fairy,,Male only,Inner Focus,Synchronize,Psychic Surge,40,https://pokemondb.net/pokedex/indeedee
-Indeedee,Female,indeedee-female,876,337,,171,241,193,Psychic,Normal,70,55,65,95,105,85,Fairy,,Male only,Own Tempo,Synchronize,Psychic Surge,40,https://pokemondb.net/pokedex/indeedee
+Indeedee,Female,indeedee-female,876,337,,171,241,193,Psychic,Normal,70,55,65,95,105,85,Fairy,,Female only,Own Tempo,Synchronize,Psychic Surge,40,https://pokemondb.net/pokedex/indeedee
 Morpeko,Full Belly Mode,morpeko-full-belly,877,344,104,157,,95,Electric,Dark,58,95,58,70,58,97,Fairy,Field,Equal,Hunger Switch,,,10,https://pokemondb.net/pokedex/morpeko
 Morpeko,Hangry Mode,morpeko-hangry,877,344,104,157,,95,Electric,Dark,58,95,58,70,58,97,Fairy,Field,Equal,Hunger Switch,,,10,https://pokemondb.net/pokedex/morpeko
 Cufant,,cufant,878,302,,108,124,,Steel,,72,80,49,40,49,40,Field,Mineral,Equal,Sheer Force,,Heavy Metal,25,https://pokemondb.net/pokedex/cufant
@@ -1018,9 +1018,9 @@ Calyrex,Shadow Rider,calyrex-shadow,898,,,210,,,Psychic,Ghost,100,85,80,165,100,
 Wyrdeer,,wyrdeer,899,,,,,,Normal,Psychic,103,105,72,105,75,65,Field,,Equal,Intimidate,Frisk,Sap Sipper,20,https://pokemondb.net/pokedex/wyrdeer
 Kleavor,,kleavor,900,,,,,,Bug,Rock,70,135,95,45,70,85,Bug,,Equal,Swarm,Sheer Force,Sharpness,20,https://pokemondb.net/pokedex/kleavor
 Ursaluna,,ursaluna,901,,,,,196,Ground,Normal,130,140,105,45,80,50,Field,,Equal,Guts,Bulletproof,Unnerve,20,https://pokemondb.net/pokedex/ursaluna
-Ursaluna,Bloodmoon,ursaluna-bloodmoon,901,,,,,196,Ground,Normal,113,70,120,135,65,52,Field,,Equal,Mind's Eye,,,20,https://pokemondb.net/pokedex/ursaluna
+Ursaluna,Bloodmoon,ursaluna-bloodmoon,901,,,,,196,Ground,Normal,113,70,120,135,65,52,Field,,Male only,Mind's Eye,,,20,https://pokemondb.net/pokedex/ursaluna
 Basculegion,Male,basculegion-male,902,,,,,195,Water,Ghost,120,112,65,80,75,78,Water 2,,Male only,Swift Swim,Adaptability,Mold Breaker,20,https://pokemondb.net/pokedex/basculegion
-Basculegion,Female,basculegion-female,902,,,,,195,Water,Ghost,120,92,65,100,75,78,Water 2,,Male only,Swift Swim,Adaptability,Mold Breaker,20,https://pokemondb.net/pokedex/basculegion
+Basculegion,Female,basculegion-female,902,,,,,195,Water,Ghost,120,92,65,100,75,78,Water 2,,Female only,Swift Swim,Adaptability,Mold Breaker,20,https://pokemondb.net/pokedex/basculegion
 Sneasler,,sneasler,903,,,,,,Fighting,Poison,80,130,60,40,80,120,Field,,Equal,Pressure,Unburden,Poison Touch,20,https://pokemondb.net/pokedex/sneasler
 Overqwil,,overqwil,904,,,,,,Dark,Poison,85,115,95,65,65,85,Water 2,,Equal,Poison Point,Swift Swim,Intimidate,20,https://pokemondb.net/pokedex/overqwil
 Enamorus,Incarnate Forme,enamorus-incarnate,905,,,,,,Fairy,Flying,74,115,70,135,80,106,Undiscovered,,Female only,Cute Charm,,Contrary,20,https://pokemondb.net/pokedex/enamorus
@@ -1036,7 +1036,7 @@ Quaxwell,,quaxwell,913,,,,8,,Water,,70,85,65,65,60,65,Flying,Water 1,Male 7:1,To
 Quaquaval,,quaquaval,914,,,,9,,Water,Fighting,85,120,80,85,75,85,Flying,Water 1,Male 7:1,Torrent,,Moxie,20,https://pokemondb.net/pokedex/quaquaval
 Lechonk,,lechonk,915,,,,10,,Normal,,54,45,40,35,45,35,Field,,Equal,Aroma Veil,Gluttony,Thick Fat,15,https://pokemondb.net/pokedex/lechonk
 Oinkologne,Male,oinkologne-male,916,,,,11,,Normal,,110,100,75,59,80,65,Field,,Male only,Lingering Aroma,Gluttony,Thick Fat,15,https://pokemondb.net/pokedex/oinkologne
-Oinkologne,Female,oinkologne-female,916,,,,11,,Normal,,115,90,70,59,90,65,Field,,Male only,Aroma Veil,Gluttony,Thick Fat,15,https://pokemondb.net/pokedex/oinkologne
+Oinkologne,Female,oinkologne-female,916,,,,11,,Normal,,115,90,70,59,90,65,Field,,Female only,Aroma Veil,Gluttony,Thick Fat,15,https://pokemondb.net/pokedex/oinkologne
 Tarountula,,tarountula,917,,,,12,,Bug,,35,41,45,29,40,20,Bug,,Equal,Insomnia,,Stakeout,15,https://pokemondb.net/pokedex/tarountula
 Spidops,,spidops,918,,,,13,,Bug,,60,79,92,52,86,35,Bug,,Equal,Insomnia,,Stakeout,15,https://pokemondb.net/pokedex/spidops
 Nymble,,nymble,919,,,,14,,Bug,,33,46,40,21,25,45,Bug,,Equal,Swarm,,Tinted Lens,20,https://pokemondb.net/pokedex/nymble
