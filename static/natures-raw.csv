@@ -25,15 +25,15 @@ meowth-alola,Timid,Jolly,,Timid
 meowth-galar,Adamant,Adamant,,
 meowth,Jolly,Jolly,Jolly,Timid
 psyduck,Timid,Timid / Modest,Timid / Modest,Modest
-mankey,,,Jolly,Jolly
+mankey,Adamant,,Jolly,Jolly
 growlithe,Jolly/Timid,Jolly,Jolly,Jolly
 poliwag,Calm,Bold (Politoed) / Jolly / Adamant (Poliwrath),Bold (Politoed) / Jolly / Adamant (Poliwrath),Timid (Poliwrath) / Calm (Politoed)
 abra,Timid,Timid,Timid,Timid
 machop,Adamant,Adamant,Adamant,Adamant
 bellsprout,,,Timid / Modest,Timid / Modest
 tentacool,Calm,Timid,Timid,Timid
-geodude-alola,,,,Jolly
-geodude,,,Adamant / Jolly,Adamant / Jolly
+geodude-alola,Brave,,,Jolly
+geodude,Brave,,Adamant / Jolly,Adamant / Jolly
 ponyta-galar,Jolly,Jolly / Timid,,
 ponyta,Jolly,Jolly,Jolly,Jolly
 slowpoke-galar,Relaxed,Modest (Slowbro) / Calm (Slowking),,
@@ -48,7 +48,7 @@ grimer,,,Careful,Careful
 shellder,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
 gastly,Timid,Timid,Timid,Timid
 onix,Brave,Impish,Impish,Brave / Impish
-drowzee,,,Jolly,Jolly
+drowzee,Calm,,Jolly,Jolly
 krabby,Adamant,Jolly,Jolly,Adamant / Jolly
 voltorb,,,Jolly / Timid,Jolly / Timid
 exeggcute,Quiet,Modest / Timid / Quiet (Kanto) / Modest (Alola),Modest / Timid / Quiet ,Quiet (K) / Modest (A)
@@ -82,7 +82,7 @@ dratini,Adamant,Jolly / Adamant,Jolly / Adamant,Jolly
 chikorita,,,Calm,Calm
 cyndaquil,,,Timid,Timid
 totodile,,,Jolly / Adamant,Jolly / Adamant
-sentret,,,Jolly,Jolly
+sentret,Jolly,,Jolly,Jolly
 hoothoot,Modest,Modest,Modest,Modest
 ledyba,,,Jolly,Jolly
 spinarak,,,Jolly,Jolly
@@ -107,7 +107,7 @@ wobbuffet,Calm,Bold,Bold,Bold
 girafarig,,,Jolly,Jolly
 pineco,,,Jolly,Jolly
 dunsparce,Adamant,Adamant,Adamant,Adamant
-gligar,,,Jolly,Jolly
+gligar,Jolly,,Jolly,Jolly
 snubbull,Impish,,Adamant,Adamant
 qwilfish,Adamant,Jolly,Jolly,Timid / Jolly
 shuckle,Relaxed,Bold,Bold,Calm
@@ -123,8 +123,8 @@ delibird,Jolly,Adamant,Jolly,Timid
 mantine,Modest,Bold,Bold,Calm
 skarmory,Impish,Impish,Impish,Bold
 houndour,,,Timid,Timid
-phanpy,,,Adamant,Adamant
-stantler,,,Jolly,Lonely / Hasty
+phanpy,Adamant,,Adamant,Adamant
+stantler,Modest,,Jolly,Lonely / Hasty
 smeargle,,,Jolly,Jolly
 tyrogue,Adamant/Careful,Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful (C) / Adamant (L) / Impish (T)
 smoochum,Timid,Timid,Timid,Timid
@@ -155,7 +155,7 @@ skitty,Jolly,,Jolly,Jolly
 sableye,Careful,Careful,Careful,Careful
 mawile,Adamant,Adamant,Adamant,Adamant
 aron,Adamant,Careful,Careful,Careful
-meditite,,,Jolly / Adamant,Jolly / Adamant
+meditite,Jolly,,Jolly / Adamant,Jolly / Adamant
 electrike,Timid,Timid,Timid,Timid
 plusle,Timid,,Timid,Timid
 minun,Timid,,Timid,Timid
@@ -167,7 +167,7 @@ carvanha,Adamant,Adamant / Jolly,Adamant / Jolly,Adamant / Jolly
 wailmer,Modest,Calm,Calm,Calm
 numel,,,Calm,Calm
 torkoal,Quiet,Bold,Bold,Bold
-spoink,,,Timid,Timid
+spoink,Modest,,Timid,Timid
 spinda,,,Brave,Brave
 trapinch,Jolly,Jolly,Jolly,Jolly
 cacnea,Adamant,,Mild,Mild
@@ -194,7 +194,7 @@ snorunt,Impish,Timid ,Timid ,Jolly (G) / Timid (F)
 spheal,Calm,Adamant,Adamant,Calm
 clamperl,,,Modest / Timid (Gore) / Naughty (Hunt),Modest (G) / Timid (G) / Naughty (H) 
 relicanth,Adamant,Adamant,Adamant,Adamant
-luvdisc,,,Modest / Timid,Modest / Timid
+luvdisc,Timid,,Modest / Timid,Modest / Timid
 bagon,Jolly,Timid / Jolly / Naive / Impish,Timid / Jolly / Naive / Impish,Adamant / Jolly
 beldum,Adamant,Adamant / Jolly,Adamant / Jolly,Jolly / Adamant
 turtwig,,,Impish,Impish
@@ -217,7 +217,7 @@ cherubi,Modest,Timid,Timid,Jolly
 shellos,Bold,Calm / Sassy,Calm / Sassy,Sassy
 drifloon,Timid,Bold,Bold,Modest / Timid
 buneary,Jolly,Jolly,Jolly,Jolly
-glameow,,,Jolly,Jolly
+glameow,Jolly,,Jolly,Jolly
 chingling,,,Calm,Calm
 stunky,Jolly,Timid / Modest,Timid / Modest,Jolly
 bronzor,Relaxed,Sassy / Careful,Sassy / Careful,Calm
@@ -230,7 +230,7 @@ hippopotas,Impish,Impish,Impish,Impish
 skorupi,Jolly,Jolly,Jolly,Jolly
 croagunk,Adamant,Jolly,Jolly,Jolly
 carnivine,,,Adamant,Adamant
-finneon,,,Bold,Bold
+finneon,Timid,,Bold,Bold
 snover,Quiet,Modest / Mild,Modest / Mild,Modest / Mild
 rotom,Modest,Timid,Timid,Timid / Bold (Fan)
 rotom-heat,Modest,Timid,Timid,Timid
@@ -283,7 +283,7 @@ zorua-hisui,Timid,,,
 minccino,Jolly,Jolly,,Jolly
 gothita,Jolly/Impish,Bold,,Modest
 solosis,Quiet,Bold,,Quiet / Bold
-ducklett,,,,Timid
+ducklett,Timid,,,Timid
 vanillite,Timid,Timid,,Modest
 deerling,Jolly,,,Jolly
 emolga,Timid,Timid,,Timid
@@ -320,7 +320,7 @@ froakie,Timid,,,Timid / Hasty
 bunnelby,Jolly,Adamant,,Adamant
 fletchling,Jolly,Jolly,,Jolly
 scatterbug,Timid,,,Timid
-litleo,,,,Timid
+litleo,Timid,,,Timid
 flabebe,Calm,,,Timid
 skiddo,Adamant,,,Careful
 pancham,Adamant,Adamant,,Adamant
