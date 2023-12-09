@@ -4,6 +4,7 @@ module Apripsql.Queries
   ( GetPokemonResult (..),
     getPokemon,
     DBPokemon (..),
+    getPokemonWithSameNdex,
 
     -- * Evolution families and crossbreeding info
     getBaseForm,
@@ -27,6 +28,8 @@ module Apripsql.Queries
 where
 
 import Control.Monad (forM)
+import Data.List.NonEmpty (NonEmpty (..))
+import qualified Data.List.NonEmpty as NE
 import Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -115,7 +118,7 @@ makeName name form = case form of
 -- name.
 data GetPokemonResult
   = NoneFound
-  | NoneFoundButSuggesting [Text] -- Suggestions for uniqueNames
+  | NoneFoundButSuggesting (NonEmpty Text) -- Suggestions for uniqueNames
   | FoundOne DBPokemon
   deriving (Eq, Ord, Show)
 
@@ -144,10 +147,30 @@ getPokemon name conn = do
   case results of
     [] -> pure NoneFound
     [x] -> pure $ FoundOne x
-    xs -> case filter (\ps -> dbUniqueName ps == hyphenatedName) xs of
-      [] -> pure $ NoneFoundButSuggesting (map dbUniqueName xs)
+    xs@(h : t) -> case filter (\ps -> dbUniqueName ps == hyphenatedName) xs of
+      [] -> pure $ NoneFoundButSuggesting (NE.map dbUniqueName (h :| t))
       [x] -> pure $ FoundOne x
       _ -> error "getPokemonIdsAndDetails: multiple results returned"
+
+-- * Get the first form of any Pokemon with the same National Dex number
+
+getPokemonWithSameNdex :: Text -> Connection -> IO GetPokemonResult
+getPokemonWithSameNdex name conn = do
+  results <- getPokemon name conn
+  case results of
+    NoneFound -> pure NoneFound
+    FoundOne x -> pure $ FoundOne x
+    NoneFoundButSuggesting uniqueNames -> do
+      (nDexes :: [Int]) <-
+        map fromOnly
+          <$> query
+            conn
+            [sql|SELECT ndex FROM pokemon WHERE unique_name IN ?;|]
+            (Only $ In $ NE.toList uniqueNames)
+      if all ((T.toLower name <> "-") `T.isPrefixOf`) uniqueNames
+        && all (== head nDexes) nDexes
+        then getPokemon (NE.head uniqueNames) conn
+        else pure $ NoneFoundButSuggesting uniqueNames
 
 -- * Evolution families and crossbreeding info
 
