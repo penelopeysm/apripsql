@@ -17,7 +17,8 @@ import Utils (fromIdCsvWithoutId, toCsv)
 
 tmMoveNames :: [Text]
 tmMoveNames =
-  [ "Roar",
+  [ -- DLC1
+    "Roar",
     "Charge",
     "Haze",
     "Toxic",
@@ -46,7 +47,36 @@ tmMoveNames =
     "Poltergeist",
     "Lash Out",
     "Scale Shot",
-    "Misty Explosion"
+    "Misty Explosion",
+    -- DLC2 (Not all of this is in Serebii even)
+    "Pain Split",
+    "Psych Up",
+    "Double-Edge",
+    "Endeavor",
+    "Petal Blizzard",
+    "Temper Flare",
+    "Whirlpool",
+    "Muddy Water",
+    "Supercell Slam",
+    "Electroweb",
+    "Triple Axel",
+    "Coaching",
+    "Sludge Wave",
+    "Scorching Sands",
+    "Feather Dance",
+    "Future Sight",
+    "Expanding Force",
+    "Skitter Smack",
+    "Meteor Beam",
+    "Throat Chop",
+    "Breaking Swipe",
+    "Metal Sound",
+    "Curse",
+    "Hard Press",
+    "Dragon Cheer",
+    "Alluring Voice",
+    "Psychic Noise",
+    "Upper Hand"
   ]
 
 patchMonList :: Text -> [Text] -> [Text] -> [Text]
@@ -112,7 +142,9 @@ getSupplementaryLearnsetFor allUniqueNames moveName = do
   tags <- fetchTags (T.unpack url)
   mons <- scrapeT (serebiiTmScraper allUniqueNames moveName) tags
   case mons of
-    Nothing -> error $ "Failed to scrape " <> T.unpack url
+    Nothing -> do
+      T.putStrLn $ "Failed to scrape " <> url <> ". Assuming empty learnset."
+      pure []
     Just ms -> pure $ map (\nm -> LearnsetEntry nm SV (LearnedMove moveName WLTM)) ms
 
 setupSupplementaryLearnsets :: IO ()
