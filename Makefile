@@ -44,7 +44,10 @@ csv/learnsets-raw.csv: src/Setup/RawLearnset.hs
 csv/learnsets-suppl.csv: src/Setup/SupplementaryLearnset.hs csv/pokemon.csv
 	cabal run apripsql -- --command learnsets-suppl
 
-csv/learnsets.csv: src/Setup/Learnset.hs csv/learnsets-raw.csv csv/moves.csv csv/learn-methods.csv csv/pokemon.csv csv/games.csv csv/learnsets-suppl.csv
+static/learnsets-dlc2.csv: static/dlc2_serebii.py
+	python static/dlc2_serebii.py
+
+csv/learnsets.csv: src/Setup/Learnset.hs csv/learnsets-raw.csv csv/moves.csv csv/learn-methods.csv csv/pokemon.csv csv/games.csv csv/learnsets-suppl.csv static/learnsets-dlc2.csv
 	cabal run apripsql -- --command learnsets
 
 csv/natures.csv: src/Setup/Nature.hs csv/pokemon.csv static/natures-raw.csv

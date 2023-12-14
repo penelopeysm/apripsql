@@ -68,8 +68,9 @@ setupLearnsets :: IO ()
 setupLearnsets = do
   rawLearnsets <- fromCsv "csv/learnsets-raw.csv"
   supplLearnsets <- fromCsv "csv/learnsets-suppl.csv"
+  svdlc2Learnsets <- fromCsv "static/learnsets-dlc2.csv"
   gameMap <- makeMapFromWithIds <$> fromCsv "csv/games.csv"
   pokemonMap <- M.mapKeys Setup.Pokemon.uniqueName . makeMapFromWithIds <$> fromCsv "csv/pokemon.csv"
   moveMap <- M.mapKeys Setup.Move.name . makeMapFromWithIds <$> fromCsv "csv/moves.csv"
-  let finalEntries = map (makeLearnsetEntryFinal pokemonMap moveMap gameMap) (rawLearnsets ++ supplLearnsets)
+  let finalEntries = map (makeLearnsetEntryFinal pokemonMap moveMap gameMap) (rawLearnsets ++ supplLearnsets ++ svdlc2Learnsets)
   toCsv "csv/learnsets.csv" (sort finalEntries)

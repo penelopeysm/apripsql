@@ -119,40 +119,29 @@ getMoveFlavorText url = do
 patch :: [Move] -> IO [Move]
 patch moves = do
   let tealMaskMoves =
-        [ Move
-            "Syrup Bomb"
-            Grass
-            Special
-            "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns."
-            (Just 60)
-            (Just 85)
-            (Just 10),
-          Move
-            "Ivy Cudgel"
-            Grass
-            Physical
-            "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit."
-            (Just 100)
-            (Just 100)
-            (Just 10),
-          Move
-            "Matcha Gotcha"
-            Grass
-            Special
-            "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn."
-            (Just 80)
-            (Just 90)
-            (Just 15),
-          Move
-            "Blood Moon"
-            Normal
-            Special
-            "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row."
-            (Just 140)
-            (Just 100)
-            (Just 5)
+        [ Move "Syrup Bomb" Grass Special "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns." (Just 60) (Just 85) (Just 10),
+          Move "Ivy Cudgel" Grass Physical "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit." (Just 100) (Just 100) (Just 10),
+          Move "Matcha Gotcha" Grass Special "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn." (Just 80) (Just 90) (Just 15),
+          Move "Blood Moon" Normal Special "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row." (Just 140) (Just 100) (Just 5)
         ]
-  pure $ sort $ moves <> tealMaskMoves
+      indigoDiskMoves =
+        [ Move "Electro Shot" Electric Special "TBD" (Just 130) (Just 100) (Just 10),
+          Move "Thunderclap" Electric Special "This move enables the user to attack first with a jolt of electricity. This move fails if the target is not readying an attack." (Just 70) (Just 100) (Just 5),
+          Move "Tachyon Cutter" Steel Special "The user attacks by launching particle blades at the target twice in a row. This attack never misses." (Just 50) Nothing (Just 10),
+          Move "Psychic Noise" Psychic Special "The user attacks the target with unpleasant sound waves. For two turns, the target is prevented from recovering HP through moves, Abilities, or held items." (Just 75) (Just 100) (Just 10),
+          Move "Upper Hand" Fighting Physical "The user reacts to the target's movement and strikes with the heel of its palm, making the target flinch. This move fails if the target is not readying a priority move." (Just 65) (Just 100) (Just 15),
+          Move "Malignant Chain" Poison Special "The user pours toxins into the target by wrapping them in a toxic, corrosive chain. This may also leave the target badly poisoned." (Just 100) (Just 100) (Just 5),
+          Move "Temper Flare" Fire Physical "Spurred by desperation, the user attacks the target. This move's power is doubled if the user's previous move failed." (Just 75) (Just 100) (Just 10),
+          Move "Alluring Voice" Fairy Special "The user attacks the target using its angelic voice. This also confuses the target if its stats have been boosted during the turn." (Just 80) (Just 100) (Just 10),
+          Move "Dragon Cheer" Dragon Status "The user raises its allies’ morale with a draconic cry so that their future attacks have a heightened chance of landing critical hits. This rouses Dragon types more." Nothing Nothing (Just 15),
+          Move "Mighty Cleave" Rock Physical "The user wields the light that has accumulated atop its head to cleave the target. This move hits even if the target protects itself." (Just 95) (Just 100) (Just 5),
+          Move "Burning Bulwark" Fire Status "The user’s intensely hot fur protects it from attacks and also burns any attacker that makes direct contact with it." Nothing Nothing (Just 10),
+          Move "Fickle Beam" Dragon Special "The user shoots a beam of light to inflict damage. Sometimes all the user's heads shoot beams in unison, doubling the move's power." (Just 80) (Just 100) (Just 5),
+          Move "Tera Starstorm" Normal Special "With the power of its crystals, the user bombards and eliminates the target. When used by Terapagos in its Stellar Form, this move damages all opposing Pokémon." (Just 120) (Just 100) (Just 5),
+          Move "Supercell Slam" Electric Physical "The user electrifies its body and drops onto the target to inflict damage. If this move misses, the user takes damage instead." (Just 100) (Just 95) (Just 15),
+          Move "Hard Press" Steel Physical "The target is crushed with an arm, a claw, or the like to inflict damage. The more HP the target has left, the greater the move's power." (Just 1) (Just 100) (Just 10)
+        ]
+  pure $ sort $ moves <> tealMaskMoves <> indigoDiskMoves
 
 setupRawMoves :: IO ()
 setupRawMoves = getAllMoves >>= patch >>= toCsv "csv/moves-raw.csv"
