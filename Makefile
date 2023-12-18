@@ -2,7 +2,7 @@
 
 all: database
 
-database: src/Setup/Database.hs csv/learnsets.csv csv/natures.csv csv/legalities.csv csv/evolutions.csv
+database: src/Setup/Database.hs csv/learnsets.csv csv/natures.csv csv/legalities.csv csv/evolutions.csv csv/aliases.csv
 	cabal run apripsql -- --command database
 
 csv/egg-groups.csv: src/Setup/EggGroup.hs
@@ -31,6 +31,9 @@ csv/pokemon-raw.csv: src/Setup/RawPokemon.hs
 
 csv/pokemon.csv: src/Setup/Pokemon.hs csv/pokemon-raw.csv csv/egg-groups.csv csv/types.csv csv/gender-ratios.csv csv/abilities.csv
 	cabal run apripsql -- --command pokemon
+
+csv/aliases.csv: src/Setup/Alias.hs csv/pokemon.csv
+	cabal run apripsql -- --command aliases
 
 csv/moves-raw.csv: src/Setup/RawMove.hs
 	cabal run apripsql -- --command moves-raw

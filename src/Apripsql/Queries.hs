@@ -120,7 +120,21 @@ data GetPokemonResult
   = NoneFound
   | NoneFoundButSuggesting (NonEmpty Text) -- Suggestions for uniqueNames
   | FoundOne DBPokemon
+  | AliasedToAndSuggesting DBPokemon (NonEmpty Text)
   deriving (Eq, Ord, Show)
+
+_getPokemonAsId :: Int -> Connection -> IO DBPokemon
+_getPokemonAsId id' conn = do
+  [x] <-
+    query
+      conn
+      [sql|SELECT id, name, form, unique_name, ndex, galar_dex, ioa_dex, ct_dex, paldea_dex,
+                  tm_dex, type1_id, type2_id, hp, atk, def, spa, spd, spe, eg1_id, eg2_id,
+                  gr_id, ability1_id, ability2_id, ha_id, egg_cycles
+             FROM pokemon
+             WHERE id = ?;|]
+      (Only id')
+  pure x
 
 -- | Get a Pokemon's ID and details from its name.
 getPokemon :: Text -> Connection -> IO GetPokemonResult
@@ -135,22 +149,26 @@ getPokemon name conn = do
           . T.intercalate "-"
           . T.words
           $ name
-  results <-
-    query
-      conn
-      [sql|SELECT id, name, form, unique_name, ndex, galar_dex, ioa_dex, ct_dex, paldea_dex,
-                  tm_dex, type1_id, type2_id, hp, atk, def, spa, spd, spe, eg1_id, eg2_id,
-                  gr_id, ability1_id, ability2_id, ha_id, egg_cycles
-             FROM pokemon
-             WHERE unique_name ILIKE ?;|]
-      (Only $ hyphenatedName <> "%")
-  case results of
+  -- Look for results with the search string as a prefix
+  potentialIdsAndNames :: [(Int, Text)] <-
+    query conn [sql|SELECT id, unique_name FROM pokemon WHERE unique_name ILIKE ?;|] (Only $ hyphenatedName <> "%")
+  case potentialIdsAndNames of
     [] -> pure NoneFound
-    [x] -> pure $ FoundOne x
-    xs@(h : t) -> case filter (\ps -> dbUniqueName ps == hyphenatedName) xs of
-      [] -> pure $ NoneFoundButSuggesting (NE.map dbUniqueName (h :| t))
-      [x] -> pure $ FoundOne x
-      _ -> error "getPokemonIdsAndDetails: multiple results returned"
+    [(n, _)] -> FoundOne <$> _getPokemonAsId n conn
+    ns@(h : t) ->
+      -- Check for an exact match
+      case filter ((== hyphenatedName) . snd) ns of
+        [] -> do
+          -- No exact match, check for an alias
+          aliasedId <- query conn [sql|SELECT pokemon_id FROM aliases WHERE alias ILIKE ?;|] (Only hyphenatedName)
+          case map fromOnly aliasedId of
+            [] -> pure $ NoneFoundButSuggesting (NE.map snd (h :| t))
+            [n] -> do
+              aliasedPokemon <- _getPokemonAsId n conn
+              pure $ AliasedToAndSuggesting aliasedPokemon (NE.map snd (h :| t))
+            _ -> error $ "getPokemon: multiple aliases found for " <> T.unpack hyphenatedName
+        [(n, _)] -> FoundOne <$> _getPokemonAsId n conn
+        _ -> error $ "getPokemon: multiple entries in pokemon table found for unique_name " <> T.unpack hyphenatedName
 
 -- * Get the first form of any Pokemon with the same National Dex number
 

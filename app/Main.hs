@@ -11,6 +11,7 @@ import Data.Text.Encoding (encodeUtf8)
 import Database.PostgreSQL.Simple
 import Options.Applicative
 import Setup.Ability (setupAbilities)
+import Setup.Alias (setupAliases)
 import Setup.Database (setupDatabase)
 import Setup.EggGroup (setupEggGroups)
 import Setup.Evolution (setupEvolutions)
@@ -46,6 +47,7 @@ commands :: Map String (IO ())
 commands =
   M.fromList
     [ ("abilities", setupAbilities),
+      ("aliases", setupAliases),
       ("egg-groups", setupEggGroups),
       ("games", setupGames),
       ("gender-ratios", setupGenderRatios),

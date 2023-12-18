@@ -96,7 +96,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 220,Adamant,Adamant,Adamant,Adamant
 222,Brave,Adamant / Brave,Adamant / Brave,Adamant
 224,,,Jolly,Jolly
-227,,,Jolly,Jolly
+227,Jolly,,Jolly,Jolly
 228,,,Modest,Modest
 230,,,Timid,Timid
 232,Careful,,,
@@ -240,7 +240,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 538,Modest,Timid,Timid,Timid
 551,,,,Relaxed
 558,,,,Timid
-561,,,,Jolly
+561,Brave,,,Jolly
 564,,,,Timid
 568,,,,Adamant / Jolly
 570,Jolly,Adamant,,Adamant / Jolly
@@ -351,7 +351,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 819,Adamant,Timid,,Timid
 823,Careful/Impish,Careful,,Jolly
 826,Modest,Modest / Bold,,Modest
-829,,,,Rash / Naive
+829,Adamant,,,Rash / Naive
 832,Brave,,,Adamant
 834,Quiet,Modest,,Modest
 837,Adamant,,,Adamant

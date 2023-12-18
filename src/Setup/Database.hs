@@ -15,6 +15,7 @@ emptyDatabase :: Connection -> IO ()
 emptyDatabase conn = do
   let allTables =
         [ "abilities" :: Text,
+          "aliases",
           "egg_groups",
           "evolutions",
           "games",
@@ -158,6 +159,15 @@ setupDatabase conn = do
         ability2_id INTEGER REFERENCES abilities(id),
         ha_id INTEGER REFERENCES abilities(id),
         egg_cycles INTEGER NOT NULL
+      )|]
+      conn
+    setupTable
+      "csv/aliases.csv"
+      "aliases"
+      [sql|
+      CREATE TABLE ? (
+        alias TEXT NOT NULL PRIMARY KEY,
+        pokemon_id INTEGER NOT NULL REFERENCES pokemon(id)
       )|]
       conn
     setupTable

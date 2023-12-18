@@ -40,6 +40,7 @@ library
     import:           common-deps
     exposed-modules:  Apripsql.Queries,
                       Setup.Ability,
+                      Setup.Alias,
                       Setup.Database,
                       Setup.EggGroup,
                       Setup.Evolution,

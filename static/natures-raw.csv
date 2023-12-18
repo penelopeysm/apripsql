@@ -240,7 +240,7 @@ rotom-fan,Modest,Timid,Timid,Bold
 rotom-mow,Modest,Timid,Timid,Timid
 phione,,,,Relaxed
 snivy,,,,Timid
-tepig,,,,Jolly
+tepig,Brave,,,Jolly
 oshawott,,,,Timid
 patrat,,,,Adamant / Jolly
 lillipup,Jolly,Adamant,,Adamant / Jolly
@@ -351,7 +351,7 @@ noibat,Timid,Timid,,Timid
 rowlet,Adamant,Timid,,Timid
 litten,Careful/Impish,Careful,,Jolly
 popplio,Modest,Modest / Bold,,Modest
-pikipek,,,,Rash / Naive
+pikipek,Adamant,,,Rash / Naive
 yungoos,Brave,,,Adamant
 grubbin,Quiet,Modest,,Modest
 crabrawler,Adamant,,,Adamant

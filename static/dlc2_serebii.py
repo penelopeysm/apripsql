@@ -281,7 +281,7 @@ trapinch vibrava flygon
 pikipek trumbeak toucannon
 tentacool tentacruel
 horsea seadra kingdra
-cottonnee whimsicott
+cottonee whimsicott
 comfey
 oddish gloom vileplume bellossom
 chinchou lanturn
