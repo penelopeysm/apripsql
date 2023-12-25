@@ -32,7 +32,7 @@ csv/pokemon-raw.csv: src/Setup/RawPokemon.hs
 csv/pokemon.csv: src/Setup/Pokemon.hs csv/pokemon-raw.csv csv/egg-groups.csv csv/types.csv csv/gender-ratios.csv csv/abilities.csv
 	cabal run apripsql -- --command pokemon
 
-csv/aliases.csv: src/Setup/Alias.hs csv/pokemon.csv
+csv/aliases.csv: src/Setup/Alias.hs csv/pokemon.csv static/aliases.csv
 	cabal run apripsql -- --command aliases
 
 csv/moves-raw.csv: src/Setup/RawMove.hs

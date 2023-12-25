@@ -178,6 +178,7 @@ getPokemonWithSameNdex name conn = do
   case results of
     NoneFound -> pure NoneFound
     FoundOne x -> pure $ FoundOne x
+    AliasedToAndSuggesting x _ -> pure $ FoundOne x
     NoneFoundButSuggesting uniqueNames -> do
       (nDexes :: [Int]) <-
         map fromOnly
