@@ -145,6 +145,7 @@ getPokemon name conn = do
           . T.replace "mr.-mime" "mr-mime"
           . T.replace "mime-jr." "mime-jr"
           . T.replace "mr.-rime" "mr-rime"
+          . T.replace "flabébé" "flabebe"
           . T.toLower
           . T.intercalate "-"
           . T.words
