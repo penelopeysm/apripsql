@@ -170,134 +170,138 @@ id,name,flavor_text
 169,Plus,Boosts the Sp. Atk stat of the Pokémon if an ally with the Plus or Minus Ability is also in battle.
 170,Poison Heal,"If poisoned, the Pokémon has its HP restored instead of taking damage."
 171,Poison Point,Contact with the Pokémon may poison the attacker.
-172,Poison Touch,May poison a target when the Pokémon makes contact.
-173,Power Construct,"Cells gather to aid the Pokémon when its HP drops to half or less, causing it to change into its Complete Forme."
-174,Power Spot,Just being next to the Pokémon powers up moves.
-175,Power of Alchemy,The Pokémon copies the Ability of a defeated ally.
-176,Prankster,Gives priority to the Pokémon’s status moves.
-177,Pressure,"Puts other Pokémon under pressure, causing them to expend more PP to use their moves."
-178,Primordial Sea,The Pokémon changes the weather to nullify Fire-type attacks.
-179,Prism Armor,Reduces the power of supereffective attacks that hit the Pokémon.
-180,Propeller Tail,Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.
-181,Protean,Changes the Pokémon’s type to the type of the move it’s about to use. This works only once each time the Pokémon enters battle.
-182,Protosynthesis,Boosts the Pokémon’s most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.
-183,Psychic Surge,Turns the ground into Psychic Terrain when the Pokémon enters a battle.
-184,Punk Rock,Boosts the power of sound-based moves. The Pokémon also takes half the damage from these kinds of moves.
-185,Pure Power,"Using its pure power, the Pokémon doubles its Attack stat."
-186,Purifying Salt,The Pokémon’s pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.
-187,Quark Drive,Boosts the Pokémon’s most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.
-188,Queenly Majesty,The Pokémon’s majesty pressures opponents and makes them unable to use priority moves against the Pokémon or its allies.
-189,Quick Draw,Enables the Pokémon to move first occasionally.
-190,Quick Feet,Boosts the Speed stat if the Pokémon has a status condition.
-191,RKS System,Changes the Pokémon’s type to match the memory disc it holds.
-192,Rain Dish,The Pokémon gradually regains HP in rain.
-193,Rattled,"The Pokémon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat."
-194,Receiver,The Pokémon copies the Ability of a defeated ally.
-195,Reckless,Powers up moves that have recoil damage.
-196,Refrigerate,Normal-type moves become Ice-type moves. The power of those moves is boosted a little.
-197,Regenerator,The Pokémon has a little of its HP restored when withdrawn from battle.
-198,Ripen,Ripens Berries and doubles their effect.
-199,Rivalry,"The Pokémon’s competitive spirit makes it deal more damage to Pokémon of the same gender, but less damage to Pokémon of the opposite gender."
-200,Rock Head,Protects the Pokémon from recoil damage.
-201,Rocky Payload,Powers up Rock-type moves.
-202,Rough Skin,The Pokémon’s rough skin damages attackers that make direct contact with it.
-203,Run Away,Enables a sure getaway from wild Pokémon.
-204,Sand Force,"Boosts the power of Rock-, Ground-, and Steel-type moves in a sandstorm."
-205,Sand Rush,Boosts the Pokémon’s Speed stat in a sandstorm.
-206,Sand Spit,The Pokémon creates a sandstorm when it’s hit by an attack.
-207,Sand Stream,The Pokémon summons a sandstorm when it enters a battle.
-208,Sand Veil,Boosts the Pokémon’s evasiveness in a sandstorm.
-209,Sap Sipper,"The Pokémon takes no damage when hit by Grass-type moves. Instead, its Attack stat is boosted."
-210,Schooling,"When it has a lot of HP, the Pokémon forms a powerful school. It stops schooling when its HP is low."
-211,Scrappy,The Pokémon can hit Ghost-type Pokémon with Normal- and Fighting-type moves. It is also unaffected by Intimidate.
-212,Screen Cleaner,"When the Pokémon enters a battle, the effects of Light Screen, Reflect, and Aurora Veil are nullified for both opposing and ally Pokémon."
-213,Seed Sower,Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.
-214,Serene Grace,Raises the likelihood of additional effects occurring when the Pokémon uses its moves.
-215,Shadow Shield,Reduces the amount of damage the Pokémon takes while its HP is full.
-216,Shadow Tag,The Pokémon steps on the opposing Pokémon’s shadows to prevent them from fleeing or switching out.
-217,Sharpness,Powers up slicing moves.
-218,Shed Skin,The Pokémon may cure its own status conditions by shedding its skin.
-219,Sheer Force,"Removes any additional effects from the Pokémon’s moves, but increases the moves’ power."
-220,Shell Armor,A hard shell protects the Pokémon from critical hits.
-221,Shield Dust,Protective dust shields the Pokémon from the additional effects of moves.
-222,Shields Down,"When its HP drops to half or less, the Pokémon’s shell breaks and it becomes aggressive."
-223,Simple,Doubles the effects of the Pokémon’s stat changes.
-224,Skill Link,Maximizes the number of times multistrike moves hit.
-225,Slow Start,"For five turns, the Pokémon’s Attack and Speed stats are halved."
-226,Slush Rush,Boosts the Pokémon’s Speed stat in snow.
-227,Sniper,"If the Pokémon’s attack lands a critical hit, the attack is powered up even further."
-228,Snow Cloak,Boosts the Pokémon’s evasiveness in snow.
-229,Snow Warning,The Pokémon makes it snow when it enters a battle.
-230,Solar Power,"In harsh sunlight, the Pokémon’s Sp. Atk stat is boosted, but its HP decreases every turn."
-231,Solid Rock,Reduces the power of supereffective attacks that hit the Pokémon.
-232,Soul-Heart,Boosts the Pokémon’s Sp. Atk stat every time another Pokémon faints.
-233,Soundproof,Soundproofing gives the Pokémon full immunity to all sound-based moves.
-234,Speed Boost,The Pokémon’s Speed stat is boosted every turn.
-235,Stakeout,Doubles the damage dealt to a target that has just switched into battle.
-236,Stall,The Pokémon is always the last to use its moves.
-237,Stalwart,Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.
-238,Stamina,Boosts the Defense stat when the Pokémon is hit by an attack.
-239,Stance Change,The Pokémon changes its form to Blade Forme when it uses an attack move and changes to Shield Forme when it uses King’s Shield.
-240,Static,The Pokémon is charged with static electricity and may paralyze attackers that make direct contact with it.
-241,Steadfast,The Pokémon’s determination boosts its Speed stat every time it flinches.
-242,Steam Engine,Boosts the Speed stat drastically when the Pokémon is hit by a Fire- or Water-type move.
-243,Steelworker,Powers up Steel-type moves.
-244,Steely Spirit,Powers up the Steel-type moves of the Pokémon and its allies.
-245,Stench,"By releasing a stench when attacking, the Pokémon may cause the target to flinch."
-246,Sticky Hold,The Pokémon’s held items cling to its sticky body and cannot be removed by other Pokémon.
-247,Storm Drain,"The Pokémon draws in all Water-type moves. Instead of taking damage from them, its Sp. Atk stat is boosted."
-248,Strong Jaw,The Pokémon’s strong jaw boosts the power of its biting moves.
-249,Sturdy,The Pokémon cannot be knocked out by a single hit as long as its HP is full. One-hit KO moves will also fail to knock it out.
-250,Suction Cups,The Pokémon uses suction cups to stay in one spot. This protects it from moves and items that would force it to switch out.
-251,Super Luck,The Pokémon is so lucky that the critical-hit ratios of its moves are boosted.
-252,Supersweet Syrup,"A sickly sweet scent spreads across the field the first time the Pokémon enters a battle, lowering the evasiveness of opposing Pokémon."
-253,Supreme Overlord,"When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated."
-254,Surge Surfer,Doubles the Pokémon’s Speed stat on Electric Terrain.
-255,Swarm,Powers up Bug-type moves when the Pokémon’s HP is low.
-256,Sweet Veil,Prevents the Pokémon and its allies from falling asleep.
-257,Swift Swim,Boosts the Pokémon’s Speed stat in rain.
-258,Sword of Ruin,The power of the Pokémon’s ruinous sword lowers the Defense stats of all Pokémon except itself.
-259,Symbiosis,The Pokémon passes its held item to an ally that has used up an item.
-260,Synchronize,"If the Pokémon is burned, paralyzed, or poisoned by another Pokémon, that Pokémon will be inflicted with the same status condition."
-261,Tablets of Ruin,The power of the Pokémon’s ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.
-262,Tangled Feet,Boosts the Pokémon’s evasiveness if it is confused.
-263,Tangling Hair,Contact with the Pokémon lowers the attacker’s Speed stat.
-264,Technician,Powers up weak moves so the Pokémon can deal more damage with them.
-265,Telepathy,The Pokémon anticipates and dodges the attacks of its allies.
-266,Teravolt,The Pokémon’s moves are unimpeded by the Ability of the target.
-267,Thermal Exchange,Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.
-268,Thick Fat,"The Pokémon is protected by a layer of thick fat, which halves the damage taken from Fire- and Ice-type moves."
-269,Tinted Lens,The Pokémon can use “not very effective” moves to deal regular damage.
-270,Torrent,Powers up Water-type moves when the Pokémon’s HP is low.
-271,Tough Claws,Powers up moves that make direct contact.
-272,Toxic Boost,Powers up physical moves when the Pokémon is poisoned.
-273,Toxic Chain,The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move.
-274,Toxic Debris,Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.
-275,Trace,"When it enters a battle, the Pokémon copies an opposing Pokémon’s Ability."
-276,Transistor,Powers up Electric-type moves.
-277,Triage,Gives priority to the Pokémon’s healing moves.
-278,Truant,"Each time the Pokémon uses a move, it spends the next turn loafing around."
-279,Turboblaze,The Pokémon’s moves are unimpeded by the Ability of the target.
-280,Unaware,"When attacking, the Pokémon ignores the target’s stat changes."
-281,Unburden,Boosts the Speed stat if the Pokémon’s held item is used or lost.
-282,Unnerve,Unnerves opposing Pokémon and makes them unable to eat Berries.
-283,Unseen Fist,"If the Pokémon uses moves that make direct contact, it can attack the target even if the target protects itself."
-284,Vessel of Ruin,The power of the Pokémon’s ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.
-285,Victory Star,Boosts the accuracy of the Pokémon and its allies.
-286,Vital Spirit,"The Pokémon is full of vitality, and that prevents it from falling asleep."
-287,Volt Absorb,"If hit by an Electric-type move, the Pokémon has its HP restored instead of taking damage."
-288,Wandering Spirit,The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.
-289,Water Absorb,"If hit by a Water-type move, the Pokémon has its HP restored instead of taking damage."
-290,Water Bubble,Lowers the power of Fire-type moves that hit the Pokémon and prevents it from being burned.
-291,Water Compaction,Boosts the Defense stat sharply when the Pokémon is hit by a Water-type move.
-292,Water Veil,The Pokémon’s water veil prevents it from being burned.
-293,Weak Armor,"The Pokémon’s Defense stat is lowered when it takes damage from physical moves, but its Speed stat is sharply boosted."
-294,Well-Baked Body,"The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted."
-295,White Smoke,"The Pokémon is protected by its white smoke, which prevents other Pokémon from lowering its stats."
-296,Wimp Out,The Pokémon cowardly switches out when its HP drops to half or less.
-297,Wind Power,"The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses."
-298,Wind Rider,Boosts the Pokémon’s Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.
-299,Wonder Guard,Its mysterious power only lets supereffective moves hit the Pokémon.
-300,Wonder Skin,Makes status moves more likely to miss the Pokémon.
-301,Zen Mode,Changes the Pokémon’s shape when its HP drops to half or less.
-302,Zero to Hero,The Pokémon transforms into its Hero Form when it switches out.
+172,Poison Puppeteer,Pokémon poisoned by Pecharunt's moves will also become confused.
+173,Poison Touch,May poison a target when the Pokémon makes contact.
+174,Power Construct,"Cells gather to aid the Pokémon when its HP drops to half or less, causing it to change into its Complete Forme."
+175,Power Spot,Just being next to the Pokémon powers up moves.
+176,Power of Alchemy,The Pokémon copies the Ability of a defeated ally.
+177,Prankster,Gives priority to the Pokémon’s status moves.
+178,Pressure,"Puts other Pokémon under pressure, causing them to expend more PP to use their moves."
+179,Primordial Sea,The Pokémon changes the weather to nullify Fire-type attacks.
+180,Prism Armor,Reduces the power of supereffective attacks that hit the Pokémon.
+181,Propeller Tail,Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.
+182,Protean,Changes the Pokémon’s type to the type of the move it’s about to use. This works only once each time the Pokémon enters battle.
+183,Protosynthesis,Boosts the Pokémon’s most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.
+184,Psychic Surge,Turns the ground into Psychic Terrain when the Pokémon enters a battle.
+185,Punk Rock,Boosts the power of sound-based moves. The Pokémon also takes half the damage from these kinds of moves.
+186,Pure Power,"Using its pure power, the Pokémon doubles its Attack stat."
+187,Purifying Salt,The Pokémon’s pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.
+188,Quark Drive,Boosts the Pokémon’s most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.
+189,Queenly Majesty,The Pokémon’s majesty pressures opponents and makes them unable to use priority moves against the Pokémon or its allies.
+190,Quick Draw,Enables the Pokémon to move first occasionally.
+191,Quick Feet,Boosts the Speed stat if the Pokémon has a status condition.
+192,RKS System,Changes the Pokémon’s type to match the memory disc it holds.
+193,Rain Dish,The Pokémon gradually regains HP in rain.
+194,Rattled,"The Pokémon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat."
+195,Receiver,The Pokémon copies the Ability of a defeated ally.
+196,Reckless,Powers up moves that have recoil damage.
+197,Refrigerate,Normal-type moves become Ice-type moves. The power of those moves is boosted a little.
+198,Regenerator,The Pokémon has a little of its HP restored when withdrawn from battle.
+199,Ripen,Ripens Berries and doubles their effect.
+200,Rivalry,"The Pokémon’s competitive spirit makes it deal more damage to Pokémon of the same gender, but less damage to Pokémon of the opposite gender."
+201,Rock Head,Protects the Pokémon from recoil damage.
+202,Rocky Payload,Powers up Rock-type moves.
+203,Rough Skin,The Pokémon’s rough skin damages attackers that make direct contact with it.
+204,Run Away,Enables a sure getaway from wild Pokémon.
+205,Sand Force,"Boosts the power of Rock-, Ground-, and Steel-type moves in a sandstorm."
+206,Sand Rush,Boosts the Pokémon’s Speed stat in a sandstorm.
+207,Sand Spit,The Pokémon creates a sandstorm when it’s hit by an attack.
+208,Sand Stream,The Pokémon summons a sandstorm when it enters a battle.
+209,Sand Veil,Boosts the Pokémon’s evasiveness in a sandstorm.
+210,Sap Sipper,"The Pokémon takes no damage when hit by Grass-type moves. Instead, its Attack stat is boosted."
+211,Schooling,"When it has a lot of HP, the Pokémon forms a powerful school. It stops schooling when its HP is low."
+212,Scrappy,The Pokémon can hit Ghost-type Pokémon with Normal- and Fighting-type moves. It is also unaffected by Intimidate.
+213,Screen Cleaner,"When the Pokémon enters a battle, the effects of Light Screen, Reflect, and Aurora Veil are nullified for both opposing and ally Pokémon."
+214,Seed Sower,Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.
+215,Serene Grace,Raises the likelihood of additional effects occurring when the Pokémon uses its moves.
+216,Shadow Shield,Reduces the amount of damage the Pokémon takes while its HP is full.
+217,Shadow Tag,The Pokémon steps on the opposing Pokémon’s shadows to prevent them from fleeing or switching out.
+218,Sharpness,Powers up slicing moves.
+219,Shed Skin,The Pokémon may cure its own status conditions by shedding its skin.
+220,Sheer Force,"Removes any additional effects from the Pokémon’s moves, but increases the moves’ power."
+221,Shell Armor,A hard shell protects the Pokémon from critical hits.
+222,Shield Dust,Protective dust shields the Pokémon from the additional effects of moves.
+223,Shields Down,"When its HP drops to half or less, the Pokémon’s shell breaks and it becomes aggressive."
+224,Simple,Doubles the effects of the Pokémon’s stat changes.
+225,Skill Link,Maximizes the number of times multistrike moves hit.
+226,Slow Start,"For five turns, the Pokémon’s Attack and Speed stats are halved."
+227,Slush Rush,Boosts the Pokémon’s Speed stat in snow.
+228,Sniper,"If the Pokémon’s attack lands a critical hit, the attack is powered up even further."
+229,Snow Cloak,Boosts the Pokémon’s evasiveness in snow.
+230,Snow Warning,The Pokémon makes it snow when it enters a battle.
+231,Solar Power,"In harsh sunlight, the Pokémon’s Sp. Atk stat is boosted, but its HP decreases every turn."
+232,Solid Rock,Reduces the power of supereffective attacks that hit the Pokémon.
+233,Soul-Heart,Boosts the Pokémon’s Sp. Atk stat every time another Pokémon faints.
+234,Soundproof,Soundproofing gives the Pokémon full immunity to all sound-based moves.
+235,Speed Boost,The Pokémon’s Speed stat is boosted every turn.
+236,Stakeout,Doubles the damage dealt to a target that has just switched into battle.
+237,Stall,The Pokémon is always the last to use its moves.
+238,Stalwart,Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.
+239,Stamina,Boosts the Defense stat when the Pokémon is hit by an attack.
+240,Stance Change,The Pokémon changes its form to Blade Forme when it uses an attack move and changes to Shield Forme when it uses King’s Shield.
+241,Static,The Pokémon is charged with static electricity and may paralyze attackers that make direct contact with it.
+242,Steadfast,The Pokémon’s determination boosts its Speed stat every time it flinches.
+243,Steam Engine,Boosts the Speed stat drastically when the Pokémon is hit by a Fire- or Water-type move.
+244,Steelworker,Powers up Steel-type moves.
+245,Steely Spirit,Powers up the Steel-type moves of the Pokémon and its allies.
+246,Stench,"By releasing a stench when attacking, the Pokémon may cause the target to flinch."
+247,Sticky Hold,The Pokémon’s held items cling to its sticky body and cannot be removed by other Pokémon.
+248,Storm Drain,"The Pokémon draws in all Water-type moves. Instead of taking damage from them, its Sp. Atk stat is boosted."
+249,Strong Jaw,The Pokémon’s strong jaw boosts the power of its biting moves.
+250,Sturdy,The Pokémon cannot be knocked out by a single hit as long as its HP is full. One-hit KO moves will also fail to knock it out.
+251,Suction Cups,The Pokémon uses suction cups to stay in one spot. This protects it from moves and items that would force it to switch out.
+252,Super Luck,The Pokémon is so lucky that the critical-hit ratios of its moves are boosted.
+253,Supersweet Syrup,"A sickly sweet scent spreads across the field the first time the Pokémon enters a battle, lowering the evasiveness of opposing Pokémon."
+254,Supreme Overlord,"When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated."
+255,Surge Surfer,Doubles the Pokémon’s Speed stat on Electric Terrain.
+256,Swarm,Powers up Bug-type moves when the Pokémon’s HP is low.
+257,Sweet Veil,Prevents the Pokémon and its allies from falling asleep.
+258,Swift Swim,Boosts the Pokémon’s Speed stat in rain.
+259,Sword of Ruin,The power of the Pokémon’s ruinous sword lowers the Defense stats of all Pokémon except itself.
+260,Symbiosis,The Pokémon passes its held item to an ally that has used up an item.
+261,Synchronize,"If the Pokémon is burned, paralyzed, or poisoned by another Pokémon, that Pokémon will be inflicted with the same status condition."
+262,Tablets of Ruin,The power of the Pokémon’s ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.
+263,Tangled Feet,Boosts the Pokémon’s evasiveness if it is confused.
+264,Tangling Hair,Contact with the Pokémon lowers the attacker’s Speed stat.
+265,Technician,Powers up weak moves so the Pokémon can deal more damage with them.
+266,Telepathy,The Pokémon anticipates and dodges the attacks of its allies.
+267,Tera Shell,The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.
+268,Tera Shift,"When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form."
+269,Teraform Zero,"When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero."
+270,Teravolt,The Pokémon’s moves are unimpeded by the Ability of the target.
+271,Thermal Exchange,Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.
+272,Thick Fat,"The Pokémon is protected by a layer of thick fat, which halves the damage taken from Fire- and Ice-type moves."
+273,Tinted Lens,The Pokémon can use “not very effective” moves to deal regular damage.
+274,Torrent,Powers up Water-type moves when the Pokémon’s HP is low.
+275,Tough Claws,Powers up moves that make direct contact.
+276,Toxic Boost,Powers up physical moves when the Pokémon is poisoned.
+277,Toxic Chain,The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move.
+278,Toxic Debris,Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.
+279,Trace,"When it enters a battle, the Pokémon copies an opposing Pokémon’s Ability."
+280,Transistor,Powers up Electric-type moves.
+281,Triage,Gives priority to the Pokémon’s healing moves.
+282,Truant,"Each time the Pokémon uses a move, it spends the next turn loafing around."
+283,Turboblaze,The Pokémon’s moves are unimpeded by the Ability of the target.
+284,Unaware,"When attacking, the Pokémon ignores the target’s stat changes."
+285,Unburden,Boosts the Speed stat if the Pokémon’s held item is used or lost.
+286,Unnerve,Unnerves opposing Pokémon and makes them unable to eat Berries.
+287,Unseen Fist,"If the Pokémon uses moves that make direct contact, it can attack the target even if the target protects itself."
+288,Vessel of Ruin,The power of the Pokémon’s ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.
+289,Victory Star,Boosts the accuracy of the Pokémon and its allies.
+290,Vital Spirit,"The Pokémon is full of vitality, and that prevents it from falling asleep."
+291,Volt Absorb,"If hit by an Electric-type move, the Pokémon has its HP restored instead of taking damage."
+292,Wandering Spirit,The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.
+293,Water Absorb,"If hit by a Water-type move, the Pokémon has its HP restored instead of taking damage."
+294,Water Bubble,Lowers the power of Fire-type moves that hit the Pokémon and prevents it from being burned.
+295,Water Compaction,Boosts the Defense stat sharply when the Pokémon is hit by a Water-type move.
+296,Water Veil,The Pokémon’s water veil prevents it from being burned.
+297,Weak Armor,"The Pokémon’s Defense stat is lowered when it takes damage from physical moves, but its Speed stat is sharply boosted."
+298,Well-Baked Body,"The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted."
+299,White Smoke,"The Pokémon is protected by its white smoke, which prevents other Pokémon from lowering its stats."
+300,Wimp Out,The Pokémon cowardly switches out when its HP drops to half or less.
+301,Wind Power,"The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses."
+302,Wind Rider,Boosts the Pokémon’s Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.
+303,Wonder Guard,Its mysterious power only lets supereffective moves hit the Pokémon.
+304,Wonder Skin,Makes status moves more likely to miss the Pokémon.
+305,Zen Mode,Changes the Pokémon’s shape when its HP drops to half or less.
+306,Zero to Hero,The Pokémon transforms into its Hero Form when it switches out.

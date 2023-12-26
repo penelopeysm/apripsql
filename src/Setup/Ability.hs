@@ -81,7 +81,11 @@ patch abs = sort $ abs <> tmAbilities
         Ability "Embody Aspect" "The Pokémon's heart fills with memories, causing the Mask to shine and the Pokémon's Speed stat to be boosted.",
         Ability "Hospitality" "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP.",
         Ability "Supersweet Syrup" "A sickly sweet scent spreads across the field the first time the Pokémon enters a battle, lowering the evasiveness of opposing Pokémon.",
-        Ability "Toxic Chain" "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move."
+        Ability "Toxic Chain" "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move.",
+        Ability "Tera Shift" "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form.",
+        Ability "Tera Shell" "The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.",
+        Ability "Teraform Zero" "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero.",
+        Ability "Poison Puppeteer" "Pokémon poisoned by Pecharunt's moves will also become confused."
       ]
 
 setupAbilities :: IO ()

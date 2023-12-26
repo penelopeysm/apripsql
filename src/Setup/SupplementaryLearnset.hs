@@ -97,7 +97,7 @@ getSupplementaryLearnsetFor allUniqueNames moveName = do
         -- Get the Pokemon name from the third td
         tds <- texts "td"
         guard $ length tds >= 3
-        let pkmnName = T.toLower $ T.replace " " "-" $ tds !! 2
+        let pkmnName = T.toLower . T.replace "é" "e" . T.replace " " "-" $ tds !! 2
         -- Get the form from the image. We have to parse this to match our own
         -- form names. If it fails parsing, we throw an error.
         img <- attr "src" ("td" // "a" // "img")
@@ -128,10 +128,10 @@ getSupplementaryLearnsetFor allUniqueNames moveName = do
         if uniqueName `elem` allUniqueNames
           then pure [uniqueName]
           else case filter (uniqueName `T.isPrefixOf`) allUniqueNames of
-                    [] -> error $ "Unknown Pokemon: " <> T.unpack uniqueName <> " when parsing move " <> T.unpack moveName
-                    xs -> do
-                      liftIO $ putStrLn $ "   Warning: " <> T.unpack uniqueName <> " not found, but adding " <> show xs <> " to the list"
-                      pure xs
+            [] -> error $ "Unknown Pokemon: " <> T.unpack uniqueName <> " when parsing move " <> T.unpack moveName
+            xs -> do
+              liftIO $ putStrLn $ "   Warning: " <> T.unpack uniqueName <> " not found, but adding " <> show xs <> " to the list"
+              pure xs
 
   let serebiiTmScraper :: [Text] -> Text -> ScraperT Text IO [Text]
       serebiiTmScraper allUniqueNames moveName = chroot "main" $ inSerial $ do

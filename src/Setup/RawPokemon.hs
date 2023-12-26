@@ -35,7 +35,7 @@ data Pokemon = Pokemon
     ctDex :: Maybe Int, -- Crown Tundra
     paldeaDex :: Maybe Int, -- Paldea
     tmDex :: Maybe Int, -- Teal Mask
-    -- dexSvDlc2 :: Maybe Int,  -- Enable later
+    idDex :: Maybe Int,  -- Indigo Disk
     type1 :: Type.Type,
     type2 :: Maybe Type.Type,
     hp :: Int,
@@ -132,6 +132,7 @@ getPokemon ppkmn = do
         ctDex <- readRegionalDex "The Crown Tundra"
         paldeaDex <- readRegionalDex "Scarlet/Violet"
         tmDex <- readRegionalDex "The Teal Mask"
+        idDex <- readRegionalDex "The Indigo Disk"
         -- Types
         typess <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
           heading <- text "th"
@@ -149,7 +150,6 @@ getPokemon ppkmn = do
           nas <- case pname ppkmn of
             -- PokemonDB not fixed
             "Shiftry" -> pure ["Wind Rider", "Early Bird"]
-            "Gallade" -> pure ["Steadfast", "Sharpness"]
             "Tatsugiri" | pform ppkmn `elem` [Just "Droopy Form", Just "Stretchy Form"] -> pure ["Commander"]
             _ -> texts ("span" @: [hasClass "text-muted"] // "a")
           ha <- case pname ppkmn of
@@ -214,11 +214,30 @@ getPokemon ppkmn = do
             pure $ grs !! pformNum ppkmn
         eggCycles <- case pname ppkmn of
           -- Hardcoded for things that aren't on PokemonDB (yet?)
-          s | s `elem` ["Walking Wake", "Iron Leaves"] -> pure 50
-          s | s `elem` ["Dipplin", "Poltchageist", "Sinistcha"] -> pure 20
+          s
+            | s
+                `elem` [ "Walking Wake",
+                         "Iron Leaves",
+                         "Gouging Fire",
+                         "Raging Bolt",
+                         "Iron Boulder",
+                         "Iron Crown"
+                       ] ->
+                pure 50
+          s
+            | s
+                `elem` [ "Dipplin",
+                         "Poltchageist",
+                         "Sinistcha",
+                         "Ursaluna",
+                         "Hydrapple",
+                         "Pecharunt"
+                       ] ->
+                pure 20
           s | s `elem` ["Okidogi", "Munkidori", "Fezandipiti"] -> pure 120
+          "Archaludon" -> pure 30
           "Ogerpon" -> pure 10
-          "Ursaluna" -> pure 20
+          "Terapagos" -> pure 99999
           _ -> do
             ecs <- chroots ("table" @: [hasClass "vitals-table"] // "tr") $ do
               heading <- text ("th" // "a")
@@ -239,6 +258,7 @@ getPokemon ppkmn = do
               ctDex = ctDex,
               paldeaDex = paldeaDex,
               tmDex = tmDex,
+              idDex = idDex,
               type1 = t1,
               type2 = t2,
               hp = hp,
@@ -273,6 +293,7 @@ instance Csv.ToNamedRecord Pokemon where
         "ct_dex" Csv..= ctDex,
         "paldea_dex" Csv..= paldeaDex,
         "tm_dex" Csv..= tmDex,
+        "id_dex" Csv..= idDex,
         "type1" Csv..= type1,
         "type2" Csv..= type2,
         "hp" Csv..= hp,
@@ -303,6 +324,7 @@ instance Csv.FromNamedRecord Pokemon where
       <*> m Csv..: "ct_dex"
       <*> m Csv..: "paldea_dex"
       <*> m Csv..: "tm_dex"
+      <*> m Csv..: "id_dex"
       <*> m Csv..: "type1"
       <*> m Csv..: "type2"
       <*> m Csv..: "hp"
@@ -332,6 +354,7 @@ instance Csv.DefaultOrdered Pokemon where
         "ct_dex",
         "paldea_dex",
         "tm_dex",
+        "id_dex",
         "type1",
         "type2",
         "hp",
@@ -413,8 +436,8 @@ makeUniqueName nm' fm =
             | f == "Female" -> nm <> "-female"
             | f == "Eternamax" -> nm <> "-eternamax"
             | f == "Bloodmoon" -> nm <> "-bloodmoon"
-            | f == "Family of Three" -> nm <> "-family-of-three"
-            | f == "Family of Four" -> nm <> "-family-of-four"
+            | f == "Family of Three" -> nm <> "-three"
+            | f == "Family of Four" -> nm <> "-four"
             | otherwise -> error $ "Don't know what to do with: " <> show nm <> " (" <> show f <> ")"
 
 patchPokemonPartial :: [PokemonPartial] -> IO [PokemonPartial]
@@ -437,19 +460,16 @@ patchPokemonPartial pps = do
                   ["Mega ", "Partner Pikachu", "Partner Eevee", "Ash-Greninja", "Primal ", "Eternamax"]
           )
           pps2
-  -- Add in DLC Pokemon, because these aren't available on the Pokedex site yet
+  -- Add in extra forms which aren't listed on the Pokedex page (for whatever
+  -- reason) as of 26 Dec 2023
   let tealMaskPokemon :: [PokemonPartial]
       tealMaskPokemon =
-        [ PokemonPartial "Dipplin" Nothing 0 "https://pokemondb.net/pokedex/dipplin",
-          PokemonPartial "Poltchageist" Nothing 0 "https://pokemondb.net/pokedex/poltchageist",
-          PokemonPartial "Sinistcha" Nothing 0 "https://pokemondb.net/pokedex/sinistcha",
-          PokemonPartial "Okidogi" Nothing 0 "https://pokemondb.net/pokedex/okidogi",
-          PokemonPartial "Munkidori" Nothing 0 "https://pokemondb.net/pokedex/munkidori",
-          PokemonPartial "Fezandipiti" Nothing 0 "https://pokemondb.net/pokedex/fezandipiti",
-          PokemonPartial "Ogerpon" (Just "Teal Mask") 0 "https://pokemondb.net/pokedex/ogerpon",
-          PokemonPartial "Ogerpon" (Just "Wellspring Mask") 1 "https://pokemondb.net/pokedex/ogerpon",
+        [ PokemonPartial "Ogerpon" (Just "Wellspring Mask") 1 "https://pokemondb.net/pokedex/ogerpon",
           PokemonPartial "Ogerpon" (Just "Hearthflame Mask") 2 "https://pokemondb.net/pokedex/ogerpon",
-          PokemonPartial "Ogerpon" (Just "Cornerstone Mask") 3 "https://pokemondb.net/pokedex/ogerpon"
+          PokemonPartial "Ogerpon" (Just "Cornerstone Mask") 3 "https://pokemondb.net/pokedex/ogerpon",
+          PokemonPartial "Terapagos" (Just "Terastal Form") 1 "https://pokemondb.net/pokedex/terapagos",
+          PokemonPartial "Terapagos" (Just "Stellar Form") 2 "https://pokemondb.net/pokedex/terapagos",
+          PokemonPartial "Pecharunt" Nothing 0 "https://pokemondb.net/pokedex/pecharunt"
         ]
   pure $ pps3 <> tealMaskPokemon
 
