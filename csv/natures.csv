@@ -8,7 +8,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 19,,,Jolly,Jolly
 20,,,,Jolly / Adamant
 23,,,Jolly,Jolly
-25,,,Adamant,Adamant
+25,Adamant,,Adamant,Adamant
 30,Adamant,Adamant,Adamant,Jolly
 31,Adamant,Jolly,,Jolly
 34,Timid,Modest,Modest,Timid / Modest
@@ -27,6 +27,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 66,Timid,Timid / Modest,Timid / Modest,Modest
 68,Adamant,,Jolly,Jolly
 70,Jolly/Timid,Jolly,Jolly,Jolly
+71,Adamant,,,
 74,Calm,Bold (Politoed) / Jolly / Adamant (Poliwrath),Bold (Politoed) / Jolly / Adamant (Poliwrath),Timid (Poliwrath) / Calm (Politoed)
 77,Timid,Timid,Timid,Timid
 80,Adamant,Adamant,Adamant,Adamant
@@ -42,15 +43,16 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 105,Adamant,Adamant,,
 104,Adamant,Adamant,Adamant,Adamant
 106,,,Jolly,Jolly
-108,,,Calm,Calm
-111,,,,Adamant
+108,Calm,,Calm,Calm
+111,Impish,,,Adamant
 110,,,Careful,Careful
 114,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
 116,Timid,Timid,Timid,Timid
 119,Brave,Impish,Impish,Brave / Impish
 120,Calm,,Jolly,Jolly
 122,Adamant,Jolly,Jolly,Adamant / Jolly
-124,,,Jolly / Timid,Jolly / Timid
+124,Timid,,Jolly / Timid,Jolly / Timid
+125,Timid,,,
 128,Quiet,Modest / Timid / Quiet (Kanto) / Modest (Alola),Modest / Timid / Quiet ,Quiet (K) / Modest (A)
 131,Adamant,Adamant,Adamant,Brave (K) / Adamant (A)
 136,Impish,Careful,Careful,Calm
@@ -79,13 +81,13 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 175,Jolly,Jolly,Jolly,Jolly
 176,Sassy,Adamant / Careful,Adamant / Careful,Careful
 183,Adamant,Jolly / Adamant,Jolly / Adamant,Jolly
-188,,,Calm,Calm
-191,,,Timid,Timid
-195,,,Jolly / Adamant,Jolly / Adamant
+188,Bold,,Calm,Calm
+191,Timid,,Timid,Timid
+195,Jolly,,Jolly / Adamant,Jolly / Adamant
 198,Jolly,,Jolly,Jolly
 200,Modest,Modest,Modest,Modest
 202,,,Jolly,Jolly
-204,,,Jolly,Jolly
+204,Sassy,,Jolly,Jolly
 207,Calm,Modest,Modest,Modest
 209,Timid,Timid,Timid,Timid
 210,Calm,Bold / Timid,Bold / Timid,Bold
@@ -110,11 +112,12 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 246,Jolly,,Jolly,Jolly
 248,Impish,,Adamant,Adamant
 250,Adamant,Jolly,Jolly,Timid / Jolly
+251,Adamant,,,
 253,Relaxed,Bold,Bold,Calm
 254,Adamant,Jolly,Jolly,Adamant / Jolly
 255,Jolly,Jolly,Jolly,Jolly
-257,,,Brave,Brave
-259,,,Calm,Calm
+257,Brave,,Brave,Brave
+259,Bold,,Calm,Calm
 261,Adamant/Jolly,Adamant / Jolly,Adamant / Jolly,Adamant / Jolly
 264,Quiet,Timid / Modest,,
 263,Bold,Bold,Bold,Bold
@@ -125,7 +128,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 270,,,Timid,Timid
 273,Adamant,,Adamant,Adamant
 276,Modest,,Jolly,Lonely / Hasty
-277,,,Jolly,Jolly
+277,Jolly,,Jolly,Jolly
 278,Adamant/Careful,Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful / Adamant / Jolly (chan) / Adamant (lee) / Impish (top),Careful (C) / Adamant (L) / Impish (T)
 280,Timid,Timid,Timid,Timid
 281,Adamant,Adamant / Jolly,Adamant / Jolly,Naive / Modest / Jolly
@@ -145,11 +148,11 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 322,Modest/Timid,Bold / Modest,Bold / Modest,Bold
 324,Timid/Adamant,Timid (Gardevoir) / Jolly (Gallade),Timid (Gardevoir) / Jolly (Gallade),Timid (V) / Jolly (L)
 327,,,Timid,Timid
-329,,,Careful,Careful
-331,,,Naive,Naive
+329,Jolly,,Careful,Careful
+331,Adamant,,Naive,Naive
 334,Adamant,Adamant (Ninjask) / Adamant / Jolly (Shedinja),Adamant (Ninjask) / Adamant / Jolly (Shedinja),Jolly (N) / Adamant (S)
 337,Modest,Timid / Modest,Timid / Modest,Timid
-340,,,Adamant,Adamant
+340,Brave,,Adamant,Adamant
 343,Calm,,Modest,Modest
 344,Jolly,,Jolly,Jolly
 346,Careful,Careful,Careful,Careful
@@ -162,7 +165,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 357,Timid,,Relaxed,Relaxed
 358,Timid,,Relaxed,Relaxed
 359,Timid,Timid,Timid,Timid
-360,,,Quiet,Quiet
+360,Brave,,Quiet,Quiet
 362,Adamant,Adamant / Jolly,Adamant / Jolly,Adamant / Jolly
 364,Modest,Calm,Calm,Calm
 366,,,Calm,Calm
@@ -197,10 +200,10 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 417,Timid,,Modest / Timid,Modest / Timid
 418,Jolly,Timid / Jolly / Naive / Impish,Timid / Jolly / Naive / Impish,Adamant / Jolly
 421,Adamant,Adamant / Jolly,Adamant / Jolly,Jolly / Adamant
-437,,,Impish,Impish
+437,Adamant,,Impish,Impish
 440,Jolly,,Jolly,Jolly
 443,Modest,,Calm,Calm
-446,,,Jolly,Jolly
+446,Jolly,,Jolly,Jolly
 449,,,Adamant,Adamant
 451,Adamant,,Jolly,Jolly
 453,Jolly,Jolly / Adamant,Jolly / Adamant,Jolly
@@ -239,9 +242,9 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 537,Modest,Timid,Timid,Bold
 538,Modest,Timid,Timid,Timid
 551,,,,Relaxed
-558,,,,Timid
-561,Brave,,,Jolly
-564,,,,Timid
+558,Timid,,,Timid
+561,Adamant,,,Jolly
+564,Jolly,,,Timid
 568,,,,Adamant / Jolly
 570,Jolly,Adamant,,Adamant / Jolly
 573,Jolly,Jolly / Adamant,,Jolly
@@ -250,7 +253,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 579,,,,Timid
 581,Relaxed,Bold / Modest,,Modest
 583,Adamant,Jolly,,Adamant
-586,,,,Timid
+586,Jolly,,,Timid
 588,Brave,Careful,,Careful
 591,Timid,Timid,,Timid
 593,Adamant,Jolly,,Jolly
@@ -290,7 +293,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 662,Brave,Careful,,Adamant
 664,Relaxed/Sassy,Bold,,Calm / Modest
 666,Calm,Bold,,Bold
-668,,,,Impish
+668,Bold,,,Impish
 669,Timid,Timid,,Timid
 671,Relaxed,Careful / Sassy,,Careful / Sassy
 673,Jolly,Jolly,,Adamant
@@ -315,7 +318,7 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 709,Modest,Timid,,Modest
 712,Timid,Timid,,Timid / Modest
 733,Impish,,,Impish
-736,,,,Timid
+736,Timid,,,Timid
 739,Timid,,,Timid / Hasty
 742,Jolly,Adamant,,Adamant
 744,Jolly,Jolly,,Jolly
@@ -378,13 +381,13 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 872,Adamant,Adamant,,Adamant
 874,Quiet,Bold,,Bold
 876,Calm,Bold,,Bold
-879,,,,Naughty / Adamant
-880,,,,Naughty / Adamant
+879,Adamant,,,Naughty / Adamant
+880,Adamant,,,Naughty / Adamant
 881,Adamant,,,Adamant
 882,Quiet,Calm,,Timid
 883,Jolly,Jolly,,Jolly
 884,Jolly,Jolly / Adamant,,Adamant / Jolly
-885,Jolly,,,Jolly / Adamant
+885,Adamant,,,Jolly / Adamant
 886,Modest,Bold / Modest,,Modest
 887,Brave,Adamant,,Adamant
 888,Bold/Modest,Bold / Impish / Naive / Jolly / Timid,,Hasty / Jolly
@@ -467,3 +470,4 @@ pokemon_id,penny,jemma_swsh,jemma_bdsp,jemma_g7
 1105,Modest,,,
 1107,Modest,,,
 1126,Adamant,,,
+1143,Bold,,,
