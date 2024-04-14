@@ -97,7 +97,7 @@ linearScraper :: SerialScraperT Text IO EvolutionTree
 linearScraper = do
   prevo <- seekNext $ getPkmnFromInfocard ("div" @: [hasClass "infocard"])
   method <- seekNext $ getEvoMethod ("span" @: [hasClass "infocard-arrow"])
-  evo <- branchedScraper <|> linearScraper <|> leafScraper
+  evo <- linearScraper <|> branchedScraper <|> leafScraper
   pure $ Node prevo [(unParens method, evo)]
 
 branchedScraper :: SerialScraperT Text IO EvolutionTree
@@ -123,7 +123,7 @@ scraper :: ScraperT Text IO [EvolutionTree]
 scraper =
   chroots ("div" @: [hasClass "infocard-filter-block"] // ("div" @: [hasClass "infocard-list-evo"]) `atDepth` 1) $
     inSerial $
-      branchedScraper <|> linearScraper <|> leafScraper
+      linearScraper <|> branchedScraper <|> leafScraper
 
 getRawEvolutions :: IO [EvolutionTree]
 getRawEvolutions = do

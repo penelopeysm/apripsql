@@ -15,6 +15,8 @@ prevo_id,evo_id,base_evo_id,method
 20,22,20,"Level 20, Nighttime"
 23,24,23,Level 20
 25,26,25,Level 22
+27,28,209,"use Thunder Stone, outside Alola"
+27,29,209,"use Thunder Stone, in Alola"
 30,32,30,Level 22
 31,33,31,use Ice Stone
 34,35,34,Level 16
@@ -27,8 +29,9 @@ prevo_id,evo_id,base_evo_id,method
 46,47,211,use Moon Stone
 48,49,48,Level 22
 49,206,48,high Friendship
-50,52,50,use Leaf Stone
-50,219,50,use Sun Stone
+50,51,50,Level 21
+51,52,50,use Leaf Stone
+51,219,50,use Sun Stone
 53,54,53,Level 24
 55,56,55,Level 31
 57,59,57,Level 26
@@ -41,8 +44,9 @@ prevo_id,evo_id,base_evo_id,method
 69,1108,68,Use Rage Fist 20 times
 70,72,70,use Fire Stone
 71,73,71,use Fire Stone
-74,76,74,use Water Stone
-74,223,74,trade holding Kings Rock
+74,75,74,Level 25
+75,76,74,use Water Stone
+75,223,74,trade holding Kings Rock
 77,78,77,Level 16
 78,79,77,Trade
 80,81,80,Level 28
@@ -111,8 +115,9 @@ prevo_id,evo_id,base_evo_id,method
 184,185,183,Level 55
 188,189,188,Level 16
 189,190,188,Level 32
-191,193,191,Level 36
-191,194,191,"Level 36, in Legends: Arceus"
+191,192,191,"Level 14, or Level 17 in Legends: Arceus"
+192,193,191,Level 36
+192,194,191,"Level 36, in Legends: Arceus"
 195,196,195,Level 18
 196,197,195,Level 30
 198,199,198,Level 15
@@ -120,8 +125,7 @@ prevo_id,evo_id,base_evo_id,method
 202,203,202,Level 18
 204,205,204,Level 22
 207,208,207,Level 27
-209,28,209,"use Thunder Stone, outside Alola"
-209,29,209,"use Thunder Stone, in Alola"
+209,27,209,high Friendship
 210,40,210,high Friendship
 211,46,211,high Friendship
 212,213,212,high Friendship
@@ -187,8 +191,9 @@ prevo_id,evo_id,base_evo_id,method
 318,319,317,use Leaf Stone
 320,321,320,Level 22
 322,323,322,Level 25
-324,326,324,Level 30
-324,529,324,"use Dawn Stone, Male"
+324,325,324,Level 20
+325,326,324,Level 30
+325,529,324,"use Dawn Stone, Male"
 327,328,327,Level 22
 329,330,329,Level 23
 331,332,331,Level 18
@@ -284,8 +289,9 @@ prevo_id,evo_id,base_evo_id,method
 559,560,558,Level 36
 561,562,561,Level 17
 562,563,561,Level 36
-564,566,564,Level 36
-564,567,564,"Level 36, in Legends: Arceus"
+564,565,564,Level 17
+565,566,564,Level 36
+565,567,564,"Level 36, in Legends: Arceus"
 568,569,568,Level 20
 570,571,570,Level 16
 571,572,570,Level 32
@@ -404,8 +410,9 @@ prevo_id,evo_id,base_evo_id,method
 805,806,805,Level 37
 805,807,805,"Level 37, in Legends: Arceus"
 808,809,808,Level 48
-819,821,819,Level 34
-819,822,819,"Level 36, in Legends: Arceus"
+819,820,819,Level 17
+820,821,819,Level 34
+820,822,819,"Level 36, in Legends: Arceus"
 823,824,823,Level 17
 824,825,823,Level 34
 826,827,826,Level 17
@@ -434,8 +441,9 @@ prevo_id,evo_id,base_evo_id,method
 877,878,877,high Friendship
 888,889,888,Level 35
 889,890,888,Level 45
-895,897,895,"Level 53, in Pokémon Sun or Ultra Sun"
-895,898,895,"Level 53, in Pokémon Moon or Ultra Moon"
+895,896,895,Level 43
+896,897,895,"Level 53, in Pokémon Sun or Ultra Sun"
+896,898,895,"Level 53, in Pokémon Moon or Ultra Moon"
 912,913,912,after Dragon Pulse learned
 917,918,917,"Pokémon GO only, 400 Meltan Candies"
 919,920,919,Level 16
@@ -458,6 +466,7 @@ prevo_id,evo_id,base_evo_id,method
 947,948,946,Level 34
 949,950,949,use Tart Apple
 949,951,949,use Sweet Apple
+949,1142,949,use Syrupy Apple
 952,953,952,Level 36
 955,956,955,Level 26
 957,958,957,"Level 30, with an amped Nature"
@@ -472,6 +481,7 @@ prevo_id,evo_id,base_evo_id,method
 978,979,978,spin around holding Sweet
 982,983,982,"high Friendship, Nighttime"
 991,992,991,Level 34
+997,1149,997,use Metal Alloy
 998,999,998,Level 50
 999,1000,998,Level 60
 1006,1007,1006,"use Scroll Of Darkness, or in Tower of Darkness in Galar"
@@ -517,4 +527,5 @@ prevo_id,evo_id,base_evo_id,method
 1126,1127,1126,Level 35
 1127,1128,1126,Level 54
 1129,1131,1129,collect 999 Coins from Roaming Form
+1142,1150,949,after Dragon Cheer learned
 1143,1144,1143,use Unremarkable Teacup

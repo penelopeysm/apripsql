@@ -15,8 +15,9 @@ Rattata,,Raticate,,Rattata,,Level 20
 Rattata,Alolan Rattata,Raticate,Alolan Raticate,Rattata,Alolan Rattata,"Level 20, Nighttime"
 Spearow,,Fearow,,Spearow,,Level 20
 Ekans,,Arbok,,Ekans,,Level 22
-Pichu,,Raichu,,Pichu,,"use Thunder Stone, outside Alola"
-Pichu,,Raichu,Alolan Raichu,Pichu,,"use Thunder Stone, in Alola"
+Pichu,,Pikachu,,Pichu,,high Friendship
+Pikachu,,Raichu,,Pichu,,"use Thunder Stone, outside Alola"
+Pikachu,,Raichu,Alolan Raichu,Pichu,,"use Thunder Stone, in Alola"
 Sandshrew,,Sandslash,,Sandshrew,,Level 22
 Sandshrew,Alolan Sandshrew,Sandslash,Alolan Sandslash,Sandshrew,Alolan Sandshrew,use Ice Stone
 Nidoran♀,,Nidorina,,Nidoran♀,,Level 16
@@ -31,8 +32,9 @@ Igglybuff,,Jigglypuff,,Igglybuff,,high Friendship
 Jigglypuff,,Wigglytuff,,Igglybuff,,use Moon Stone
 Zubat,,Golbat,,Zubat,,Level 22
 Golbat,,Crobat,,Zubat,,high Friendship
-Oddish,,Vileplume,,Oddish,,use Leaf Stone
-Oddish,,Bellossom,,Oddish,,use Sun Stone
+Oddish,,Gloom,,Oddish,,Level 21
+Gloom,,Vileplume,,Oddish,,use Leaf Stone
+Gloom,,Bellossom,,Oddish,,use Sun Stone
 Paras,,Parasect,,Paras,,Level 24
 Venonat,,Venomoth,,Venonat,,Level 31
 Diglett,,Dugtrio,,Diglett,,Level 26
@@ -45,8 +47,9 @@ Mankey,,Primeape,,Mankey,,Level 28
 Primeape,,Annihilape,,Mankey,,Use Rage Fist 20 times
 Growlithe,,Arcanine,,Growlithe,,use Fire Stone
 Growlithe,Hisuian Growlithe,Arcanine,Hisuian Arcanine,Growlithe,Hisuian Growlithe,use Fire Stone
-Poliwag,,Poliwrath,,Poliwag,,use Water Stone
-Poliwag,,Politoed,,Poliwag,,trade holding Kings Rock
+Poliwag,,Poliwhirl,,Poliwag,,Level 25
+Poliwhirl,,Poliwrath,,Poliwag,,use Water Stone
+Poliwhirl,,Politoed,,Poliwag,,trade holding Kings Rock
 Abra,,Kadabra,,Abra,,Level 16
 Kadabra,,Alakazam,,Abra,,Trade
 Machop,,Machoke,,Machop,,Level 28
@@ -125,8 +128,9 @@ Dratini,,Dragonair,,Dratini,,Level 30
 Dragonair,,Dragonite,,Dratini,,Level 55
 Chikorita,,Bayleef,,Chikorita,,Level 16
 Bayleef,,Meganium,,Chikorita,,Level 32
-Cyndaquil,,Typhlosion,,Cyndaquil,,Level 36
-Cyndaquil,,Typhlosion,Hisuian Typhlosion,Cyndaquil,,"Level 36, in Legends: Arceus"
+Cyndaquil,,Quilava,,Cyndaquil,,"Level 14, or Level 17 in Legends: Arceus"
+Quilava,,Typhlosion,,Cyndaquil,,Level 36
+Quilava,,Typhlosion,Hisuian Typhlosion,Cyndaquil,,"Level 36, in Legends: Arceus"
 Totodile,,Croconaw,,Totodile,,Level 18
 Croconaw,,Feraligatr,,Totodile,,Level 30
 Sentret,,Furret,,Sentret,,Level 15
@@ -192,8 +196,9 @@ Seedot,,Nuzleaf,,Seedot,,Level 14
 Nuzleaf,,Shiftry,,Seedot,,use Leaf Stone
 Taillow,,Swellow,,Taillow,,Level 22
 Wingull,,Pelipper,,Wingull,,Level 25
-Ralts,,Gardevoir,,Ralts,,Level 30
-Ralts,,Gallade,,Ralts,,"use Dawn Stone, Male"
+Ralts,,Kirlia,,Ralts,,Level 20
+Kirlia,,Gardevoir,,Ralts,,Level 30
+Kirlia,,Gallade,,Ralts,,"use Dawn Stone, Male"
 Surskit,,Masquerain,,Surskit,,Level 22
 Shroomish,,Breloom,,Shroomish,,Level 23
 Slakoth,,Vigoroth,,Slakoth,,Level 18
@@ -278,8 +283,9 @@ Snivy,,Servine,,Snivy,,Level 17
 Servine,,Serperior,,Snivy,,Level 36
 Tepig,,Pignite,,Tepig,,Level 17
 Pignite,,Emboar,,Tepig,,Level 36
-Oshawott,,Samurott,,Oshawott,,Level 36
-Oshawott,,Samurott,Hisuian Samurott,Oshawott,,"Level 36, in Legends: Arceus"
+Oshawott,,Dewott,,Oshawott,,Level 17
+Dewott,,Samurott,,Oshawott,,Level 36
+Dewott,,Samurott,Hisuian Samurott,Oshawott,,"Level 36, in Legends: Arceus"
 Patrat,,Watchog,,Patrat,,Level 20
 Lillipup,,Herdier,,Lillipup,,Level 16
 Herdier,,Stoutland,,Lillipup,,Level 32
@@ -390,8 +396,9 @@ Phantump,,Trevenant,,Phantump,,Trade
 Bergmite,,Avalugg,,Bergmite,,Level 37
 Bergmite,,Avalugg,Hisuian Avalugg,Bergmite,,"Level 37, in Legends: Arceus"
 Noibat,,Noivern,,Noibat,,Level 48
-Rowlet,,Decidueye,,Rowlet,,Level 34
-Rowlet,,Decidueye,Hisuian Decidueye,Rowlet,,"Level 36, in Legends: Arceus"
+Rowlet,,Dartrix,,Rowlet,,Level 17
+Dartrix,,Decidueye,,Rowlet,,Level 34
+Dartrix,,Decidueye,Hisuian Decidueye,Rowlet,,"Level 36, in Legends: Arceus"
 Litten,,Torracat,,Litten,,Level 17
 Torracat,,Incineroar,,Litten,,Level 34
 Popplio,,Brionne,,Popplio,,Level 17
@@ -420,8 +427,9 @@ Sandygast,,Palossand,,Sandygast,,Level 42
 Type: Null,,Silvally,,Type: Null,,high Friendship
 Jangmo-o,,Hakamo-o,,Jangmo-o,,Level 35
 Hakamo-o,,Kommo-o,,Jangmo-o,,Level 45
-Cosmog,,Solgaleo,,Cosmog,,"Level 53, in Pokémon Sun or Ultra Sun"
-Cosmog,,Lunala,,Cosmog,,"Level 53, in Pokémon Moon or Ultra Moon"
+Cosmog,,Cosmoem,,Cosmog,,Level 43
+Cosmoem,,Solgaleo,,Cosmog,,"Level 53, in Pokémon Sun or Ultra Sun"
+Cosmoem,,Lunala,,Cosmog,,"Level 53, in Pokémon Moon or Ultra Moon"
 Poipole,,Naganadel,,Poipole,,after Dragon Pulse learned
 Meltan,,Melmetal,,Meltan,,"Pokémon GO only, 400 Meltan Candies"
 Grookey,,Thwackey,,Grookey,,Level 16
@@ -447,6 +455,8 @@ Arrokuda,,Barraskewda,,Arrokuda,,Level 26
 Milcery,,Alcremie,,Milcery,,spin around holding Sweet
 Applin,,Flapple,,Applin,,use Tart Apple
 Applin,,Appletun,,Applin,,use Sweet Apple
+Applin,,Dipplin,,Applin,,use Syrupy Apple
+Dipplin,,Hydrapple,,Applin,,after Dragon Cheer learned
 Farfetch'd,Galarian Farfetch'd,Sirfetch'd,,Farfetch'd,Galarian Farfetch'd,achieve 3 critical hits in one battle
 Corsola,Galarian Corsola,Cursola,,Corsola,Galarian Corsola,Level 38
 Impidimp,,Morgrem,,Impidimp,,Level 32
@@ -467,6 +477,7 @@ Kubfu,,Urshifu,Rapid Strike Style,Kubfu,,"use Scroll Of Waters, or in Tower of W
 Basculin,White-Striped Form,Basculegion,Male,Basculin,White-Striped Form,"Male, receive 294 recoil damage in battle"
 Basculin,White-Striped Form,Basculegion,Female,Basculin,White-Striped Form,"Female, receive 294 recoil damage in battle"
 Qwilfish,Hisuian Qwilfish,Overqwil,,Qwilfish,Hisuian Qwilfish,use Barb Barrage 20 times in Strong Style
+Duraludon,,Archaludon,,Duraludon,,use Metal Alloy
 Sprigatito,,Floragato,,Sprigatito,,Level 16
 Floragato,,Meowscarada,,Sprigatito,,Level 36
 Fuecoco,,Crocalor,,Fuecoco,,Level 16
