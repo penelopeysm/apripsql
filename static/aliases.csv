@@ -11,6 +11,7 @@ hoopa,hoopa-confined
 keldeo,keldeo-ordinary
 maushold,maushold-three
 meloetta,meloetta-aria
+mime,mr-mime
 minior,minior-meteor
 morpeko,morpeko-full-belly
 ogerpon,ogerpon-teal
@@ -50,6 +51,8 @@ galarian-slowbro,slowbro-galar
 galarian-farfetch'd,farfetchd-galar
 galarian-weezing,weezing-galar
 galarian-mr-mime,mr-mime-galar
+galarian-mime,mr-mime-galar
+mime-galar,mr-mime-galar
 galarian-articuno,articuno-galar
 galarian-zapdos,zapdos-galar
 galarian-moltres,moltres-galar
