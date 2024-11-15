@@ -183,7 +183,7 @@ getPokemon name conn = do
             then FoundOne <$> _getPokemonFromId aliasedId conn
             else do
               aliasedPokemon <- _getPokemonFromId aliasedId conn
-              pure $ AliasedToAndSuggesting aliasedPokemon (snd n :| [])
+              pure $ AliasedToAndSuggesting aliasedPokemon (dbName aliasedPokemon :| [snd n])
     ns@(h : t) ->
       -- Check for an exact match
       case filter ((== hyphenatedName) . snd) ns of
