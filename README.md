@@ -10,3 +10,11 @@ Errors in the database are to be recorded as issues in this repository.
 Note that errors *must* be fixed by the CSV stage: the PostgreSQL database should *not* be directly edited.
 
 Data dependencies are handled by the repository Makefile.
+
+## Updating the Fly.io database
+
+```bash
+fly proxy 5432 -a apripsql
+# source the secrets file with FLY_PG_PROXY_CONN_STRING
+make
+```
