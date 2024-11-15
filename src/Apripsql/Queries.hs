@@ -123,8 +123,8 @@ data GetPokemonResult
   | AliasedToAndSuggesting DBPokemon (NonEmpty Text)
   deriving (Eq, Ord, Show)
 
-_getPokemonAsId :: Int -> Connection -> IO DBPokemon
-_getPokemonAsId id' conn = do
+_getPokemonFromId :: Int -> Connection -> IO DBPokemon
+_getPokemonFromId id' conn = do
   [x] <-
     query
       conn
@@ -150,25 +150,52 @@ getPokemon name conn = do
           . T.intercalate "-"
           . T.words
           $ name
+  -- Function to search exact match for an alias
+  let getAliasedIds :: IO (Maybe Int)
+      getAliasedIds = do
+        matchingIds <- query conn [sql|SELECT pokemon_id FROM aliases WHERE alias ILIKE ?;|] (Only hyphenatedName)
+        case map fromOnly matchingIds of
+          [] -> pure Nothing
+          [n] -> pure $ Just n
+          _ -> error $ "getPokemon: multiple aliases found for " <> T.unpack hyphenatedName
   -- Look for results with the search string as a prefix
   potentialIdsAndNames :: [(Int, Text)] <-
     query conn [sql|SELECT id, unique_name FROM pokemon WHERE unique_name ILIKE ?;|] (Only $ hyphenatedName <> "%")
   case potentialIdsAndNames of
-    [] -> pure NoneFound
-    [(n, _)] -> FoundOne <$> _getPokemonAsId n conn
+    [] -> do
+      -- No match in unique_name, check aliases
+      aliasedIds <- getAliasedIds
+      case aliasedIds of
+        Nothing -> pure NoneFound
+        Just n -> FoundOne <$> _getPokemonFromId n conn
+    [n] -> do
+      -- Found one prefix. Check if an alias exists
+      maybeAliasedId <- getAliasedIds
+      case maybeAliasedId of
+        Nothing ->
+          -- If no alias, just use the prefix match
+          FoundOne <$> _getPokemonFromId (fst n) conn
+        Just aliasedId ->
+          -- If the alias matches, no problem, else we override the
+          -- prefix match with the alias. This can happen e.g. with
+          -- 'mime' directing to 'mr-mime' vs 'mime-jr'.
+          if fst n == aliasedId
+            then FoundOne <$> _getPokemonFromId aliasedId conn
+            else do
+              aliasedPokemon <- _getPokemonFromId aliasedId conn
+              pure $ AliasedToAndSuggesting aliasedPokemon (snd n :| [])
     ns@(h : t) ->
       -- Check for an exact match
       case filter ((== hyphenatedName) . snd) ns of
         [] -> do
           -- No exact match, check for an alias
-          aliasedId <- query conn [sql|SELECT pokemon_id FROM aliases WHERE alias ILIKE ?;|] (Only hyphenatedName)
-          case map fromOnly aliasedId of
-            [] -> pure $ NoneFoundButSuggesting (NE.map snd (h :| t))
-            [n] -> do
-              aliasedPokemon <- _getPokemonAsId n conn
+          maybeAliasedId <- getAliasedIds
+          case maybeAliasedId of
+            Nothing -> pure $ NoneFoundButSuggesting (NE.map snd (h :| t))
+            Just n -> do
+              aliasedPokemon <- _getPokemonFromId n conn
               pure $ AliasedToAndSuggesting aliasedPokemon (NE.map snd (h :| t))
-            _ -> error $ "getPokemon: multiple aliases found for " <> T.unpack hyphenatedName
-        [(n, _)] -> FoundOne <$> _getPokemonAsId n conn
+        [(n, _)] -> FoundOne <$> _getPokemonFromId n conn
         _ -> error $ "getPokemon: multiple entries in pokemon table found for unique_name " <> T.unpack hyphenatedName
 
 -- * Get the first form of any Pokemon with the same National Dex number
